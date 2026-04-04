@@ -1,0 +1,475 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		36B86CE4560ECF77C1BFC50D /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C27738C78B658E05497DC27 /* Color+Theme.swift */; };
+		3AC0676622F705E36EE67DEB /* SpeedTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A011E188A363CC94B10F9E50 /* SpeedTestViewModel.swift */; };
+		40FC0606F8668B710620537B /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848AEBDA39CB54E1B9D1A47 /* BannerAdView.swift */; };
+		5B252B5C8A27BE1C78781F29 /* SpeedTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC304601AD82B02C524E30B /* SpeedTestView.swift */; };
+		608EA38F686FCAC0502B0C6D /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E8B607BA999C2FC1638DF1 /* HistoryView.swift */; };
+		84BDB892CCC2689B5019EF57 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BD5C301BF237A04D6E2730 /* OnboardingView.swift */; };
+		8FA372E3AF26D702E1675745 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763214A0377A5CA13678E17C /* MainTabView.swift */; };
+		94F15B6CBE415D0B5EB3EF59 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 98301A010E467192804CD196 /* GoogleMobileAds */; };
+		95509055063FFB7264CCC783 /* WiFiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D02F936F41B69DE75C85AC4 /* WiFiViewModel.swift */; };
+		B538CF7944DC9D3F4F9696AE /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBCD597FD3E5F2BCE0A98C9 /* HistoryService.swift */; };
+		B6FD93B0DC6B6D66AB2C3347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 406089864A2DE55136B8A6F3 /* Assets.xcassets */; };
+		B92811C0972CB13DF170E2C0 /* AdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D391FF6A79861108361809 /* AdManager.swift */; };
+		C1AD50E59C4E4FA46F7A0088 /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF9B383B966AC8A5F0FDB0E /* StoreViewModel.swift */; };
+		C648512D1BAEFBFB31AABA3E /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D093D29CB962929831ED3C /* HistoryViewModel.swift */; };
+		CDA71DA49E8E7AEFF89450FC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61F9BE35C9714F927618A0 /* SettingsView.swift */; };
+		E3DA228211B22612B498E081 /* SpeedTestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD56E7A69937207AED50E82 /* SpeedTestResult.swift */; };
+		F0ECD685D758BCADCC7A7B6D /* SpeedLabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B433922C4A60EE20CBF1EF4 /* SpeedLabApp.swift */; };
+		F165518AC76746280D7F8D29 /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFBDD51652760260414DE20 /* LocalizationService.swift */; };
+		F513A334B7B15C2FF46498A9 /* SpeedTestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0148F7F1A5B8F67BCADE9AC4 /* SpeedTestService.swift */; };
+		F57167444CC873EBF58FBAFC /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA7B17D594747CE7AAADE1 /* NetworkService.swift */; };
+		F87344962179ABF60F9BF4FA /* WiFiAnalyzerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B537474ED9EE620D4B0055 /* WiFiAnalyzerView.swift */; };
+		FF775D8BE5213BDD568D3936 /* SpeedGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD00C0AD9EBADCA1EF6359 /* SpeedGaugeView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0148F7F1A5B8F67BCADE9AC4 /* SpeedTestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestService.swift; sourceTree = "<group>"; };
+		03B537474ED9EE620D4B0055 /* WiFiAnalyzerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiAnalyzerView.swift; sourceTree = "<group>"; };
+		0848AEBDA39CB54E1B9D1A47 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
+		16D093D29CB962929831ED3C /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		1BDD00C0AD9EBADCA1EF6359 /* SpeedGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedGaugeView.swift; sourceTree = "<group>"; };
+		2D02F936F41B69DE75C85AC4 /* WiFiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiViewModel.swift; sourceTree = "<group>"; };
+		2EFBDD51652760260414DE20 /* LocalizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationService.swift; sourceTree = "<group>"; };
+		2F0BDCDBD391C5D052115019 /* SpeedLab.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SpeedLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A61F9BE35C9714F927618A0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		406089864A2DE55136B8A6F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4B433922C4A60EE20CBF1EF4 /* SpeedLabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLabApp.swift; sourceTree = "<group>"; };
+		59E8B607BA999C2FC1638DF1 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		5C27738C78B658E05497DC27 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
+		5CF9B383B966AC8A5F0FDB0E /* StoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
+		65BD5C301BF237A04D6E2730 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		69D391FF6A79861108361809 /* AdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdManager.swift; sourceTree = "<group>"; };
+		7111FCDEBBC0A2B14F0B36A3 /* SpeedLab.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpeedLab.entitlements; sourceTree = "<group>"; };
+		763214A0377A5CA13678E17C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		82DBA17A483B756E07B91C7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A011E188A363CC94B10F9E50 /* SpeedTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestViewModel.swift; sourceTree = "<group>"; };
+		BEC304601AD82B02C524E30B /* SpeedTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestView.swift; sourceTree = "<group>"; };
+		CEDA7B17D594747CE7AAADE1 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		EAD56E7A69937207AED50E82 /* SpeedTestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestResult.swift; sourceTree = "<group>"; };
+		ECBCD597FD3E5F2BCE0A98C9 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A8151B1980083DF9EE3B6BFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94F15B6CBE415D0B5EB3EF59 /* GoogleMobileAds in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		094B4506070D0E91AECC9F80 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5C27738C78B658E05497DC27 /* Color+Theme.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0CC94DC4FB7CFD7164FB984A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0848AEBDA39CB54E1B9D1A47 /* BannerAdView.swift */,
+				59E8B607BA999C2FC1638DF1 /* HistoryView.swift */,
+				763214A0377A5CA13678E17C /* MainTabView.swift */,
+				65BD5C301BF237A04D6E2730 /* OnboardingView.swift */,
+				3A61F9BE35C9714F927618A0 /* SettingsView.swift */,
+				1BDD00C0AD9EBADCA1EF6359 /* SpeedGaugeView.swift */,
+				BEC304601AD82B02C524E30B /* SpeedTestView.swift */,
+				03B537474ED9EE620D4B0055 /* WiFiAnalyzerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		20CDC2F802858FA9C715DE40 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				82DBA17A483B756E07B91C7A /* Info.plist */,
+				7111FCDEBBC0A2B14F0B36A3 /* SpeedLab.entitlements */,
+				4B433922C4A60EE20CBF1EF4 /* SpeedLabApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		2D64EB041B28295B98FBD500 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				16D093D29CB962929831ED3C /* HistoryViewModel.swift */,
+				A011E188A363CC94B10F9E50 /* SpeedTestViewModel.swift */,
+				5CF9B383B966AC8A5F0FDB0E /* StoreViewModel.swift */,
+				2D02F936F41B69DE75C85AC4 /* WiFiViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		400301BE4629F8A2A0B261E3 = {
+			isa = PBXGroup;
+			children = (
+				D47BB307B9E1D674A20B8A85 /* SpeedLab */,
+				EF0911731BFF502FCD76125F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C00469F7C7D6290417E10031 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EAD56E7A69937207AED50E82 /* SpeedTestResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D47BB307B9E1D674A20B8A85 /* SpeedLab */ = {
+			isa = PBXGroup;
+			children = (
+				406089864A2DE55136B8A6F3 /* Assets.xcassets */,
+				20CDC2F802858FA9C715DE40 /* App */,
+				094B4506070D0E91AECC9F80 /* Extensions */,
+				C00469F7C7D6290417E10031 /* Models */,
+				FECC3FFD703FFB5BF9BCF56D /* Services */,
+				2D64EB041B28295B98FBD500 /* ViewModels */,
+				0CC94DC4FB7CFD7164FB984A /* Views */,
+			);
+			path = SpeedLab;
+			sourceTree = "<group>";
+		};
+		EF0911731BFF502FCD76125F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2F0BDCDBD391C5D052115019 /* SpeedLab.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FECC3FFD703FFB5BF9BCF56D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				69D391FF6A79861108361809 /* AdManager.swift */,
+				ECBCD597FD3E5F2BCE0A98C9 /* HistoryService.swift */,
+				2EFBDD51652760260414DE20 /* LocalizationService.swift */,
+				CEDA7B17D594747CE7AAADE1 /* NetworkService.swift */,
+				0148F7F1A5B8F67BCADE9AC4 /* SpeedTestService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C7DE85AF6C6FC1A67292CAD5 /* SpeedLab */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A82DD3BE9F6520438DC192CD /* Build configuration list for PBXNativeTarget "SpeedLab" */;
+			buildPhases = (
+				B4B302F8EB6EB23B57064021 /* Sources */,
+				5639FDDC7F8E03EF74D60956 /* Resources */,
+				A8151B1980083DF9EE3B6BFC /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpeedLab;
+			packageProductDependencies = (
+				98301A010E467192804CD196 /* GoogleMobileAds */,
+			);
+			productName = SpeedLab;
+			productReference = 2F0BDCDBD391C5D052115019 /* SpeedLab.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BB27863948FD55DDFD1CB6AB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					C7DE85AF6C6FC1A67292CAD5 = {
+						DevelopmentTeam = ZCPND5K7H5;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F852BBDD0E1F653663E1C257 /* Build configuration list for PBXProject "SpeedLab" */;
+			developmentRegion = tr;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				tr,
+			);
+			mainGroup = 400301BE4629F8A2A0B261E3;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				AC87BB25DA97AD66C9B71443 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = EF0911731BFF502FCD76125F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C7DE85AF6C6FC1A67292CAD5 /* SpeedLab */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5639FDDC7F8E03EF74D60956 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6FD93B0DC6B6D66AB2C3347 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B4B302F8EB6EB23B57064021 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B92811C0972CB13DF170E2C0 /* AdManager.swift in Sources */,
+				40FC0606F8668B710620537B /* BannerAdView.swift in Sources */,
+				36B86CE4560ECF77C1BFC50D /* Color+Theme.swift in Sources */,
+				B538CF7944DC9D3F4F9696AE /* HistoryService.swift in Sources */,
+				608EA38F686FCAC0502B0C6D /* HistoryView.swift in Sources */,
+				C648512D1BAEFBFB31AABA3E /* HistoryViewModel.swift in Sources */,
+				F165518AC76746280D7F8D29 /* LocalizationService.swift in Sources */,
+				8FA372E3AF26D702E1675745 /* MainTabView.swift in Sources */,
+				F57167444CC873EBF58FBAFC /* NetworkService.swift in Sources */,
+				84BDB892CCC2689B5019EF57 /* OnboardingView.swift in Sources */,
+				CDA71DA49E8E7AEFF89450FC /* SettingsView.swift in Sources */,
+				FF775D8BE5213BDD568D3936 /* SpeedGaugeView.swift in Sources */,
+				F0ECD685D758BCADCC7A7B6D /* SpeedLabApp.swift in Sources */,
+				E3DA228211B22612B498E081 /* SpeedTestResult.swift in Sources */,
+				F513A334B7B15C2FF46498A9 /* SpeedTestService.swift in Sources */,
+				5B252B5C8A27BE1C78781F29 /* SpeedTestView.swift in Sources */,
+				3AC0676622F705E36EE67DEB /* SpeedTestViewModel.swift in Sources */,
+				C1AD50E59C4E4FA46F7A0088 /* StoreViewModel.swift in Sources */,
+				F87344962179ABF60F9BF4FA /* WiFiAnalyzerView.swift in Sources */,
+				95509055063FFB7264CCC783 /* WiFiViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2182574F3A7C3D477720A6EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SpeedLab/App/SpeedLab.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = SpeedLab/App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vialab.speedlab;
+				SDKROOT = iphoneos;
+				SUPPORTS_XR_DESIGNED_FOR = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		45DE35C2B89B58B12A50339D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SpeedLab/App/SpeedLab.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = SpeedLab/App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vialab.speedlab;
+				SDKROOT = iphoneos;
+				SUPPORTS_XR_DESIGNED_FOR = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		F67D78F6352102A7F418656B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = ZCPND5K7H5;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		F7F6C8E61232AFFB22703A37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = ZCPND5K7H5;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A82DD3BE9F6520438DC192CD /* Build configuration list for PBXNativeTarget "SpeedLab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2182574F3A7C3D477720A6EA /* Debug */,
+				45DE35C2B89B58B12A50339D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F852BBDD0E1F653663E1C257 /* Build configuration list for PBXProject "SpeedLab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7F6C8E61232AFFB22703A37 /* Debug */,
+				F67D78F6352102A7F418656B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AC87BB25DA97AD66C9B71443 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.13.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		98301A010E467192804CD196 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC87BB25DA97AD66C9B71443 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = BB27863948FD55DDFD1CB6AB /* Project object */;
+}
