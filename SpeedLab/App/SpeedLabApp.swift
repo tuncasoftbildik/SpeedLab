@@ -8,25 +8,34 @@ struct SpeedLabApp: App {
     @StateObject private var historyVM = HistoryViewModel()
     @StateObject private var storeVM = StoreViewModel()
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
-
-    init() {
-        AdManager.shared.configure()
-        AdManager.shared.loadInterstitial()
-        AdManager.shared.loadRewarded()
-    }
+    @Environment(\.scenePhase) private var scenePhase
+    @State private var adsInitialized = false
 
     var body: some Scene {
         WindowGroup {
-            if hasSeenOnboarding {
-                MainTabView()
-                    .environmentObject(speedTestVM)
-                    .environmentObject(wifiVM)
-                    .environmentObject(historyVM)
-                    .environmentObject(storeVM)
-                    .preferredColorScheme(.dark)
-            } else {
-                OnboardingView()
-                    .preferredColorScheme(.dark)
+            Group {
+                if hasSeenOnboarding {
+                    MainTabView()
+                        .environmentObject(speedTestVM)
+                        .environmentObject(wifiVM)
+                        .environmentObject(historyVM)
+                        .environmentObject(storeVM)
+                } else {
+                    OnboardingView()
+                }
+            }
+            .preferredColorScheme(.dark)
+            .task(id: scenePhase) {
+                // Request ATT once the scene is active (Apple requires
+                // foreground state for the prompt), then initialize AdMob.
+                // Running here instead of App.init avoids the pre-14.5
+                // init-time ordering problem.
+                guard scenePhase == .active, !adsInitialized else { return }
+                adsInitialized = true
+                _ = await TrackingManager.requestAuthorizationIfNeeded()
+                AdManager.shared.configure()
+                AdManager.shared.loadInterstitial()
+                AdManager.shared.loadRewarded()
             }
         }
     }

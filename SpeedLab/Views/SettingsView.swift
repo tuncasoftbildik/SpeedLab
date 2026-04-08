@@ -247,41 +247,90 @@ struct ProUpgradeSheet: View {
 
                 // Purchase buttons
                 VStack(spacing: 10) {
-                    ForEach(storeVM.products, id: \.id) { product in
-                        Button {
-                            Task { let _ = await storeVM.purchase(product) }
-                        } label: {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text(product.subscription?.subscriptionPeriod.unit == .month ? loc.t("monthly") : loc.t("yearly"))
-                                        .font(.system(size: 15, weight: .bold))
-                                    if product.subscription?.subscriptionPeriod.unit == .year {
-                                        Text("En avantajlı")
-                                            .font(.system(size: 11, weight: .semibold))
-                                            .foregroundColor(.npGreen)
-                                    }
-                                }
-                                Spacer()
-                                Text(product.displayPrice)
-                                    .font(.system(size: 17, weight: .bold))
+                    if storeVM.products.isEmpty {
+                        // Fallback when products haven't loaded yet
+                        VStack(spacing: 10) {
+                            ProPlaceholderButton(title: loc.t("monthly"), highlighted: false)
+                            ProPlaceholderButton(title: loc.t("yearly"), highlighted: true)
+                        }
+                        if storeVM.isLoading {
+                            ProgressView()
+                                .tint(.white)
+                                .padding(.top, 4)
+                        } else {
+                            Button {
+                                Task { await storeVM.loadProducts() }
+                            } label: {
+                                Text("Tekrar dene")
+                                    .font(.system(size: 13, weight: .semibold))
+                                    .foregroundColor(.npCyan)
                             }
-                            .foregroundColor(.white)
-                            .padding(16)
-                            .background(
-                                product.subscription?.subscriptionPeriod.unit == .year
-                                ? AnyShapeStyle(LinearGradient.npButton)
-                                : AnyShapeStyle(Color.npSurface)
-                            )
-                            .clipShape(RoundedRectangle(cornerRadius: 14))
+                            .padding(.top, 4)
+                        }
+                    } else {
+                        ForEach(storeVM.products, id: \.id) { product in
+                            Button {
+                                Task { let _ = await storeVM.purchase(product) }
+                            } label: {
+                                HStack {
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(product.subscription?.subscriptionPeriod.unit == .month ? loc.t("monthly") : loc.t("yearly"))
+                                            .font(.system(size: 15, weight: .bold))
+                                        if product.subscription?.subscriptionPeriod.unit == .year {
+                                            Text("En avantajlı")
+                                                .font(.system(size: 11, weight: .semibold))
+                                                .foregroundColor(.npGreen)
+                                        }
+                                    }
+                                    Spacer()
+                                    Text(product.displayPrice)
+                                        .font(.system(size: 17, weight: .bold))
+                                }
+                                .foregroundColor(.white)
+                                .padding(16)
+                                .background(
+                                    product.subscription?.subscriptionPeriod.unit == .year
+                                    ? AnyShapeStyle(LinearGradient.npButton)
+                                    : AnyShapeStyle(Color.npSurface)
+                                )
+                                .clipShape(RoundedRectangle(cornerRadius: 14))
+                            }
                         }
                     }
 
-                    Button {
-                        Task { await storeVM.restorePurchases() }
-                    } label: {
-                        Text(loc.t("restore_purchases"))
-                            .font(.system(size: 13, weight: .medium))
+                    // Auto-renew disclosure (Apple 3.1.2 zorunlu)
+                    Text("Abonelik otomatik olarak yenilenir. Mevcut dönem bitiminden en az 24 saat önce iptal edilmediği takdirde Apple ID hesabınızdan ücret tahsil edilir. Aboneliği istediğiniz zaman App Store hesap ayarlarından yönetebilir veya iptal edebilirsiniz.")
+                        .font(.system(size: 10))
+                        .foregroundColor(.npTextSecondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 4)
+                        .padding(.top, 6)
+
+                    // Terms & Privacy links (Apple 5.1.1/5.1.2 zorunlu)
+                    HStack(spacing: 16) {
+                        Link("Kullanım Şartları", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
+                            .font(.system(size: 11, weight: .semibold))
+                            .foregroundColor(.npCyan)
+
+                        Text("•")
+                            .font(.system(size: 11))
                             .foregroundColor(.npTextSecondary)
+
+                        Link("Gizlilik Politikası", destination: URL(string: "https://bot.tuncabildik.online/privacy/speedlab.html")!)
+                            .font(.system(size: 11, weight: .semibold))
+                            .foregroundColor(.npCyan)
+
+                        Text("•")
+                            .font(.system(size: 11))
+                            .foregroundColor(.npTextSecondary)
+
+                        Button {
+                            Task { await storeVM.restorePurchases() }
+                        } label: {
+                            Text(loc.t("restore_purchases"))
+                                .font(.system(size: 11, weight: .semibold))
+                                .foregroundColor(.npCyan)
+                        }
                     }
                     .padding(.top, 4)
                 }
@@ -290,6 +339,36 @@ struct ProUpgradeSheet: View {
             }
         }
         .task { await storeVM.loadProducts() }
+    }
+}
+
+struct ProPlaceholderButton: View {
+    let title: String
+    let highlighted: Bool
+
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.system(size: 15, weight: .bold))
+                if highlighted {
+                    Text("En avantajlı")
+                        .font(.system(size: 11, weight: .semibold))
+                        .foregroundColor(.npGreen)
+                }
+            }
+            Spacer()
+            Text("—")
+                .font(.system(size: 17, weight: .bold))
+        }
+        .foregroundColor(.white.opacity(0.6))
+        .padding(16)
+        .background(
+            highlighted
+            ? AnyShapeStyle(LinearGradient.npButton.opacity(0.5))
+            : AnyShapeStyle(Color.npSurface)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 14))
     }
 }
 
