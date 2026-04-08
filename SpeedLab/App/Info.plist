@@ -26,6 +26,8 @@
 	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>WiFi sinyal haritası oluşturmak için konum izni gereklidir.</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Your permission helps show ads that are more relevant to you. If you decline, you'll still see ads but they won't be personalized.</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

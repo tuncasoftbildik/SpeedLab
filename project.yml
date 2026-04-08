@@ -9,8 +9,8 @@ options:
 settings:
   base:
     DEVELOPMENT_TEAM: ZCPND5K7H5
-    MARKETING_VERSION: "1.0.0"
-    CURRENT_PROJECT_VERSION: 1
+    MARKETING_VERSION: "1.0.1"
+    CURRENT_PROJECT_VERSION: 2
     SWIFT_VERSION: "5.9"
     CODE_SIGN_STYLE: Automatic
 
@@ -46,6 +46,7 @@ targets:
           - UIInterfaceOrientationPortrait
         ITSAppUsesNonExemptEncryption: false
         NSLocationWhenInUseUsageDescription: "WiFi sinyal haritası oluşturmak için konum izni gereklidir."
+        NSUserTrackingUsageDescription: "Your permission helps show ads that are more relevant to you. If you decline, you'll still see ads but they won't be personalized."
         UIApplicationSupportsIndirectInputEvents: true
         UIRequiresFullScreen: true
         GADApplicationIdentifier: "ca-app-pub-3770969986981001~5858380265"
