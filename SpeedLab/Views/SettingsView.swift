@@ -6,6 +6,13 @@ struct SettingsView: View {
     @StateObject private var loc = LocalizationService.shared
     @State private var showProSheet = false
 
+    fileprivate static var appVersion: String {
+        let dict = Bundle.main.infoDictionary
+        let short = dict?["CFBundleShortVersionString"] as? String ?? "1.0"
+        let build = dict?["CFBundleVersion"] as? String ?? "1"
+        return "\(short) (\(build))"
+    }
+
     var body: some View {
         ZStack {
             Color.npBackground.ignoresSafeArea()
@@ -134,7 +141,7 @@ struct SettingsView: View {
 
                     // Footer
                     VStack(spacing: 4) {
-                        Text("SpeedLab v1.0.0")
+                        Text("SpeedLab v\(Self.appVersion)")
                             .font(.system(size: 12, weight: .semibold))
                             .foregroundColor(.npTextSecondary)
                         Text(loc.t("made_by"))
