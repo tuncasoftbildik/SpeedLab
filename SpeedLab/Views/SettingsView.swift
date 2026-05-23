@@ -4,6 +4,7 @@ import StoreKit
 struct SettingsView: View {
     @EnvironmentObject var storeVM: StoreViewModel
     @StateObject private var loc = LocalizationService.shared
+    @Environment(\.openURL) private var openURL
     @State private var showProSheet = false
 
     fileprivate static var appVersion: String {
@@ -127,12 +128,12 @@ struct SettingsView: View {
                         Divider().background(Color.npBorder).padding(.leading, 54)
 
                         SettingsButton(icon: "lock.shield.fill", label: loc.t("privacy_policy"), color: .npGreen) {
-                            // Privacy policy URL
+                            openURL(ProUpgradeSheet.privacyURL)
                         }
                         Divider().background(Color.npBorder).padding(.leading, 54)
 
                         SettingsButton(icon: "doc.text.fill", label: loc.t("terms"), color: .npPurple) {
-                            // Terms URL
+                            openURL(ProUpgradeSheet.termsURL)
                         }
                     }
                     .background(Color.npSurface)
@@ -212,7 +213,69 @@ struct ProUpgradeSheet: View {
     @StateObject private var loc = LocalizationService.shared
     @Environment(\.dismiss) var dismiss
 
+    static let privacyURL = URL(string: "https://bot.tuncabildik.online/privacy/speedlab.html")!
+    static let termsURL = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!
+
     var body: some View {
+        Group {
+            if #available(iOS 17.0, *) {
+                modernPaywall
+            } else {
+                legacyPaywall
+            }
+        }
+        .onChange(of: storeVM.isPro) { isPro in
+            if isPro { dismiss() }
+        }
+    }
+
+    // MARK: Modern (iOS 17+) — Apple-recommended SubscriptionStoreView
+    // Renders title, length, price (and price-per-unit) automatically per Guideline 3.1.2(c).
+    @available(iOS 17.0, *)
+    private var modernPaywall: some View {
+        SubscriptionStoreView(productIDs: StoreViewModel.productIds) {
+            marketingContent
+        }
+        .storeButton(.visible, for: .restorePurchases)
+        .subscriptionStorePolicyDestination(url: Self.privacyURL, for: .privacyPolicy)
+        .subscriptionStorePolicyDestination(url: Self.termsURL, for: .termsOfService)
+        .tint(.npCyan)
+        .preferredColorScheme(.dark)
+        .overlay(alignment: .topTrailing) {
+            Button { dismiss() } label: {
+                Image(systemName: "xmark.circle.fill")
+                    .font(.system(size: 28))
+                    .foregroundStyle(.secondary)
+                    .padding(12)
+            }
+            .accessibilityLabel(Text("Close"))
+        }
+    }
+
+    @ViewBuilder
+    private var marketingContent: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "crown.fill")
+                .font(.system(size: 48))
+                .foregroundStyle(
+                    LinearGradient(colors: [.npOrange, .yellow], startPoint: .top, endPoint: .bottom)
+                )
+            Text("SpeedLab Pro")
+                .font(.system(size: 28, weight: .bold))
+            VStack(alignment: .leading, spacing: 12) {
+                ProFeatureRow(icon: "eye.slash.fill", text: loc.t("feature_no_ads"), color: .npCyan)
+                ProFeatureRow(icon: "infinity", text: loc.t("feature_unlimited_history"), color: .npPurple)
+                ProFeatureRow(icon: "map.fill", text: loc.t("feature_wifi_map"), color: .npGreen)
+                ProFeatureRow(icon: "square.and.arrow.up.fill", text: loc.t("feature_export"), color: .npBlue)
+                ProFeatureRow(icon: "rectangle.on.rectangle.fill", text: loc.t("feature_widget"), color: .npOrange)
+            }
+            .padding(.horizontal, 8)
+        }
+        .padding(.vertical, 16)
+    }
+
+    // MARK: Legacy (iOS 16) fallback
+    private var legacyPaywall: some View {
         ZStack {
             Color.npBackground.ignoresSafeArea()
 

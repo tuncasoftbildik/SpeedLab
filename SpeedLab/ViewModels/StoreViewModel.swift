@@ -7,7 +7,7 @@ class StoreViewModel: ObservableObject {
     @Published var products: [Product] = []
     @Published var isLoading = false
 
-    private let productIds = ["com.vialab.speedlab.pro.monthly", "com.vialab.speedlab.pro.yearly"]
+    static let productIds = ["com.vialab.speedlab.pro.monthly", "com.vialab.speedlab.pro.yearly"]
     private var updateListenerTask: Task<Void, Never>?
 
     init() {
@@ -22,7 +22,7 @@ class StoreViewModel: ObservableObject {
     func loadProducts() async {
         isLoading = true
         do {
-            products = try await Product.products(for: productIds)
+            products = try await Product.products(for: Self.productIds)
                 .sorted { $0.price < $1.price }
         } catch {
             print("Ürünler yüklenemedi: \(error)")
@@ -57,7 +57,7 @@ class StoreViewModel: ObservableObject {
     private func checkEntitlements() async {
         for await result in Transaction.currentEntitlements {
             if let transaction = try? Self.checkVerified(result) {
-                if productIds.contains(transaction.productID) {
+                if Self.productIds.contains(transaction.productID) {
                     isPro = true
                     return
                 }
