@@ -1,0 +1,20 @@
+# Xcode build output
+build/
+DerivedData/
+*.xcarchive
+ExportOptions.plist
+
+# Xcode user state
+xcuserdata/
+*.xcuserstate
+*.xcuserstatedata
+
+# macOS
+.DS_Store
+
+# Swift Package Manager
+.swiftpm/
+.build/
+
+# CocoaPods (if ever used)
+Pods/
