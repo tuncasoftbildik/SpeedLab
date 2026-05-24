@@ -1,9 +1,15 @@
 import Foundation
 import StoreKit
+import WidgetKit
 
 @MainActor
 class StoreViewModel: ObservableObject {
-    @Published var isPro = false
+    @Published var isPro = false {
+        didSet {
+            SharedStore().setPro(isPro)
+            WidgetCenter.shared.reloadAllTimelines()
+        }
+    }
     @Published var products: [Product] = []
     @Published var isLoading = false
 
