@@ -27,6 +27,8 @@ targets:
       - SpeedLab
     dependencies:
       - package: GoogleMobileAds
+      - target: SpeedLabWidget
+        embed: true
     settings:
       base:
         INFOPLIST_FILE: SpeedLab/App/Info.plist
@@ -50,6 +52,9 @@ targets:
         UIApplicationSupportsIndirectInputEvents: true
         UIRequiresFullScreen: true
         GADApplicationIdentifier: "ca-app-pub-3770969986981001~5858380265"
+        CFBundleURLTypes:
+          - CFBundleURLSchemes:
+              - speedlab
         SKAdNetworkItems:
           - SKAdNetworkIdentifier: cstr6suwn9.skadnetwork
           - SKAdNetworkIdentifier: 4fzdc2evr5.skadnetwork
@@ -102,6 +107,29 @@ targets:
     scheme:
       testTargets:
         - SpeedLabTests
+
+  SpeedLabWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      - SpeedLabWidget
+      - path: SpeedLab/WidgetShared
+      - path: SpeedLab/Extensions/Color+Theme.swift
+      - path: SpeedLab/Services/LocalizationService.swift
+      - path: SpeedLab/Views/ShareCard/ShareGaugeView.swift
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.vialab.speedlab.widget
+        CODE_SIGN_ENTITLEMENTS: SpeedLabWidget/SpeedLabWidget.entitlements
+        TARGETED_DEVICE_FAMILY: "1"
+        MARKETING_VERSION: "$(MARKETING_VERSION)"
+        CURRENT_PROJECT_VERSION: "$(CURRENT_PROJECT_VERSION)"
+    info:
+      path: SpeedLabWidget/Info.plist
+      properties:
+        CFBundleDisplayName: SpeedLab
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
 
   SpeedLabTests:
     type: bundle.unit-test

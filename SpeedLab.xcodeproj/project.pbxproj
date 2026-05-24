@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F6427637253E1B4549C37ED /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C27738C78B658E05497DC27 /* Color+Theme.swift */; };
+		1025A3666B43B99C5C9CACD9 /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56741D3B4B75B5AF42C0FA9B /* SharedStore.swift */; };
+		30B501B21EEF9A2561FEBBAD /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2704678E2B63520B7C9591BD /* WidgetSnapshot.swift */; };
 		33DA9BA36AFCFC7591B89B20 /* ShareCardFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387C7A6E6511BABBBF0C71B9 /* ShareCardFormat.swift */; };
 		36B86CE4560ECF77C1BFC50D /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C27738C78B658E05497DC27 /* Color+Theme.swift */; };
 		3AC0676622F705E36EE67DEB /* SpeedTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A011E188A363CC94B10F9E50 /* SpeedTestViewModel.swift */; };
 		3E2A36985B422368911E5B3A /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56741D3B4B75B5AF42C0FA9B /* SharedStore.swift */; };
 		40FC0606F8668B710620537B /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848AEBDA39CB54E1B9D1A47 /* BannerAdView.swift */; };
+		560E1AA98EDA7806758AF6EC /* SpeedLabWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54E5D6B797BE47715BA82D0 /* SpeedLabWidget.swift */; };
 		5B252B5C8A27BE1C78781F29 /* SpeedTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC304601AD82B02C524E30B /* SpeedTestView.swift */; };
 		5C9E2F5B93827671251795B3 /* ShareCardRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C189602C94FDD49A171B6CF3 /* ShareCardRenderer.swift */; };
 		608EA38F686FCAC0502B0C6D /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E8B607BA999C2FC1638DF1 /* HistoryView.swift */; };
 		6B7FE41077BCFF7EA29ED889 /* QRCodeGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D9CC550DF516DFEFF018 /* QRCodeGeneratorTests.swift */; };
+		6CA5E3BF13B9D3ADB2D4046D /* SpeedLabWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F53B5324AA9654777470555B /* SpeedLabWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8404BB96E283F06F9A33FBA2 /* ShareGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6E1170AAD16ECD3CCEECB /* ShareGaugeView.swift */; };
 		84BDB892CCC2689B5019EF57 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BD5C301BF237A04D6E2730 /* OnboardingView.swift */; };
 		888C277E2A68B944B61A5090 /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2704678E2B63520B7C9591BD /* WidgetSnapshot.swift */; };
 		8ED1C4332134B4661B69C9F2 /* SharedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C5CB407D918CB4D4CD9A3B /* SharedStoreTests.swift */; };
@@ -33,6 +39,7 @@
 		C6848FD1096D371ED8DFDFA7 /* ShareGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6E1170AAD16ECD3CCEECB /* ShareGaugeView.swift */; };
 		CDA71DA49E8E7AEFF89450FC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61F9BE35C9714F927618A0 /* SettingsView.swift */; };
 		CE91909F39823300F34AD099 /* ShareCardFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C95BE673B90C5520D39E761 /* ShareCardFormatTests.swift */; };
+		D550385E233FE705709BABA6 /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFBDD51652760260414DE20 /* LocalizationService.swift */; };
 		D9BB5EC41734085B5163CE67 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D131BBCB9D46E667CEAC03E /* QRCodeGenerator.swift */; };
 		E3DA228211B22612B498E081 /* SpeedTestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD56E7A69937207AED50E82 /* SpeedTestResult.swift */; };
 		F0ECD685D758BCADCC7A7B6D /* SpeedLabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B433922C4A60EE20CBF1EF4 /* SpeedLabApp.swift */; };
@@ -52,7 +59,28 @@
 			remoteGlobalIDString = C7DE85AF6C6FC1A67292CAD5;
 			remoteInfo = SpeedLab;
 		};
+		9DEE769589C76E0B6D41CBEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB27863948FD55DDFD1CB6AB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1DAB92F7C10458FA0D464F2;
+			remoteInfo = SpeedLabWidget;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		276565EAEA01FD234F9BE46B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6CA5E3BF13B9D3ADB2D4046D /* SpeedLabWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0148F7F1A5B8F67BCADE9AC4 /* SpeedTestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestService.swift; sourceTree = "<group>"; };
@@ -83,15 +111,19 @@
 		763214A0377A5CA13678E17C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		82DBA17A483B756E07B91C7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		90F2FFFE1BE78D7D97924490 /* ShareCardRendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardRendererTests.swift; sourceTree = "<group>"; };
+		9CD21C519C379D9A0DEF1AA7 /* SpeedLabWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpeedLabWidget.entitlements; sourceTree = "<group>"; };
 		A011E188A363CC94B10F9E50 /* SpeedTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestViewModel.swift; sourceTree = "<group>"; };
 		BEC304601AD82B02C524E30B /* SpeedTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestView.swift; sourceTree = "<group>"; };
 		C189602C94FDD49A171B6CF3 /* ShareCardRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardRenderer.swift; sourceTree = "<group>"; };
 		CEDA7B17D594747CE7AAADE1 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D9C5CB407D918CB4D4CD9A3B /* SharedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStoreTests.swift; sourceTree = "<group>"; };
+		E11E631DBFD74A79C366B11C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E9D6E1170AAD16ECD3CCEECB /* ShareGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareGaugeView.swift; sourceTree = "<group>"; };
 		EAD56E7A69937207AED50E82 /* SpeedTestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestResult.swift; sourceTree = "<group>"; };
 		EC3660514E9FB7BFA77A1ACA /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
 		ECBCD597FD3E5F2BCE0A98C9 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
+		F53B5324AA9654777470555B /* SpeedLabWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = SpeedLabWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F54E5D6B797BE47715BA82D0 /* SpeedLabWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLabWidget.swift; sourceTree = "<group>"; };
 		FCA1D9CC550DF516DFEFF018 /* QRCodeGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGeneratorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +189,7 @@
 			children = (
 				D47BB307B9E1D674A20B8A85 /* SpeedLab */,
 				CEF961B4CB5A5D9589652427 /* SpeedLabTests */,
+				EF966C70BEAC7D0FD6E29BEB /* SpeedLabWidget */,
 				EF0911731BFF502FCD76125F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -220,8 +253,19 @@
 			children = (
 				2F0BDCDBD391C5D052115019 /* SpeedLab.app */,
 				35EEE70D1311A2C992F8CD8D /* SpeedLabTests.xctest */,
+				F53B5324AA9654777470555B /* SpeedLabWidget.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		EF966C70BEAC7D0FD6E29BEB /* SpeedLabWidget */ = {
+			isa = PBXGroup;
+			children = (
+				E11E631DBFD74A79C366B11C /* Info.plist */,
+				9CD21C519C379D9A0DEF1AA7 /* SpeedLabWidget.entitlements */,
+				F54E5D6B797BE47715BA82D0 /* SpeedLabWidget.swift */,
+			);
+			path = SpeedLabWidget;
 			sourceTree = "<group>";
 		};
 		FECC3FFD703FFB5BF9BCF56D /* Services */ = {
@@ -260,6 +304,23 @@
 			productReference = 35EEE70D1311A2C992F8CD8D /* SpeedLabTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		C1DAB92F7C10458FA0D464F2 /* SpeedLabWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44E38834058A8D3F9D705019 /* Build configuration list for PBXNativeTarget "SpeedLabWidget" */;
+			buildPhases = (
+				21D4D16C3DBABD96DAC4D177 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpeedLabWidget;
+			packageProductDependencies = (
+			);
+			productName = SpeedLabWidget;
+			productReference = F53B5324AA9654777470555B /* SpeedLabWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C7DE85AF6C6FC1A67292CAD5 /* SpeedLab */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A82DD3BE9F6520438DC192CD /* Build configuration list for PBXNativeTarget "SpeedLab" */;
@@ -267,10 +328,12 @@
 				B4B302F8EB6EB23B57064021 /* Sources */,
 				5639FDDC7F8E03EF74D60956 /* Resources */,
 				A8151B1980083DF9EE3B6BFC /* Frameworks */,
+				276565EAEA01FD234F9BE46B /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				42CA7F23AA14B385067262D3 /* PBXTargetDependency */,
 			);
 			name = SpeedLab;
 			packageProductDependencies = (
@@ -290,6 +353,10 @@
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					063C43C11AC577A3F6543C8B = {
+						DevelopmentTeam = ZCPND5K7H5;
+						ProvisioningStyle = Automatic;
+					};
+					C1DAB92F7C10458FA0D464F2 = {
 						DevelopmentTeam = ZCPND5K7H5;
 						ProvisioningStyle = Automatic;
 					};
@@ -318,6 +385,7 @@
 			targets = (
 				C7DE85AF6C6FC1A67292CAD5 /* SpeedLab */,
 				063C43C11AC577A3F6543C8B /* SpeedLabTests */,
+				C1DAB92F7C10458FA0D464F2 /* SpeedLabWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -334,6 +402,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		21D4D16C3DBABD96DAC4D177 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F6427637253E1B4549C37ED /* Color+Theme.swift in Sources */,
+				D550385E233FE705709BABA6 /* LocalizationService.swift in Sources */,
+				8404BB96E283F06F9A33FBA2 /* ShareGaugeView.swift in Sources */,
+				1025A3666B43B99C5C9CACD9 /* SharedStore.swift in Sources */,
+				560E1AA98EDA7806758AF6EC /* SpeedLabWidget.swift in Sources */,
+				30B501B21EEF9A2561FEBBAD /* WidgetSnapshot.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		84BCACC6A2FC5BFC009AB710 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -384,6 +465,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		42CA7F23AA14B385067262D3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1DAB92F7C10458FA0D464F2 /* SpeedLabWidget */;
+			targetProxy = 9DEE769589C76E0B6D41CBEC /* PBXContainerItemProxy */;
+		};
 		B02EC9AF0397A49DD762F2D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C7DE85AF6C6FC1A67292CAD5 /* SpeedLab */;
@@ -409,6 +495,24 @@
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
+		};
+		295BC39D0FCFFBFA89B97E33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SpeedLabWidget/SpeedLabWidget.entitlements;
+				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				INFOPLIST_FILE = SpeedLabWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = "$(MARKETING_VERSION)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vialab.speedlab.widget;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
 		};
 		32F01C069D5AF15374797E43 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -444,6 +548,24 @@
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
+		};
+		594D4EDC235C2C6ACB80D838 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SpeedLabWidget/SpeedLabWidget.entitlements;
+				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				INFOPLIST_FILE = SpeedLabWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = "$(MARKETING_VERSION)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vialab.speedlab.widget;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
 		};
 		E53E49FCF0133AEFC86B3AA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -597,6 +719,15 @@
 			buildConfigurations = (
 				E53E49FCF0133AEFC86B3AA1 /* Debug */,
 				32F01C069D5AF15374797E43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		44E38834058A8D3F9D705019 /* Build configuration list for PBXNativeTarget "SpeedLabWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				594D4EDC235C2C6ACB80D838 /* Debug */,
+				295BC39D0FCFFBFA89B97E33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
