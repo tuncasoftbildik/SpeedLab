@@ -24,5 +24,5 @@ enum ShareCardFormat: String, CaseIterable, Identifiable {
                height: pixelSize.height / Self.renderScale)
     }
 
-    static let renderScale: CGFloat = 3
+    static let renderScale: CGFloat = 1
 }

@@ -16,69 +16,71 @@ struct ShareCardView: View {
     }
 
     var body: some View {
-        VStack(spacing: format == .story ? 44 : 26) {
+        VStack(spacing: 0) {
             // Brand
-            HStack(spacing: 8) {
+            HStack(spacing: 14) {
                 Image(systemName: "gauge.high")
-                    .font(.system(size: 22, weight: .bold))
+                    .font(.system(size: 44, weight: .bold))
                     .foregroundStyle(LinearGradient.npMain)
                 Text("SpeedLab")
-                    .font(.system(size: 24, weight: .bold))
+                    .font(.system(size: 48, weight: .bold))
                     .foregroundColor(.white)
             }
 
-            ShareGaugeView(value: normalized, speed: result.downloadSpeed)
+            Spacer(minLength: 24)
+
+            ShareGaugeView(value: normalized, speed: result.downloadSpeed, diameter: 460)
+
+            Spacer(minLength: 24)
 
             // Secondary metrics
-            HStack(spacing: 28) {
+            HStack(spacing: 64) {
                 metric(symbol: "arrow.up", value: String(format: "%.1f", result.uploadSpeed), label: loc.t("upload"), color: .npPurple)
                 metric(symbol: "dot.radiowaves.left.and.right", value: String(format: "%.0f", result.ping), label: loc.t("ping"), color: .npCyan)
                 metric(symbol: "waveform.path", value: String(format: "%.0f", result.jitter), label: loc.t("jitter"), color: .npOrange)
             }
 
+            Spacer(minLength: 20)
+
             // Footer: ISP · date
-            if !result.isp.isEmpty {
-                Text("\(result.isp) · \(dateText)")
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(.npTextSecondary)
-            } else {
-                Text(dateText)
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(.npTextSecondary)
-            }
+            Text(result.isp.isEmpty ? dateText : "\(result.isp) · \(dateText)")
+                .font(.system(size: 30, weight: .medium))
+                .foregroundColor(.npTextSecondary)
+
+            Spacer(minLength: 36)
 
             // CTA + QR
-            HStack(spacing: 14) {
+            HStack(spacing: 28) {
                 if let qr = QRCodeGenerator.generate(from: AppStoreLink.url) {
                     Image(uiImage: qr)
                         .interpolation(.none)
                         .resizable()
-                        .frame(width: 76, height: 76)
-                        .padding(6)
+                        .frame(width: 150, height: 150)
+                        .padding(12)
                         .background(Color.white)
-                        .cornerRadius(10)
+                        .cornerRadius(18)
                 }
                 Text(loc.t("share_cta"))
-                    .font(.system(size: 18, weight: .semibold))
+                    .font(.system(size: 40, weight: .semibold))
                     .foregroundColor(.npCyan)
             }
-            .padding(.top, format == .story ? 8 : 0)
         }
-        .padding(format == .story ? 48 : 36)
+        .padding(.vertical, format == .story ? 140 : 80)
+        .padding(.horizontal, 80)
         .frame(width: format.pointSize.width, height: format.pointSize.height)
         .background(Color.npBackground)
     }
 
     private func metric(symbol: String, value: String, label: String, color: Color) -> some View {
-        VStack(spacing: 4) {
+        VStack(spacing: 6) {
             Image(systemName: symbol)
-                .font(.system(size: 16, weight: .semibold))
+                .font(.system(size: 34, weight: .semibold))
                 .foregroundColor(color)
             Text(value)
-                .font(.system(size: 20, weight: .bold, design: .rounded))
+                .font(.system(size: 48, weight: .bold, design: .rounded))
                 .foregroundColor(.white)
             Text(label)
-                .font(.system(size: 11, weight: .medium))
+                .font(.system(size: 26, weight: .medium))
                 .foregroundColor(.npTextSecondary)
         }
     }
