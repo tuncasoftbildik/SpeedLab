@@ -99,3 +99,20 @@ targets:
           - SKAdNetworkIdentifier: 8c4e2ghe7u.skadnetwork
           - SKAdNetworkIdentifier: zq492l623r.skadnetwork
           - SKAdNetworkIdentifier: 3qcr597p9d.skadnetwork
+    scheme:
+      testTargets:
+        - SpeedLabTests
+
+  SpeedLabTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - SpeedLabTests
+    dependencies:
+      - target: SpeedLab
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.vialab.speedlab.tests
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/SpeedLab.app/SpeedLab"
+        BUNDLE_LOADER: "$(TEST_HOST)"
