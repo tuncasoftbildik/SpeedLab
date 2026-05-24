@@ -11,12 +11,17 @@ struct SharedStore {
     private let recentKey = "widget_recent_downloads"
 
     init(defaults: UserDefaults? = UserDefaults(suiteName: AppGroup.id)) {
+        if defaults == nil {
+            assertionFailure("App Group UserDefaults unavailable for \(AppGroup.id)")
+        }
         self.defaults = defaults ?? .standard
     }
 
     func save(_ snapshot: WidgetSnapshot) {
-        if let data = try? JSONEncoder().encode(snapshot) {
-            defaults.set(data, forKey: snapshotKey)
+        do {
+            defaults.set(try JSONEncoder().encode(snapshot), forKey: snapshotKey)
+        } catch {
+            assertionFailure("WidgetSnapshot encode failed: \(error)")
         }
     }
 

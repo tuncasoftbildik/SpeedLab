@@ -4,6 +4,7 @@ import XCTest
 final class SharedStoreTests: XCTestCase {
     private func tempStore() -> SharedStore {
         let suite = "test.sharedstore.\(UUID().uuidString)"
+        addTeardownBlock { UserDefaults.standard.removePersistentDomain(forName: suite) }
         return SharedStore(defaults: UserDefaults(suiteName: suite)!)
     }
 
