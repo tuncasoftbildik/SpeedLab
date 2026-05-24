@@ -55,6 +55,12 @@ class LocalizationService: ObservableObject {
         "ping": ["tr": "Ping", "en": "Ping"],
         "jitter": ["tr": "Jitter", "en": "Jitter"],
 
+        // Widget
+        "widget_pro_title": ["tr": "SpeedLab Pro", "en": "SpeedLab Pro"],
+        "widget_pro_sub": ["tr": "Hız sonuçlarını ana ekranında gör", "en": "See your speeds on the Home Screen"],
+        "widget_empty": ["tr": "İlk testini çalıştır", "en": "Run your first test"],
+        "widget_recent": ["tr": "Son testler", "en": "Recent"],
+
         // Share card
         "share_cta": ["tr": "Sen de ölç →", "en": "Test yours →"],
         "share_caption": ["tr": "SpeedLab ile ölçtüm", "en": "Measured with SpeedLab"],
