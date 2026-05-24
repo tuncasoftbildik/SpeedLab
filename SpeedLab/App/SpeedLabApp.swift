@@ -10,6 +10,7 @@ struct SpeedLabApp: App {
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
     @Environment(\.scenePhase) private var scenePhase
     @State private var attCompleted = false
+    @State private var showWidgetPaywall = false
 
     var body: some Scene {
         WindowGroup {
@@ -32,6 +33,12 @@ struct SpeedLabApp: App {
                 if newPhase == .active {
                     Task { await requestATTAndConfigureAds() }
                 }
+            }
+            .onOpenURL { url in
+                if url.host == "pro" { showWidgetPaywall = true }
+            }
+            .sheet(isPresented: $showWidgetPaywall) {
+                ProUpgradeSheet().environmentObject(storeVM)
             }
         }
     }
