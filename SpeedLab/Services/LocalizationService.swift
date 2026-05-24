@@ -54,6 +54,13 @@ class LocalizationService: ObservableObject {
         "upload": ["tr": "Yükleme", "en": "Upload"],
         "ping": ["tr": "Ping", "en": "Ping"],
         "jitter": ["tr": "Jitter", "en": "Jitter"],
+
+        // Share card
+        "share_cta": ["tr": "Sen de ölç →", "en": "Test yours →"],
+        "share_caption": ["tr": "SpeedLab ile ölçtüm", "en": "Measured with SpeedLab"],
+        "share_format_title": ["tr": "Kart formatı", "en": "Card format"],
+        "share_format_square": ["tr": "Kare", "en": "Square"],
+        "share_format_story": ["tr": "Story", "en": "Story"],
         "tap_to_start": ["tr": "Test başlatmak için dokunun", "en": "Tap to start test"],
         "network": ["tr": "Ağ", "en": "Network"],
         "isp": ["tr": "Servis Sağlayıcı", "en": "ISP"],
