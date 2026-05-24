@@ -27,6 +27,16 @@ class LocalizationService: ObservableObject {
         didSet { objectWillChange.send() }
     }
 
+    init() {
+        // One-time migration: copy a previously-saved language from standard
+        // defaults into the shared App Group suite (where @AppStorage now reads).
+        let group = UserDefaults(suiteName: AppGroup.id)
+        if group?.string(forKey: "app_language") == nil,
+           let legacy = UserDefaults.standard.string(forKey: "app_language") {
+            group?.set(legacy, forKey: "app_language")
+        }
+    }
+
     var language: AppLanguage {
         get { AppLanguage(rawValue: currentLanguage) ?? .tr }
         set { currentLanguage = newValue.rawValue }

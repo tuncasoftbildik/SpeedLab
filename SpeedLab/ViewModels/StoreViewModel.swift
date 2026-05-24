@@ -6,6 +6,7 @@ import WidgetKit
 class StoreViewModel: ObservableObject {
     @Published var isPro = false {
         didSet {
+            guard oldValue != isPro else { return }
             SharedStore().setPro(isPro)
             WidgetCenter.shared.reloadAllTimelines()
         }

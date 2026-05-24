@@ -25,6 +25,8 @@ class HistoryService {
                 isp: latest.isp,
                 date: latest.date
             ))
+        } else {
+            store.clearSnapshot()
         }
         store.saveRecent(Array(history.prefix(3).map { $0.downloadSpeed }))
         WidgetCenter.shared.reloadAllTimelines()
@@ -44,6 +46,7 @@ class HistoryService {
 
     func deleteAll() {
         UserDefaults.standard.removeObject(forKey: key)
+        syncWidget([])
     }
 
     func delete(_ id: UUID) {
@@ -52,5 +55,6 @@ class HistoryService {
         if let data = try? JSONEncoder().encode(history) {
             UserDefaults.standard.set(data, forKey: key)
         }
+        syncWidget(history)
     }
 }

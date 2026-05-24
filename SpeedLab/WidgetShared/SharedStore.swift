@@ -25,6 +25,8 @@ struct SharedStore {
         }
     }
 
+    func clearSnapshot() { defaults.removeObject(forKey: snapshotKey) }
+
     func loadSnapshot() -> WidgetSnapshot? {
         guard let data = defaults.data(forKey: snapshotKey) else { return nil }
         return try? JSONDecoder().decode(WidgetSnapshot.self, from: data)
