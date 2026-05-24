@@ -20,6 +20,7 @@
 		B6FD93B0DC6B6D66AB2C3347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 406089864A2DE55136B8A6F3 /* Assets.xcassets */; };
 		B92811C0972CB13DF170E2C0 /* AdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D391FF6A79861108361809 /* AdManager.swift */; };
 		BA5FF3B44486370C49611994 /* TrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C14A866FDA0FA376C7CBCE1 /* TrackingManager.swift */; };
+		BF63B4A7CF90613AAC9186E5 /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3660514E9FB7BFA77A1ACA /* SmokeTests.swift */; };
 		C1AD50E59C4E4FA46F7A0088 /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF9B383B966AC8A5F0FDB0E /* StoreViewModel.swift */; };
 		C648512D1BAEFBFB31AABA3E /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D093D29CB962929831ED3C /* HistoryViewModel.swift */; };
 		CDA71DA49E8E7AEFF89450FC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61F9BE35C9714F927618A0 /* SettingsView.swift */; };
@@ -32,6 +33,16 @@
 		FF775D8BE5213BDD568D3936 /* SpeedGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD00C0AD9EBADCA1EF6359 /* SpeedGaugeView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		31FB69E275B0C822998ED128 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB27863948FD55DDFD1CB6AB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C7DE85AF6C6FC1A67292CAD5;
+			remoteInfo = SpeedLab;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0148F7F1A5B8F67BCADE9AC4 /* SpeedTestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestService.swift; sourceTree = "<group>"; };
 		03B537474ED9EE620D4B0055 /* WiFiAnalyzerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiAnalyzerView.swift; sourceTree = "<group>"; };
@@ -42,6 +53,7 @@
 		2D02F936F41B69DE75C85AC4 /* WiFiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiViewModel.swift; sourceTree = "<group>"; };
 		2EFBDD51652760260414DE20 /* LocalizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationService.swift; sourceTree = "<group>"; };
 		2F0BDCDBD391C5D052115019 /* SpeedLab.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SpeedLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		35EEE70D1311A2C992F8CD8D /* SpeedLabTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SpeedLabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A61F9BE35C9714F927618A0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		406089864A2DE55136B8A6F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B433922C4A60EE20CBF1EF4 /* SpeedLabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLabApp.swift; sourceTree = "<group>"; };
@@ -57,6 +69,7 @@
 		BEC304601AD82B02C524E30B /* SpeedTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestView.swift; sourceTree = "<group>"; };
 		CEDA7B17D594747CE7AAADE1 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		EAD56E7A69937207AED50E82 /* SpeedTestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestResult.swift; sourceTree = "<group>"; };
+		EC3660514E9FB7BFA77A1ACA /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
 		ECBCD597FD3E5F2BCE0A98C9 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				D47BB307B9E1D674A20B8A85 /* SpeedLab */,
+				CEF961B4CB5A5D9589652427 /* SpeedLabTests */,
 				EF0911731BFF502FCD76125F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,6 +144,14 @@
 				EAD56E7A69937207AED50E82 /* SpeedTestResult.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CEF961B4CB5A5D9589652427 /* SpeedLabTests */ = {
+			isa = PBXGroup;
+			children = (
+				EC3660514E9FB7BFA77A1ACA /* SmokeTests.swift */,
+			);
+			path = SpeedLabTests;
 			sourceTree = "<group>";
 		};
 		D47BB307B9E1D674A20B8A85 /* SpeedLab */ = {
@@ -150,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				2F0BDCDBD391C5D052115019 /* SpeedLab.app */,
+				35EEE70D1311A2C992F8CD8D /* SpeedLabTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,6 +193,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		063C43C11AC577A3F6543C8B /* SpeedLabTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B65AF5FF14D38AE26DD94B3 /* Build configuration list for PBXNativeTarget "SpeedLabTests" */;
+			buildPhases = (
+				84BCACC6A2FC5BFC009AB710 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B02EC9AF0397A49DD762F2D4 /* PBXTargetDependency */,
+			);
+			name = SpeedLabTests;
+			packageProductDependencies = (
+			);
+			productName = SpeedLabTests;
+			productReference = 35EEE70D1311A2C992F8CD8D /* SpeedLabTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C7DE85AF6C6FC1A67292CAD5 /* SpeedLab */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A82DD3BE9F6520438DC192CD /* Build configuration list for PBXNativeTarget "SpeedLab" */;
@@ -199,6 +240,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					063C43C11AC577A3F6543C8B = {
+						DevelopmentTeam = ZCPND5K7H5;
+						ProvisioningStyle = Automatic;
+					};
 					C7DE85AF6C6FC1A67292CAD5 = {
 						DevelopmentTeam = ZCPND5K7H5;
 						ProvisioningStyle = Automatic;
@@ -223,6 +268,7 @@
 			projectRoot = "";
 			targets = (
 				C7DE85AF6C6FC1A67292CAD5 /* SpeedLab */,
+				063C43C11AC577A3F6543C8B /* SpeedLabTests */,
 			);
 		};
 /* End PBXProject section */
@@ -239,6 +285,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		84BCACC6A2FC5BFC009AB710 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF63B4A7CF90613AAC9186E5 /* SmokeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B4B302F8EB6EB23B57064021 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,6 +323,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B02EC9AF0397A49DD762F2D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C7DE85AF6C6FC1A67292CAD5 /* SpeedLab */;
+			targetProxy = 31FB69E275B0C822998ED128 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		2182574F3A7C3D477720A6EA /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -288,6 +350,23 @@
 			};
 			name = Debug;
 		};
+		32F01C069D5AF15374797E43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vialab.speedlab.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeedLab.app/SpeedLab";
+			};
+			name = Release;
+		};
 		45DE35C2B89B58B12A50339D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -305,6 +384,23 @@
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
+		};
+		E53E49FCF0133AEFC86B3AA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vialab.speedlab.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeedLab.app/SpeedLab";
+			};
+			name = Debug;
 		};
 		F67D78F6352102A7F418656B /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -436,6 +532,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0B65AF5FF14D38AE26DD94B3 /* Build configuration list for PBXNativeTarget "SpeedLabTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E53E49FCF0133AEFC86B3AA1 /* Debug */,
+				32F01C069D5AF15374797E43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		A82DD3BE9F6520438DC192CD /* Build configuration list for PBXNativeTarget "SpeedLab" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
