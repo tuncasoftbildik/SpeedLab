@@ -8,6 +8,14 @@ struct ShareCardView: View {
 
     private var normalized: Double { min(result.downloadSpeed / 200.0, 1.0) }
 
+    private var verdict: (key: String, color: Color) {
+        switch result.downloadSpeed {
+        case ..<20:    return ("quality_slow", .npOrange)
+        case 20..<75:  return ("quality_good", .npCyan)
+        default:       return ("quality_excellent", .npGreen)
+        }
+    }
+
     private var dateText: String {
         let f = DateFormatter()
         f.dateStyle = .medium
@@ -27,11 +35,27 @@ struct ShareCardView: View {
                     .foregroundColor(.white)
             }
 
-            Spacer(minLength: 24)
+            Spacer(minLength: 16)
 
-            ShareGaugeView(value: normalized, speed: result.downloadSpeed, diameter: 460)
+            ShareGaugeView(value: normalized, speed: result.downloadSpeed, diameter: 420)
+                .background(
+                    Circle()
+                        .fill(RadialGradient(colors: [verdict.color.opacity(0.35), .clear],
+                                             center: .center, startRadius: 0, endRadius: 260))
+                        .frame(width: 520, height: 520)
+                        .blur(radius: 45)
+                )
 
-            Spacer(minLength: 24)
+            Text(loc.t(verdict.key))
+                .font(.system(size: 28, weight: .bold))
+                .foregroundColor(verdict.color)
+                .padding(.horizontal, 28)
+                .padding(.vertical, 10)
+                .background(Capsule().fill(verdict.color.opacity(0.15)))
+                .overlay(Capsule().stroke(verdict.color.opacity(0.45), lineWidth: 1.5))
+                .padding(.top, 14)
+
+            Spacer(minLength: 16)
 
             // Secondary metrics
             HStack(spacing: 64) {
