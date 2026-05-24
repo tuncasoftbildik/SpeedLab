@@ -6,6 +6,7 @@ struct SpeedTestView: View {
     @StateObject private var loc = LocalizationService.shared
     @State private var glowPulse = false
     @State private var showRewardAlert = false
+    @State private var showShareFormatDialog = false
 
     var body: some View {
         ZStack {
@@ -174,7 +175,7 @@ struct SpeedTestView: View {
 
                         // Share button
                         Button {
-                            shareResult()
+                            showShareFormatDialog = true
                         } label: {
                             HStack(spacing: 8) {
                                 Image(systemName: "square.and.arrow.up")
@@ -222,6 +223,11 @@ struct SpeedTestView: View {
                 Task { await vm.startTest() }
             }
         }
+        .confirmationDialog(loc.t("share_format_title"), isPresented: $showShareFormatDialog, titleVisibility: .visible) {
+            Button(loc.t("share_format_square")) { presentShare(format: .square) }
+            Button(loc.t("share_format_story")) { presentShare(format: .story) }
+            Button("İptal / Cancel", role: .cancel) {}
+        }
     }
 
     private var currentDisplaySpeed: Double {
@@ -242,18 +248,28 @@ struct SpeedTestView: View {
         }
     }
 
-    private func shareResult() {
+    @MainActor
+    private func presentShare(format: ShareCardFormat) {
         guard let result = vm.lastResult else { return }
-        let text = """
-        SpeedLab - Speed Test
-        ⬇️ Download: \(String(format: "%.1f", result.downloadSpeed)) Mbps
-        ⬆️ Upload: \(String(format: "%.1f", result.uploadSpeed)) Mbps
-        📡 Ping: \(String(format: "%.0f", result.ping)) ms
-        🌐 ISP: \(result.isp)
+
+        let caption = """
+        \(loc.t("share_caption")): \(String(format: "%.1f", result.downloadSpeed)) Mbps ↓
+        \(AppStoreLink.url)
         """
-        let av = UIActivityViewController(activityItems: [text], applicationActivities: nil)
+
+        var items: [Any] = [caption]
+        if let image = ShareCardRenderer.render(result: result, format: format) {
+            items.insert(image, at: 0)
+        }
+
+        let av = UIActivityViewController(activityItems: items, applicationActivities: nil)
         if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let root = scene.windows.first?.rootViewController {
+            av.popoverPresentationController?.sourceView = root.view
+            av.popoverPresentationController?.sourceRect = CGRect(x: root.view.bounds.midX,
+                                                                  y: root.view.bounds.midY,
+                                                                  width: 0, height: 0)
+            av.popoverPresentationController?.permittedArrowDirections = []
             root.present(av, animated: true)
         }
     }
