@@ -11,7 +11,8 @@ When a user finishes a speed test, let them share a polished image card (instead
 ## Decisions (locked)
 
 - **Formats:** both **square (1080×1080)** and **story (1080×1920)**; user picks at share time.
-- **Hierarchy:** **hero download speed** (large), with upload / ping / jitter secondary.
+- **Hierarchy:** **hero = signature speed gauge** (arc + needle) with the download number rendered inside it,
+  color-coded by speed (slow → `npOrange`, fast → `npCyan`); upload / ping / jitter secondary below.
 - **Branding:** SpeedLab logo + "Sen de ölç / Test yours" CTA + **QR code** to the App Store
   (`https://apps.apple.com/app/id6761667861`).
 - **Theme:** app dark theme (`Color.npBackground`, cyan/gauge accents from `Color+Theme.swift`).
@@ -26,6 +27,12 @@ New / changed files:
 
 - `SpeedLab/Views/ShareCard/ShareCardView.swift` — the card UI. Inputs: `result: SpeedTestResult`,
   `format: ShareCardFormat` (`.square` / `.story`), reads `LocalizationService`. Pure view, no side effects.
+  Centerpiece = a **static gauge** (see below) with the download number + "Mbps ↓" inside the arc.
+- `SpeedLab/Views/ShareCard/ShareGaugeView.swift` — a static, animation-free gauge for rendering.
+  The existing `SpeedGaugeView` can NOT be reused directly: it starts at `@State animatedValue = 0` and fills via
+  animation, so an off-screen `ImageRenderer` snapshot captures an *empty* arc. `ShareGaugeView` draws the arc trim
+  at the final value immediately (`trim(to: 0.15 + value*0.7)`, no `@State`, no animation) and color-codes the
+  stroke by speed (`npOrange` → `npCyan`). Mirrors `SpeedGaugeView`'s visual style (arc range 0.15–0.85, tick marks).
 - `SpeedLab/Services/ShareCardRenderer.swift` — `@MainActor` helper. Wraps `ShareCardView` in `ImageRenderer`,
   sets `proposedSize` + `scale` so output is exactly 1080×1080 or 1080×1920, returns `UIImage?`.
 - `SpeedLab/Services/QRCodeGenerator.swift` — small util: `CIQRCodeGenerator` → `UIImage` for a given URL string
@@ -47,21 +54,21 @@ SQUARE (1:1, 1080×1080)              STORY (9:16, 1080×1920)
 ┌───────────────────────┐           ┌─────────────────┐
 │ 🌀 SpeedLab            │           │   🌀 SpeedLab    │
 │                        │           │                 │
-│       38.2             │           │      38.2       │
-│       Mbps  ↓ Download │           │    Mbps ↓       │
-│                        │           │    Download     │
-│  ↑ 12.4   📡 14   ~ 2  │           │                 │
-│  Upload   Ping  Jitter │           │ ↑12.4 📡14 ~2   │
-│                        │           │                 │
-│ Turknet · 24 May   ▣QR │           │   Turknet       │
-│ Sen de ölç →           │           │   24 May 2026   │
-└───────────────────────┘           │                 │
-                                     │      ▣ QR       │
-                                     │   Sen de ölç →  │
+│      ╭───────╮         │           │    ╭───────╮    │
+│     ╱  38.2   ╲        │           │   ╱  38.2   ╲   │
+│    │  Mbps ↓  │        │           │  │  Mbps ↓  │   │
+│     ╲ ▁▂▃▅▇  ╱         │           │   ╲ ▁▂▃▅▇  ╱    │
+│      ╰───────╯         │           │    ╰───────╯    │
+│  ↑ 12.4  📡 14  ~ 2    │           │                 │
+│  Upload  Ping  Jitter  │           │ ↑12.4 📡14 ~2   │
+│                        │           │   Turknet       │
+│ Turknet · 24 May   ▣QR │           │   24 May 2026   │
+│ Sen de ölç →           │           │      ▣ QR       │
+└───────────────────────┘           │   Sen de ölç →  │
                                      └─────────────────┘
 ```
 
-- Hero: `downloadSpeed` formatted `%.1f` + unit "Mbps" + "↓ Download" label.
+- Hero: a static gauge arc (color-coded by speed) with `downloadSpeed` `%.1f` + "Mbps ↓" centered inside.
 - Secondary row: `uploadSpeed` (↑), `ping` (📡, `%.0f` ms), `jitter` (~, `%.0f` ms).
 - Footer: `isp` · localized short date; CTA "Sen de ölç →" + QR.
 - Square: QR small, bottom-right. Story: QR + CTA centered near bottom with more vertical breathing room.
@@ -86,6 +93,8 @@ Caption (localized), e.g. EN: `"Measured 38.2 Mbps ↓ with SpeedLab #speedtest 
 
 - `ShareCardView` SwiftUI Previews for both formats with sample `SpeedTestResult` (TR + EN).
 - Unit/smoke: `ShareCardRenderer` returns non-nil `UIImage` with expected pixel dimensions for each format; `QRCodeGenerator` returns non-nil image for a valid URL.
+- **Critical:** confirm the rasterized image shows the gauge arc **filled to the value** (not empty) — this is the
+  reason `ShareGaugeView` exists instead of reusing the animated `SpeedGaugeView`.
 - Manual: run app → complete a test → Share → render both formats → confirm QR scans to the App Store page.
 
 ## Constraints
