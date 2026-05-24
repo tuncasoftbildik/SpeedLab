@@ -1,4 +1,5 @@
 import Foundation
+import WidgetKit
 
 class HistoryService {
     private let key = "speed_test_history"
@@ -10,6 +11,23 @@ class HistoryService {
         if let data = try? JSONEncoder().encode(history) {
             UserDefaults.standard.set(data, forKey: key)
         }
+        syncWidget(history)
+    }
+
+    func syncWidget(_ history: [SpeedTestResult]) {
+        let store = SharedStore()
+        if let latest = history.first {
+            store.save(WidgetSnapshot(
+                download: latest.downloadSpeed,
+                upload: latest.uploadSpeed,
+                ping: latest.ping,
+                jitter: latest.jitter,
+                isp: latest.isp,
+                date: latest.date
+            ))
+        }
+        store.saveRecent(Array(history.prefix(3).map { $0.downloadSpeed }))
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     func loadAll() -> [SpeedTestResult] {
