@@ -23,7 +23,7 @@ enum AppLanguage: String, CaseIterable {
 class LocalizationService: ObservableObject {
     static let shared = LocalizationService()
 
-    @AppStorage("app_language") var currentLanguage: String = "tr" {
+    @AppStorage("app_language", store: UserDefaults(suiteName: AppGroup.id)) var currentLanguage: String = "tr" {
         didSet { objectWillChange.send() }
     }
 

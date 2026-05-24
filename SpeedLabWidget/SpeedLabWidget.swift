@@ -10,7 +10,7 @@ struct SpeedEntry: TimelineEntry {
 
 struct SpeedProvider: TimelineProvider {
     func placeholder(in context: Context) -> SpeedEntry {
-        SpeedEntry(date: Date(), snapshot: nil, isPro: true, recent: [])
+        SpeedEntry(date: Date(), snapshot: nil, isPro: false, recent: [])
     }
     func getSnapshot(in context: Context, completion: @escaping (SpeedEntry) -> Void) {
         completion(currentEntry())
