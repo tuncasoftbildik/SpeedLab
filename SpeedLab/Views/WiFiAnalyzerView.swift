@@ -34,33 +34,17 @@ struct WiFiAnalyzerView: View {
                     .padding(.horizontal, 20)
                     .padding(.top, 8)
 
-                    // Signal strength circle
+                    // WiFi bağlantı durumu (gerçek)
                     ZStack {
                         Circle()
                             .fill(Color.npSurface)
-                            .frame(width: 180, height: 180)
-
-                        Circle()
-                            .stroke(Color.npSurfaceLight, lineWidth: 8)
-                            .frame(width: 160, height: 160)
-
-                        Circle()
-                            .trim(from: 0, to: signalPercent)
-                            .stroke(signalColor, style: StrokeStyle(lineWidth: 8, lineCap: .round))
-                            .frame(width: 160, height: 160)
-                            .rotationEffect(.degrees(-90))
-
-                        VStack(spacing: 4) {
-                            Image(systemName: "wifi")
-                                .font(.system(size: 32))
-                                .foregroundStyle(
-                                    LinearGradient(colors: [signalColor, signalColor.opacity(0.6)],
-                                                   startPoint: .top, endPoint: .bottom)
-                                )
-                            Text(signalLabel)
-                                .font(.system(size: 14, weight: .bold))
-                                .foregroundColor(signalColor)
-                        }
+                            .frame(width: 120, height: 120)
+                        Image(systemName: isConnected ? "wifi" : "wifi.slash")
+                            .font(.system(size: 44))
+                            .foregroundStyle(
+                                LinearGradient(colors: isConnected ? [.npCyan, .npBlue] : [.npTextSecondary, .npTextSecondary.opacity(0.6)],
+                                               startPoint: .top, endPoint: .bottom)
+                            )
                     }
                     .padding(.vertical, 8)
 
@@ -100,31 +84,6 @@ struct WiFiAnalyzerView: View {
 
     private var isConnected: Bool {
         vm.networkInfo.ssid != "-" && !vm.networkInfo.ssid.isEmpty
-    }
-
-    private var signalPercent: Double {
-        guard isConnected else { return 0 }
-        // WiFi bağlıysa connection type'a göre değerlendir
-        if vm.connectionType == "WiFi" { return 0.85 }
-        if vm.connectionType == "Ethernet" { return 1.0 }
-        return 0.5
-    }
-
-    private var signalColor: Color {
-        let p = signalPercent
-        if p >= 0.7 { return .npGreen }
-        if p >= 0.4 { return .npOrange }
-        if p > 0 { return .npRed }
-        return .npTextSecondary
-    }
-
-    private var signalLabel: String {
-        guard isConnected else { return loc.t("weak") }
-        let p = signalPercent
-        if p >= 0.7 { return loc.t("excellent") }
-        if p >= 0.4 { return loc.t("good") }
-        if p >= 0.2 { return loc.t("fair") }
-        return loc.t("weak")
     }
 
     private var connectionIcon: String {

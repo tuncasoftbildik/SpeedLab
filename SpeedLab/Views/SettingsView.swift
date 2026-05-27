@@ -6,6 +6,7 @@ struct SettingsView: View {
     @StateObject private var loc = LocalizationService.shared
     @Environment(\.openURL) private var openURL
     @State private var showProSheet = false
+    @State private var showRedeemCode = false
 
     fileprivate static var appVersion: String {
         let dict = Bundle.main.infoDictionary
@@ -118,6 +119,10 @@ struct SettingsView: View {
                                 Task { await storeVM.restorePurchases() }
                             }
                             Divider().background(Color.npBorder).padding(.leading, 54)
+                            SettingsButton(icon: "ticket.fill", label: loc.t("redeem_code"), color: .npCyan) {
+                                showRedeemCode = true
+                            }
+                            Divider().background(Color.npBorder).padding(.leading, 54)
                         }
 
                         SettingsButton(icon: "star.fill", label: loc.t("rate_app"), color: .npOrange) {
@@ -158,6 +163,7 @@ struct SettingsView: View {
         .sheet(isPresented: $showProSheet) {
             ProUpgradeSheet()
         }
+        .offerCodeRedemption(isPresented: $showRedeemCode) { _ in }
     }
 }
 
