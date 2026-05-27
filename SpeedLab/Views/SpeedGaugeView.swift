@@ -1,82 +1,130 @@
 import SwiftUI
 
 struct SpeedGaugeView: View {
-    let value: Double // 0-1
+    let value: Double // 0-1 (uyumluluk için; yay log-skala ile speed'ten hesaplanır)
     let speed: Double // Mbps
     let phase: SpeedTestPhase
 
-    @State private var animatedValue: Double = 0
+    @State private var animatedFraction: Double = 0
+
+    // Ookla benzeri logaritmik skala (eşit açı dilimleri, dilim içi lineer)
+    private let ticks: [Double] = [0, 5, 10, 50, 100, 250, 500, 750, 1000]
+    private let gaugeSize: CGFloat = 250
+    private let arcTrim: Double = 0.75        // dairenin %75'i = 270°
+    private let pathRotation: Double = 135    // yay başlangıcı sol-alt
+    private let startAngle: Double = 225      // ibre/etiket: tepeden saat yönü derece
+    private let sweepAngle: Double = 270
+
+    private func fraction(for s: Double) -> Double {
+        guard s > 0 else { return 0 }
+        if s >= ticks.last! { return 1 }
+        for i in 0..<(ticks.count - 1) where s < ticks[i + 1] {
+            let seg = (s - ticks[i]) / (ticks[i + 1] - ticks[i])
+            return (Double(i) + seg) / Double(ticks.count - 1)
+        }
+        return 1
+    }
+
+    private func tickLabel(_ t: Double) -> String {
+        t >= 1000 ? "1k" : String(format: "%.0f", t)
+    }
 
     var body: some View {
         ZStack {
-            // Arka plan ark
+            // Arka plan yay
             Circle()
-                .trim(from: 0.15, to: 0.85)
-                .rotation(.degrees(126))
-                .stroke(Color.npSurfaceLight, style: StrokeStyle(lineWidth: 20, lineCap: .round))
-                .frame(width: 240, height: 240)
+                .trim(from: 0, to: arcTrim)
+                .rotation(.degrees(pathRotation))
+                .stroke(Color.npSurfaceLight, style: StrokeStyle(lineWidth: 14, lineCap: .round))
+                .frame(width: gaugeSize, height: gaugeSize)
 
-            // Renkli ark
+            // Renkli ilerleme yayı
             Circle()
-                .trim(from: 0.15, to: 0.15 + animatedValue * 0.7)
-                .rotation(.degrees(126))
+                .trim(from: 0, to: arcTrim * animatedFraction)
+                .rotation(.degrees(pathRotation))
                 .stroke(
                     AngularGradient(
-                        colors: [.npPurple, .npPrimary, .npBlue, .npCyan],
+                        gradient: Gradient(colors: [.npCyan, .npBlue, .npPurple]),
                         center: .center,
-                        startAngle: .degrees(0),
-                        endAngle: .degrees(360)
+                        startAngle: .degrees(pathRotation),
+                        endAngle: .degrees(pathRotation + sweepAngle)
                     ),
-                    style: StrokeStyle(lineWidth: 20, lineCap: .round)
+                    style: StrokeStyle(lineWidth: 14, lineCap: .round)
                 )
-                .frame(width: 240, height: 240)
-                .shadow(color: .npCyan.opacity(0.4), radius: 12)
+                .frame(width: gaugeSize, height: gaugeSize)
+                .shadow(color: .npCyan.opacity(0.5), radius: 8)
 
-            // Tick marks
-            ForEach(0..<13, id: \.self) { i in
-                let angle = 126.0 + Double(i) * (252.0 / 12.0)
-                Rectangle()
-                    .fill(i % 3 == 0 ? Color.npTextSecondary : Color.npSurfaceLight)
-                    .frame(width: i % 3 == 0 ? 2 : 1, height: i % 3 == 0 ? 12 : 8)
-                    .offset(y: -108)
-                    .rotationEffect(.degrees(angle))
+            // Skala etiketleri
+            ForEach(Array(ticks.enumerated()), id: \.offset) { i, t in
+                let f = Double(i) / Double(ticks.count - 1)
+                let rad = (startAngle + f * sweepAngle) * .pi / 180
+                let r = gaugeSize / 2 - 30
+                Text(tickLabel(t))
+                    .font(.system(size: 11, weight: .semibold))
+                    .foregroundColor(.npTextSecondary)
+                    .position(
+                        x: gaugeSize / 2 + r * sin(rad),
+                        y: gaugeSize / 2 - r * cos(rad)
+                    )
             }
+            .frame(width: gaugeSize, height: gaugeSize)
 
-            // Merkez içerik
-            VStack(spacing: 4) {
+            // İbre
+            NeedleShape()
+                .fill(LinearGradient(colors: [.white, .npCyan], startPoint: .top, endPoint: .bottom))
+                .frame(width: gaugeSize, height: gaugeSize)
+                .rotationEffect(.degrees(startAngle + animatedFraction * sweepAngle))
+                .shadow(color: .npCyan.opacity(0.6), radius: 4)
+
+            // Merkez göbek
+            Circle()
+                .fill(Color.npSurface)
+                .frame(width: 30, height: 30)
+                .overlay(Circle().stroke(Color.npCyan.opacity(0.5), lineWidth: 2))
+
+            // Alt boşlukta sayı / play
+            VStack(spacing: 2) {
                 if phase == .idle {
                     Image(systemName: "play.fill")
-                        .font(.system(size: 36))
+                        .font(.system(size: 30))
                         .foregroundStyle(LinearGradient.npMain)
                 } else {
                     Text(speed < 1 ? String(format: "%.1f", speed) : String(format: "%.0f", speed))
-                        .font(.system(size: 56, weight: .bold, design: .rounded))
+                        .font(.system(size: 40, weight: .bold, design: .rounded))
                         .foregroundStyle(LinearGradient.npMain)
-
                     Text("Mbps")
-                        .font(.system(size: 14, weight: .semibold))
+                        .font(.system(size: 12, weight: .semibold))
                         .foregroundColor(.npTextSecondary)
                 }
             }
+            .offset(y: gaugeSize * 0.20)
+        }
+        .frame(width: gaugeSize, height: gaugeSize)
+        .onChange(of: speed) { newSpeed in
+            withAnimation(.spring(response: 0.5, dampingFraction: 0.75)) {
+                animatedFraction = fraction(for: newSpeed)
+            }
+        }
+        .onChange(of: phase) { newPhase in
+            if newPhase == .idle {
+                withAnimation(.easeInOut(duration: 0.3)) { animatedFraction = 0 }
+            }
+        }
+    }
+}
 
-            // Speed labels
-            VStack {
-                Spacer()
-                HStack {
-                    Text("0")
-                    Spacer()
-                    Text("200+")
-                }
-                .font(.system(size: 10, weight: .medium))
-                .foregroundColor(.npTextSecondary)
-                .padding(.horizontal, 30)
-            }
-            .frame(width: 260, height: 260)
-        }
-        .onChange(of: value) { newValue in
-            withAnimation(.spring(response: 0.8, dampingFraction: 0.7)) {
-                animatedValue = newValue
-            }
-        }
+// Merkezde pivotlanan, yukarı bakan üçgen ibre (gaugeSize'lık kareye çizilir).
+struct NeedleShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        let cx = rect.midX
+        let cy = rect.midY
+        let tipY = rect.minY + 30        // uç, yayın hemen içinde
+        let baseHalf: CGFloat = 6
+        var p = Path()
+        p.move(to: CGPoint(x: cx, y: tipY))
+        p.addLine(to: CGPoint(x: cx - baseHalf, y: cy))
+        p.addLine(to: CGPoint(x: cx + baseHalf, y: cy))
+        p.closeSubpath()
+        return p
     }
 }
