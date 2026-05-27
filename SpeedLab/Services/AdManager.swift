@@ -44,6 +44,7 @@ class AdManager: NSObject, ObservableObject {
 
     /// Her 3 testte 1 interstitial göster
     func showInterstitialIfNeeded() {
+        guard !SharedStore().isPro() else { return }
         testCount += 1
         guard testCount % 3 == 0 else { return }
         guard let ad = interstitialAd else {

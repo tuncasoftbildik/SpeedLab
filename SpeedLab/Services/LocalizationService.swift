@@ -115,6 +115,7 @@ class LocalizationService: ObservableObject {
         "pro_version": ["tr": "Pro Sürüm", "en": "Pro Version"],
         "upgrade_pro": ["tr": "Pro'ya Yükselt", "en": "Upgrade to Pro"],
         "restore_purchases": ["tr": "Satın Alımları Geri Yükle", "en": "Restore Purchases"],
+        "redeem_code": ["tr": "Promosyon Kodu Kullan", "en": "Redeem Code"],
         "pro_features": ["tr": "Pro Özellikleri", "en": "Pro Features"],
         "feature_no_ads": ["tr": "Reklamsız deneyim", "en": "Ad-free experience"],
         "feature_unlimited_history": ["tr": "Sınırsız test geçmişi", "en": "Unlimited test history"],
