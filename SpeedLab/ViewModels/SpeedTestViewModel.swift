@@ -116,7 +116,7 @@ class SpeedTestViewModel: ObservableObject {
         lastResult = result
         historyService.save(result)
 
-        // Her 3 testte 1 interstitial reklam göster
+        // Her testten sonra interstitial reklam göster (Pro hariç)
         AdManager.shared.showInterstitialIfNeeded()
 
         isRunning = false

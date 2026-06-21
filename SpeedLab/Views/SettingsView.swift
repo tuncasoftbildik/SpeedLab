@@ -17,7 +17,7 @@ struct SettingsView: View {
 
     var body: some View {
         ZStack {
-            Color.npBackground.ignoresSafeArea()
+            AuroraBackground()
 
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 16) {
@@ -53,15 +53,7 @@ struct SettingsView: View {
                                     .foregroundColor(.npTextSecondary)
                             }
                             .padding(16)
-                            .background(
-                                LinearGradient(colors: [Color.npOrange.opacity(0.15), Color.npOrange.opacity(0.05)],
-                                               startPoint: .leading, endPoint: .trailing)
-                            )
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.npOrange.opacity(0.3), lineWidth: 1)
-                            )
+                            .glassCard(cornerRadius: 16, tint: .npOrange)
                         }
                         .padding(.horizontal, 20)
                     } else {
@@ -74,8 +66,7 @@ struct SettingsView: View {
                             Spacer()
                         }
                         .padding(16)
-                        .background(Color.npGreen.opacity(0.1))
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .glassCard(cornerRadius: 16, tint: .npGreen)
                         .padding(.horizontal, 20)
                     }
 
@@ -106,8 +97,7 @@ struct SettingsView: View {
                             }
                         }
                     }
-                    .background(Color.npSurface)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .glassCard(cornerRadius: 16)
                     .padding(.horizontal, 20)
 
                     // General
@@ -141,8 +131,7 @@ struct SettingsView: View {
                             openURL(ProUpgradeSheet.termsURL)
                         }
                     }
-                    .background(Color.npSurface)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .glassCard(cornerRadius: 16)
                     .padding(.horizontal, 20)
 
                     // Footer

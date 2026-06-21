@@ -25,7 +25,7 @@ struct OnboardingView: View {
 
     var body: some View {
         ZStack {
-            Color.npBackground.ignoresSafeArea()
+            AuroraBackground()
 
             VStack(spacing: 0) {
                 // Pages
@@ -34,19 +34,39 @@ struct OnboardingView: View {
                         VStack(spacing: 28) {
                             Spacer()
 
-                            // Icon circle
+                            // Icon circle — frosted glass over colored glow
                             ZStack {
+                                // Renkli parıltı (camın kıracağı zemin)
                                 Circle()
                                     .fill(
                                         LinearGradient(colors: pages[index].colors,
                                                        startPoint: .topLeading, endPoint: .bottomTrailing)
                                     )
+                                    .frame(width: 150, height: 150)
+                                    .blur(radius: 38)
+                                    .opacity(0.85)
+
+                                // Buzlu cam daire
+                                Circle()
+                                    .fill(.ultraThinMaterial)
                                     .frame(width: 140, height: 140)
-                                    .shadow(color: pages[index].colors[0].opacity(0.4), radius: 30)
+                                    .overlay(
+                                        Circle().stroke(
+                                            LinearGradient(
+                                                colors: [.white.opacity(0.5), .white.opacity(0.05), .clear],
+                                                startPoint: .topLeading, endPoint: .bottomTrailing
+                                            ),
+                                            lineWidth: 1.5
+                                        )
+                                    )
+                                    .shadow(color: pages[index].colors[0].opacity(0.35), radius: 24)
 
                                 Image(systemName: pages[index].icon)
                                     .font(.system(size: 56, weight: .medium))
-                                    .foregroundColor(.white)
+                                    .foregroundStyle(
+                                        LinearGradient(colors: [.white, pages[index].colors[1].opacity(0.9)],
+                                                       startPoint: .top, endPoint: .bottom)
+                                    )
                             }
                             .padding(.bottom, 8)
 
