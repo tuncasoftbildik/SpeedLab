@@ -15,7 +15,6 @@ class AdManager: NSObject, ObservableObject {
     @Published var rewardedReady = false
     private var interstitialAd: GADInterstitialAd?
     private var rewardedAd: GADRewardedAd?
-    private var testCount = 0
     private var rewardCompletion: ((Bool) -> Void)?
 
     override init() {
@@ -42,11 +41,9 @@ class AdManager: NSObject, ObservableObject {
         }
     }
 
-    /// Her 3 testte 1 interstitial göster
+    /// Her testten sonra interstitial göster (Pro hariç)
     func showInterstitialIfNeeded() {
         guard !SharedStore().isPro() else { return }
-        testCount += 1
-        guard testCount % 3 == 0 else { return }
         guard let ad = interstitialAd else {
             loadInterstitial()
             return

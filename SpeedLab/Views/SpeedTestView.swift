@@ -10,7 +10,7 @@ struct SpeedTestView: View {
 
     var body: some View {
         ZStack {
-            Color.npBackground.ignoresSafeArea()
+            AuroraBackground()
 
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
@@ -38,8 +38,8 @@ struct SpeedTestView: View {
                             .foregroundColor(.npCyan)
                             .padding(.horizontal, 10)
                             .padding(.vertical, 5)
-                            .background(Color.npCyan.opacity(0.1))
-                            .clipShape(Capsule())
+                            .background(.ultraThinMaterial, in: Capsule())
+                            .overlay(Capsule().stroke(Color.npCyan.opacity(0.35), lineWidth: 1))
                         }
                     }
                     .padding(.horizontal, 20)
@@ -169,8 +169,7 @@ struct SpeedTestView: View {
                             Divider().background(Color.npBorder)
                             InfoRow(label: loc.t("network"), value: vm.networkInfo.ssid)
                         }
-                        .background(Color.npSurface)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .glassCard(cornerRadius: 16)
                         .padding(.horizontal, 20)
 
                         // Share button
@@ -185,8 +184,7 @@ struct SpeedTestView: View {
                             .foregroundColor(.npCyan)
                             .padding(.vertical, 12)
                             .frame(maxWidth: .infinity)
-                            .background(Color.npCyan.opacity(0.1))
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .glassCard(cornerRadius: 12, tint: .npCyan)
                         }
                         .padding(.horizontal, 20)
 
@@ -207,8 +205,7 @@ struct SpeedTestView: View {
                                 .foregroundColor(.npOrange)
                                 .padding(.vertical, 12)
                                 .frame(maxWidth: .infinity)
-                                .background(Color.npOrange.opacity(0.1))
-                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                .glassCard(cornerRadius: 12, tint: .npOrange)
                             }
                             .padding(.horizontal, 20)
                         }
@@ -304,8 +301,7 @@ struct ResultCard: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
-        .background(Color.npSurface)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .glassCard(cornerRadius: 16, tint: color)
     }
 }
 
