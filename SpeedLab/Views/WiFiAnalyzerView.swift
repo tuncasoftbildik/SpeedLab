@@ -3,7 +3,20 @@ import SwiftUI
 /// WiFi sekmesi: sinyal kalitesi kadranı, bağlantı rozeti, bilgi satırları (iOS'un vermediği alanlar dürüstçe), 60 sn sinyal grafiği.
 struct WiFiAnalyzerView: View {
     @EnvironmentObject var vm: WiFiViewModel
+    @EnvironmentObject var historyVM: HistoryViewModel
     @StateObject private var loc = LocalizationService.shared
+
+    /// iOS sinyal gücü verirse o; vermezse son hız testinden bağlantı sağlığı.
+    private var heroQuality: Double? {
+        if let q = vm.networkInfo.signalQuality, q > 0 { return q }
+        guard let last = historyVM.lastResult() else { return nil }
+        return ConnectionHealth.score(ping: last.ping, jitter: last.jitter)
+    }
+
+    private var heroCaption: String {
+        if let q = vm.networkInfo.signalQuality, q > 0 { return loc.t("signal_quality") }
+        return historyVM.lastResult() == nil ? loc.t("health_no_test") : loc.t("health_from_last_test")
+    }
 
     var body: some View {
         ZStack {
@@ -13,8 +26,13 @@ struct WiFiAnalyzerView: View {
                 VStack(spacing: 16) {
                     header
 
-                    SignalQualityGauge(quality: vm.networkInfo.signalQuality)
-                        .padding(.top, 4)
+                    VStack(spacing: 4) {
+                        SignalQualityGauge(quality: heroQuality)
+                        Text(heroCaption)
+                            .font(.system(size: 11, weight: .medium))
+                            .foregroundColor(.npTextSecondary)
+                    }
+                    .padding(.top, 4)
 
                     HStack(spacing: 8) {
                         Image(systemName: connectionIcon).foregroundColor(.npCyan)
