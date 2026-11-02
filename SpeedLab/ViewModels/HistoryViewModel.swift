@@ -63,6 +63,9 @@ class HistoryViewModel: ObservableObject {
         }
     }
 
+    /// Son test (yoksa nil).
+    func lastResult() -> SpeedTestResult? { historyService.loadAll().first }
+
     /// Boştaki grafik için son testin örnekleri (yoksa boş).
     func lastSamples(download: Bool) -> [Double] {
         guard let last = historyService.loadAll().first else { return [] }
