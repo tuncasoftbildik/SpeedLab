@@ -54,4 +54,19 @@ final class ExportServiceTests: XCTestCase {
         print("SAMPLE_PDF=\(url.path)")
         XCTAssertEqual(PDFDocument(data: data)?.pageCount, 1)
     }
+
+    /// Güvenlik: hücre =,+,-,@,\t,\r ile başlarsa formül olarak yorumlanmasın (CSV enjeksiyonu).
+    func test_csvNeutralizesFormulaInjection() {
+        let r = SpeedTestResult(downloadSpeed: 1, uploadSpeed: 1, ping: 1, jitter: 1, ssid: "=HYPERLINK(\"http://x\")", isp: "+Evil", ipAddress: "1.1.1.1", carrier: "@cmd")
+        let row = String(ExportService.csv([r]).split(separator: "\n")[1])
+        XCTAssertTrue(row.contains("\"'=HYPERLINK(\"\"http://x\"\")\""), row)
+        XCTAssertTrue(row.contains(",'@cmd,"), row)
+        XCTAssertFalse(row.contains(",=HYPERLINK"), row)
+    }
+
+    func test_csvQuotesCarriageReturn() {
+        let r = SpeedTestResult(downloadSpeed: 1, uploadSpeed: 1, ping: 1, jitter: 1, ssid: "Ev\rSalon")
+        let row = String(ExportService.csv([r]).split(separator: "\n")[1])
+        XCTAssertTrue(row.contains("\"Ev\rSalon\""), row)
+    }
 }
