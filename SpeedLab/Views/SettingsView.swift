@@ -26,7 +26,7 @@ struct SettingsView: View {
                     HStack {
                         Text(loc.t("settings"))
                             .font(.system(size: 24, weight: .bold))
-                            .foregroundColor(.white)
+                            .foregroundColor(.npTextPrimary)
                         Spacer()
                     }
                     .padding(.horizontal, 20)
@@ -43,7 +43,7 @@ struct SettingsView: View {
                                 VStack(alignment: .leading, spacing: 2) {
                                     Text(loc.t("upgrade_pro"))
                                         .font(.system(size: 16, weight: .bold))
-                                        .foregroundColor(.white)
+                                        .foregroundColor(.npTextPrimary)
                                     Text(loc.t("feature_no_ads") + " • " + loc.t("feature_unlimited_history"))
                                         .font(.system(size: 11, weight: .medium))
                                         .foregroundColor(.npTextSecondary)
@@ -83,7 +83,7 @@ struct SettingsView: View {
                                         .font(.system(size: 22))
                                     Text(lang.displayName)
                                         .font(.system(size: 15, weight: .medium))
-                                        .foregroundColor(.white)
+                                        .foregroundColor(.npTextPrimary)
                                     Spacer()
                                     if loc.language == lang {
                                         Image(systemName: "checkmark.circle.fill")
@@ -206,7 +206,7 @@ struct SettingsButton: View {
 
                 Text(label)
                     .font(.system(size: 15, weight: .medium))
-                    .foregroundColor(.white)
+                    .foregroundColor(.npTextPrimary)
                 Spacer()
                 Image(systemName: "chevron.right")
                     .font(.system(size: 12, weight: .semibold))
@@ -312,7 +312,7 @@ struct ProUpgradeSheet: View {
 
                 Text("SpeedLab Pro")
                     .font(.system(size: 28, weight: .bold))
-                    .foregroundColor(.white)
+                    .foregroundColor(.npTextPrimary)
 
                 // Features
                 ProBenefitCards()
@@ -368,7 +368,7 @@ struct ProUpgradeSheet: View {
                                     Text(product.displayPrice)
                                         .font(.system(size: 17, weight: .bold))
                                 }
-                                .foregroundColor(.white)
+                                .foregroundColor(.npTextPrimary)
                                 .padding(16)
                                 .background(
                                     product.subscription?.subscriptionPeriod.unit == .year
@@ -467,7 +467,7 @@ struct ProFeatureRow: View {
                 .frame(width: 28)
             Text(text)
                 .font(.system(size: 15, weight: .medium))
-                .foregroundColor(.white)
+                .foregroundColor(.npTextPrimary)
         }
     }
 }

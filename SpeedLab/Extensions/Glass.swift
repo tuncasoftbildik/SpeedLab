@@ -5,20 +5,23 @@ import SwiftUI
 /// Glassmorphism'in çalışması için camın "kıracağı" renkli derinlik sağlar.
 struct AuroraBackground: View {
     @State private var animate = false
+    @Environment(\.colorScheme) private var scheme
+    /// Açık temada lekeler yarı yarıya soluk (metin kontrastı için).
+    private var k: Double { scheme == .dark ? 1 : 0.45 }
 
     var body: some View {
         ZStack {
             Color.npBackground
 
-            blob(color: .npCyan, size: 320, opacity: 0.38,
+            blob(color: .npCyan, size: 320, opacity: 0.38 * k,
                  from: CGSize(width: -110, height: -260),
                  to: CGSize(width: -150, height: -210))
 
-            blob(color: .npPurple, size: 300, opacity: 0.32,
+            blob(color: .npPurple, size: 300, opacity: 0.32 * k,
                  from: CGSize(width: 150, height: -30),
                  to: CGSize(width: 110, height: 30))
 
-            blob(color: .npBlue, size: 300, opacity: 0.28,
+            blob(color: .npBlue, size: 300, opacity: 0.28 * k,
                  from: CGSize(width: -120, height: 270),
                  to: CGSize(width: -80, height: 230))
         }
@@ -46,6 +49,7 @@ struct AuroraBackground: View {
 struct GlassCard: ViewModifier {
     var cornerRadius: CGFloat = 20
     var tint: Color? = nil
+    @Environment(\.colorScheme) private var scheme
 
     func body(content: Content) -> some View {
         content
@@ -68,13 +72,15 @@ struct GlassCard: ViewModifier {
                 RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                     .stroke(
                         LinearGradient(
-                            colors: [(tint ?? .white).opacity(0.40), .white.opacity(0.05), .clear],
+                            colors: scheme == .dark
+                                ? [(tint ?? .white).opacity(0.40), .white.opacity(0.05), .clear]
+                                : [(tint ?? .black).opacity(0.10), .black.opacity(0.04), .clear],
                             startPoint: .topLeading, endPoint: .bottomTrailing
                         ),
                         lineWidth: 1
                     )
             }
-            .shadow(color: .black.opacity(0.28), radius: 14, x: 0, y: 10)
+            .shadow(color: .black.opacity(scheme == .dark ? 0.28 : 0.10), radius: 14, x: 0, y: 10)
     }
 }
 
