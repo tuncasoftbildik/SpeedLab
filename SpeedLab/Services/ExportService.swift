@@ -26,22 +26,25 @@ enum ExportService {
         for r in results {
             let fields: [String] = [
                 iso.string(from: r.date),
-                r.effectiveConnectionType,
-                r.ssid,
-                r.carrier ?? r.isp,
+                escape(r.effectiveConnectionType),
+                escape(r.ssid),
+                escape(r.carrier ?? r.isp),
                 String(format: "%.2f", r.downloadSpeed),
                 String(format: "%.2f", r.uploadSpeed),
                 String(format: "%.2f", r.ping),
                 String(format: "%.2f", r.jitter),
-                r.ipAddress,
+                escape(r.ipAddress),
             ]
-            lines.append(fields.map(escape).joined(separator: ","))
+            lines.append(fields.joined(separator: ","))
         }
         return lines.joined(separator: "\n")
     }
 
-    private static func escape(_ s: String) -> String {
-        guard s.contains(",") || s.contains("\"") || s.contains("\n") else { return s }
+    /// Metin alanı: formül enjeksiyonunu etkisizleştirir (=,+,-,@,\t,\r ile başlıyorsa ' öneki) ve gerekirse tırnaklar.
+    static func escape(_ raw: String) -> String {
+        var s = raw
+        if let first = s.first, "=+-@\t\r".contains(first) { s = "'" + s }
+        guard s.contains(",") || s.contains("\"") || s.contains("\n") || s.contains("\r") else { return s }
         return "\"" + s.replacingOccurrences(of: "\"", with: "\"\"") + "\""
     }
 
