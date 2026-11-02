@@ -2,6 +2,7 @@ import Foundation
 import NetworkExtension
 import CoreLocation
 import Network
+import CoreTelephony
 
 class NetworkService: NSObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
@@ -45,6 +46,33 @@ class NetworkService: NSObject, CLLocationManagerDelegate {
         }
         return "-"
         #endif
+    }
+
+    /// SSID + BSSID + normalize sinyal (0–1). Simülatörde sahte ağ, sinyal nil.
+    func fetchHotspot() async -> (ssid: String, bssid: String, quality: Double?) {
+        #if targetEnvironment(simulator)
+        return ("Simulator WiFi", "-", nil)
+        #else
+        if let network = await NEHotspotNetwork.fetchCurrent() {
+            let q = Double(network.signalStrength)
+            return (network.ssid, network.bssid, q > 0 ? q : nil)
+        }
+        return ("-", "-", nil)
+        #endif
+    }
+
+    /// Hücresel radyo tipi: "5G", "LTE", "3G" ya da nil.
+    func getRadioTech() -> String? {
+        let info = CTTelephonyNetworkInfo()
+        guard let techs = info.serviceCurrentRadioAccessTechnology, let tech = techs.values.first else { return nil }
+        switch tech {
+        case CTRadioAccessTechnologyLTE: return "LTE"
+        case CTRadioAccessTechnologyEdge, CTRadioAccessTechnologyGPRS: return "2G"
+        case CTRadioAccessTechnologyWCDMA, CTRadioAccessTechnologyHSDPA, CTRadioAccessTechnologyHSUPA: return "3G"
+        default:
+            if #available(iOS 14.1, *), tech == CTRadioAccessTechnologyNRNSA || tech == CTRadioAccessTechnologyNR { return "5G" }
+            return nil
+        }
     }
 
     // MARK: - IP Address
@@ -111,14 +139,30 @@ class NetworkService: NSObject, CLLocationManagerDelegate {
         return result
     }
 
+    /// Bağlantı türü enum olarak; belirlenemezse nil.
+    func getConnectionKind() -> ConnectionKind? {
+        switch getConnectionType() {
+        case "WiFi": return .wifi
+        case "Hücresel": return .cellular
+        case "Ethernet": return .wired
+        default: return nil
+        }
+    }
+
     // MARK: - Full Network Info
     func getNetworkInfo() async -> NetworkInfo {
         var info = NetworkInfo()
-        info.ssid = await getCurrentSSID()
+        let hotspot = await fetchHotspot()
+        info.ssid = hotspot.ssid
+        info.bssid = hotspot.bssid
+        info.signalQuality = hotspot.quality
         info.ipAddress = getLocalIPAddress()
+        info.connectionKind = getConnectionKind()
+        info.radioTech = info.connectionKind == .cellular ? getRadioTech() : nil
 
         let publicInfo = await getPublicIPInfo()
         info.isp = publicInfo.isp
+        info.publicIP = publicInfo.ip
 
         return info
     }

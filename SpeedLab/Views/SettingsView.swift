@@ -7,6 +7,7 @@ struct SettingsView: View {
     @Environment(\.openURL) private var openURL
     @State private var showProSheet = false
     @State private var showRedeemCode = false
+    @AppStorage(AppearanceSetting.storageKey) private var appearance = AppearanceSetting.system.rawValue
 
     fileprivate static var appVersion: String {
         let dict = Bundle.main.infoDictionary
@@ -25,7 +26,7 @@ struct SettingsView: View {
                     HStack {
                         Text(loc.t("settings"))
                             .font(.system(size: 24, weight: .bold))
-                            .foregroundColor(.white)
+                            .foregroundColor(.npTextPrimary)
                         Spacer()
                     }
                     .padding(.horizontal, 20)
@@ -42,7 +43,7 @@ struct SettingsView: View {
                                 VStack(alignment: .leading, spacing: 2) {
                                     Text(loc.t("upgrade_pro"))
                                         .font(.system(size: 16, weight: .bold))
-                                        .foregroundColor(.white)
+                                        .foregroundColor(.npTextPrimary)
                                     Text(loc.t("feature_no_ads") + " • " + loc.t("feature_unlimited_history"))
                                         .font(.system(size: 11, weight: .medium))
                                         .foregroundColor(.npTextSecondary)
@@ -82,7 +83,7 @@ struct SettingsView: View {
                                         .font(.system(size: 22))
                                     Text(lang.displayName)
                                         .font(.system(size: 15, weight: .medium))
-                                        .foregroundColor(.white)
+                                        .foregroundColor(.npTextPrimary)
                                     Spacer()
                                     if loc.language == lang {
                                         Image(systemName: "checkmark.circle.fill")
@@ -96,6 +97,21 @@ struct SettingsView: View {
                                 Divider().background(Color.npBorder).padding(.leading, 54)
                             }
                         }
+                    }
+                    .glassCard(cornerRadius: 16)
+                    .padding(.horizontal, 20)
+
+                    // Appearance
+                    VStack(spacing: 0) {
+                        SettingsSectionHeader(title: loc.t("appearance"))
+                        Picker("", selection: $appearance) {
+                            ForEach(AppearanceSetting.allCases, id: \.rawValue) { mode in
+                                Text(loc.t(mode.localizationKey)).tag(mode.rawValue)
+                            }
+                        }
+                        .pickerStyle(.segmented)
+                        .padding(.horizontal, 16)
+                        .padding(.bottom, 14)
                     }
                     .glassCard(cornerRadius: 16)
                     .padding(.horizontal, 20)
@@ -190,7 +206,7 @@ struct SettingsButton: View {
 
                 Text(label)
                     .font(.system(size: 15, weight: .medium))
-                    .foregroundColor(.white)
+                    .foregroundColor(.npTextPrimary)
                 Spacer()
                 Image(systemName: "chevron.right")
                     .font(.system(size: 12, weight: .semibold))
@@ -257,10 +273,10 @@ struct ProUpgradeSheet: View {
                 )
             Text("SpeedLab Pro")
                 .font(.system(size: 28, weight: .bold))
+            ProBenefitCards()
             VStack(alignment: .leading, spacing: 12) {
                 ProFeatureRow(icon: "eye.slash.fill", text: loc.t("feature_no_ads"), color: .npCyan)
                 ProFeatureRow(icon: "infinity", text: loc.t("feature_unlimited_history"), color: .npPurple)
-                ProFeatureRow(icon: "map.fill", text: loc.t("feature_wifi_map"), color: .npGreen)
                 ProFeatureRow(icon: "square.and.arrow.up.fill", text: loc.t("feature_export"), color: .npBlue)
                 ProFeatureRow(icon: "rectangle.on.rectangle.fill", text: loc.t("feature_widget"), color: .npOrange)
             }
@@ -296,13 +312,14 @@ struct ProUpgradeSheet: View {
 
                 Text("SpeedLab Pro")
                     .font(.system(size: 28, weight: .bold))
-                    .foregroundColor(.white)
+                    .foregroundColor(.npTextPrimary)
 
                 // Features
+                ProBenefitCards()
+                    .padding(.horizontal, 20)
                 VStack(alignment: .leading, spacing: 12) {
                     ProFeatureRow(icon: "eye.slash.fill", text: loc.t("feature_no_ads"), color: .npCyan)
                     ProFeatureRow(icon: "infinity", text: loc.t("feature_unlimited_history"), color: .npPurple)
-                    ProFeatureRow(icon: "map.fill", text: loc.t("feature_wifi_map"), color: .npGreen)
                     ProFeatureRow(icon: "square.and.arrow.up.fill", text: loc.t("feature_export"), color: .npBlue)
                     ProFeatureRow(icon: "rectangle.on.rectangle.fill", text: loc.t("feature_widget"), color: .npOrange)
                 }
@@ -351,7 +368,7 @@ struct ProUpgradeSheet: View {
                                     Text(product.displayPrice)
                                         .font(.system(size: 17, weight: .bold))
                                 }
-                                .foregroundColor(.white)
+                                .foregroundColor(product.subscription?.subscriptionPeriod.unit == .year ? .npBrandTextPrimary : .npTextPrimary)
                                 .padding(16)
                                 .background(
                                     product.subscription?.subscriptionPeriod.unit == .year
@@ -450,7 +467,7 @@ struct ProFeatureRow: View {
                 .frame(width: 28)
             Text(text)
                 .font(.system(size: 15, weight: .medium))
-                .foregroundColor(.white)
+                .foregroundColor(.npTextPrimary)
         }
     }
 }

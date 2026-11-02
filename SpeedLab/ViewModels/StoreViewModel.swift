@@ -20,6 +20,10 @@ class StoreViewModel: ObservableObject {
     init() {
         updateListenerTask = listenForTransactions()
         Task { await checkEntitlements() }
+        #if DEBUG
+        // Ekran görüntüsü/test için: `defaults write com.vialab.speedlab debug_pro -bool true`
+        if UserDefaults.standard.bool(forKey: "debug_pro") { isPro = true }
+        #endif
     }
 
     deinit {
@@ -70,6 +74,9 @@ class StoreViewModel: ObservableObject {
                 }
             }
         }
+        #if DEBUG
+        if UserDefaults.standard.bool(forKey: "debug_pro") { return }
+        #endif
         isPro = false
     }
 

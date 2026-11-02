@@ -48,6 +48,69 @@ class LocalizationService: ObservableObject {
     }
 
     private let strings: [String: [String: String]] = [
+        // Görünüm
+        "appearance": ["tr": "Görünüm", "en": "Appearance"],
+        "appearance_system": ["tr": "Sistem", "en": "System"],
+        "appearance_dark": ["tr": "Koyu", "en": "Dark"],
+        "appearance_light": ["tr": "Açık", "en": "Light"],
+
+        // Bağlam bantları (SpeedContext)
+        "band_dl_music": ["tr": "müzik ve web için yeterli", "en": "fine for music and web"],
+        "band_dl_hd": ["tr": "HD video için yeterli", "en": "enough for HD video"],
+        "band_dl_4k": ["tr": "4K yayın için yeterli", "en": "enough for 4K streaming"],
+        "band_dl_office": ["tr": "ev ofisi için ferah", "en": "roomy for home office"],
+        "band_dl_fiber": ["tr": "fiber sınıfı", "en": "fiber class"],
+        "band_ul_weak": ["tr": "görüşmede zorlanır", "en": "struggles on calls"],
+        "band_ul_call": ["tr": "video görüşme için yeterli", "en": "enough for video calls"],
+        "band_ul_stream": ["tr": "yayın ve yükleme için iyi", "en": "good for streaming and uploads"],
+        "band_ping_gaming": ["tr": "oyun için ideal", "en": "ideal for gaming"],
+        "band_ping_good": ["tr": "iyi", "en": "good"],
+        "band_ping_laggy": ["tr": "gecikmeli", "en": "laggy"],
+        "context_avg": ["tr": "ortalamada", "en": "on average"],
+        "context_up": ["tr": "↑ %{p} ortalamaya göre", "en": "↑ {p}% vs. average"],
+        "context_down": ["tr": "↓ %{p} ortalamaya göre", "en": "↓ {p}% vs. average"],
+
+        // Ana ekran 1.2
+        "packet_loss": ["tr": "Kayıp", "en": "Loss"],
+        "live_flow": ["tr": "Canlı akış", "en": "Live flow"],
+        "last_30s": ["tr": "Son test", "en": "Last test"],
+        "queued": ["tr": "sırada", "en": "queued"],
+        "measuring_download": ["tr": "İndirme ölçülüyor", "en": "Measuring download"],
+        "measuring_upload": ["tr": "Yükleme ölçülüyor", "en": "Measuring upload"],
+        "kind_wifi": ["tr": "WiFi", "en": "WiFi"],
+        "kind_cellular": ["tr": "Hücresel", "en": "Cellular"],
+        "kind_wired": ["tr": "Kablolu", "en": "Wired"],
+
+        // Geçmiş 1.2
+        "range_day": ["tr": "Gün", "en": "Day"],
+        "range_week": ["tr": "Hafta", "en": "Week"],
+        "range_month": ["tr": "Ay", "en": "Month"],
+        "filter_all": ["tr": "Tümü", "en": "All"],
+        "filter_wifi": ["tr": "WiFi", "en": "WiFi"],
+        "filter_cellular": ["tr": "Hücresel", "en": "Cellular"],
+        "free_chart_note": ["tr": "Son 3 test · Pro ile tüm geçmiş", "en": "Last 3 tests · full history with Pro"],
+        "export": ["tr": "Dışa aktar", "en": "Export"],
+
+        // Dışa aktarma
+        "export_csv": ["tr": "CSV (tüm kayıtlar)", "en": "CSV (all records)"],
+        "export_pdf": ["tr": "PDF (seçili aralık)", "en": "PDF (selected range)"],
+        "export_title": ["tr": "SpeedLab geçmişi", "en": "SpeedLab history"],
+
+        // WiFi 1.2
+        "signal_quality": ["tr": "Sinyal kalitesi", "en": "Signal quality"],
+        "signal_weak": ["tr": "Zayıf", "en": "Weak"],
+        "signal_fair": ["tr": "Orta", "en": "Fair"],
+        "signal_good": ["tr": "İyi", "en": "Good"],
+        "signal_excellent": ["tr": "Mükemmel", "en": "Excellent"],
+        "signal_unavailable": ["tr": "Ölçülemiyor", "en": "Not measurable"],
+        "signal_history": ["tr": "Sinyal geçmişi · 60 sn", "en": "Signal history · 60 s"],
+        "ios_not_shared": ["tr": "iOS paylaşmıyor", "en": "not shared by iOS"],
+        "band": ["tr": "Bant", "en": "Band"],
+        "channel": ["tr": "Kanal", "en": "Channel"],
+        "bssid": ["tr": "BSSID", "en": "BSSID"],
+        "radio_tech": ["tr": "Radyo", "en": "Radio"],
+        "unknown": ["tr": "Bilinmiyor", "en": "Unknown"],
+
         // Tab Bar
         "tab_speed": ["tr": "Hız Testi", "en": "Speed Test"],
         "tab_wifi": ["tr": "WiFi Analiz", "en": "WiFi Analyzer"],
@@ -119,8 +182,10 @@ class LocalizationService: ObservableObject {
         "pro_features": ["tr": "Pro Özellikleri", "en": "Pro Features"],
         "feature_no_ads": ["tr": "Reklamsız deneyim", "en": "Ad-free experience"],
         "feature_unlimited_history": ["tr": "Sınırsız test geçmişi", "en": "Unlimited test history"],
-        "feature_wifi_map": ["tr": "WiFi sinyal haritası", "en": "WiFi signal map"],
-        "feature_export": ["tr": "CSV/PDF dışa aktarma", "en": "CSV/PDF export"],
+        "feature_export": ["tr": "CSV / PDF dışa aktarma", "en": "CSV / PDF export"],
+        "benefit_no_ads_sub": ["tr": "Banner ve geçiş reklamları kalkar", "en": "No banner or interstitial ads"],
+        "benefit_history_sub": ["tr": "Tüm kayıtlar, hafta ve ay grafiği", "en": "All records, week and month charts"],
+        "benefit_export_sub": ["tr": "Tablo ve rapor olarak paylaş", "en": "Share as table or report"],
         "feature_widget": ["tr": "Ana ekran widget", "en": "Home screen widget"],
         "monthly": ["tr": "Aylık", "en": "Monthly"],
         "yearly": ["tr": "Yıllık", "en": "Yearly"],
@@ -131,9 +196,5 @@ class LocalizationService: ObservableObject {
         "about": ["tr": "Hakkında", "en": "About"],
         "made_by": ["tr": "ViaLab tarafından geliştirildi", "en": "Developed by ViaLab"],
 
-        // Rewarded Ad
-        "watch_ad_extra_test": ["tr": "Reklam İzle, Ekstra Test Kazan", "en": "Watch Ad, Earn Extra Test"],
-        "watch_ad_detail": ["tr": "Reklam izleyerek detaylı raporu gör", "en": "Watch ad to see detailed report"],
-        "reward_earned": ["tr": "Ekstra test hakkı kazandın!", "en": "You earned an extra test!"],
     ]
 }

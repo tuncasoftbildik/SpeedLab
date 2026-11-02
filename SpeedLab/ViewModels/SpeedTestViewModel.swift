@@ -15,6 +15,35 @@ class SpeedTestViewModel: ObservableObject {
     @Published var networkInfo = NetworkInfo()
     @Published var lastResult: SpeedTestResult?
     @Published var showCompletionEffect = false
+    @Published var downloadSamples = SampleBuffer()
+    @Published var uploadSamples = SampleBuffer()
+    @Published var connectionKind: ConnectionKind?
+    @Published var packetLoss: Double?
+    /// Sonuç kartları kadranın altından kayarak gelir (bitişten 0.8 sn sonra).
+    @Published var showResultCards = false
+
+    /// Bitiş → kartlar → interstitial zamanlaması (spec: 0.8 sn + 1.5 sn). Testlerde kısaltılır.
+    var cardsDelayNs: UInt64 = 800_000_000
+    var interstitialDelayNs: UInt64 = 1_500_000_000
+    /// Reklam sunumu; testlerde sayaçla değiştirilir.
+    var presentInterstitial: () -> Void = { AdManager.shared.showInterstitialIfNeeded() }
+
+    /// Her testin koşu kimliği: bitiş dizisi (kartlar, reklam) yalnız kendi koşusu hâlâ güncelse ilerler.
+    private var runID = UUID()
+
+    @discardableResult
+    func beginRun() -> UUID { runID = UUID(); return runID }
+    func invalidateRun() { runID = UUID() }
+
+    /// İbre bekler → kartlar kayar → interstitial. Yeni test başladıysa ya da faz değiştiyse sessizce çıkar.
+    func finishPresentation(runID id: UUID) async {
+        try? await Task.sleep(nanoseconds: cardsDelayNs)
+        guard id == runID, phase == .completed else { return }
+        withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) { showResultCards = true }
+        try? await Task.sleep(nanoseconds: interstitialDelayNs)
+        guard id == runID, phase == .completed else { return }
+        presentInterstitial()
+    }
 
     private let speedService = SpeedTestService()
     private let networkService = NetworkService()
@@ -32,12 +61,14 @@ class SpeedTestViewModel: ObservableObject {
     func startTest() async {
         guard !isRunning else { return }
         isRunning = true
+        let myRun = beginRun()
         resetValues()
         haptic(.medium)
 
         // Ağ bilgilerini al
         let _ = await networkService.requestLocationPermission()
         networkInfo = await networkService.getNetworkInfo()
+        connectionKind = networkService.getConnectionKind()
 
         // 1. Ping testi
         phase = .testingPing
@@ -48,6 +79,7 @@ class SpeedTestViewModel: ObservableObject {
         withAnimation(.spring(response: 0.5)) {
             ping = pingResult.ping
             jitter = pingResult.jitter
+            packetLoss = pingResult.loss
             progress = 0.2
         }
 
@@ -61,14 +93,15 @@ class SpeedTestViewModel: ObservableObject {
                     self.progress = 0.2 + p * 0.4
                     self.currentSpeed = speed
                     self.downloadSpeed = speed
-                    self.gaugeValue = min(speed / 200.0, 1.0)
+                    self.gaugeValue = GaugeScale.fraction(speed)
+                    self.downloadSamples.append(speed)
                 }
             }
         }
         withAnimation(.spring(response: 0.5)) {
             downloadSpeed = dl
             currentSpeed = dl
-            gaugeValue = min(dl / 200.0, 1.0)
+            gaugeValue = GaugeScale.fraction(dl)
             progress = 0.6
         }
 
@@ -87,14 +120,15 @@ class SpeedTestViewModel: ObservableObject {
                     self.progress = 0.6 + p * 0.35
                     self.currentSpeed = speed
                     self.uploadSpeed = speed
-                    self.gaugeValue = min(speed / 200.0, 1.0)
+                    self.gaugeValue = GaugeScale.fraction(speed)
+                    self.uploadSamples.append(speed)
                 }
             }
         }
         withAnimation(.spring(response: 0.5)) {
             uploadSpeed = ul
             currentSpeed = ul
-            gaugeValue = min(ul / 200.0, 1.0)
+            gaugeValue = GaugeScale.fraction(ul)
             progress = 1.0
         }
 
@@ -111,15 +145,18 @@ class SpeedTestViewModel: ObservableObject {
             jitter: jitter,
             ssid: networkInfo.ssid,
             isp: networkInfo.isp,
-            ipAddress: networkInfo.ipAddress
+            ipAddress: networkInfo.ipAddress,
+            downloadSamples: downloadSamples.values,
+            uploadSamples: uploadSamples.values,
+            connectionType: connectionKind?.rawValue,
+            carrier: networkInfo.isp
         )
         lastResult = result
         historyService.save(result)
-
-        // Her testten sonra interstitial reklam göster (Pro hariç)
-        AdManager.shared.showInterstitialIfNeeded()
-
         isRunning = false
+
+        // İbre son değerde bekler → kartlar kayar → interstitial (Pro hariç); yeni dokunuş gelirse iptal.
+        await finishPresentation(runID: myRun)
     }
 
     private func resetValues() {
@@ -133,5 +170,9 @@ class SpeedTestViewModel: ObservableObject {
         gaugeValue = 0
         lastResult = nil
         showCompletionEffect = false
+        showResultCards = false
+        packetLoss = nil
+        downloadSamples.reset()
+        uploadSamples.reset()
     }
 }
