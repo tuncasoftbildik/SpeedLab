@@ -40,11 +40,14 @@ enum ExportService {
         return lines.joined(separator: "\n")
     }
 
-    /// Metin alanı: formül enjeksiyonunu etkisizleştirir (=,+,-,@,\t,\r ile başlıyorsa ' öneki) ve gerekirse tırnaklar.
+    /// Metin alanı: HER ZAMAN çift tırnaklı (" → ""); baştaki boşluklardan sonra =,+,-,@,\t,\r,\n ile
+    /// başlıyorsa ' öneki (formül enjeksiyonu). Tırnaklama ; ile ayıran ayrıştırıcılara karşı da korur.
     static func escape(_ raw: String) -> String {
         var s = raw
-        if let first = s.first, "=+-@\t\r".contains(first) { s = "'" + s }
-        guard s.contains(",") || s.contains("\"") || s.contains("\n") || s.contains("\r") else { return s }
+        let trimmed = s.drop(while: { $0 == " " || $0 == "\t" })
+        // Not: "\r\n" tek grafem olduğundan dizi yerine Set<Character> kullanılır.
+        let triggers: Set<Character> = ["=", "+", "-", "@", "\t", "\r", "\n"]
+        if let first = trimmed.first, triggers.contains(first) { s = "'" + s }
         return "\"" + s.replacingOccurrences(of: "\"", with: "\"\"") + "\""
     }
 
