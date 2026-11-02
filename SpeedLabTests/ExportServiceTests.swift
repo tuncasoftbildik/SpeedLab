@@ -8,7 +8,7 @@ final class ExportServiceTests: XCTestCase {
                                 ipAddress: "1.2.3.4", connectionType: "wifi", carrier: "Turknet")
         let lines = ExportService.csv([r]).split(separator: "\n")
         XCTAssertEqual(lines[0], "date,connection,ssid,carrier,download_mbps,upload_mbps,ping_ms,jitter_ms,ip")
-        XCTAssertTrue(lines[1].hasSuffix(",wifi,\"Ev, Salon\",Turknet,85.50,9.50,23.00,4.10,1.2.3.4"), String(lines[1]))
+        XCTAssertTrue(lines[1].hasSuffix(",\"wifi\",\"Ev, Salon\",\"Turknet\",85.50,9.50,23.00,4.10,\"1.2.3.4\""), String(lines[1]))
         XCTAssertTrue(lines[1].hasPrefix("20"), "ISO 8601 tarih ile başlamalı")
     }
 
@@ -60,7 +60,7 @@ final class ExportServiceTests: XCTestCase {
         let r = SpeedTestResult(downloadSpeed: 1, uploadSpeed: 1, ping: 1, jitter: 1, ssid: "=HYPERLINK(\"http://x\")", isp: "+Evil", ipAddress: "1.1.1.1", carrier: "@cmd")
         let row = String(ExportService.csv([r]).split(separator: "\n")[1])
         XCTAssertTrue(row.contains("\"'=HYPERLINK(\"\"http://x\"\")\""), row)
-        XCTAssertTrue(row.contains(",'@cmd,"), row)
+        XCTAssertTrue(row.contains(",\"'@cmd\","), row)
         XCTAssertFalse(row.contains(",=HYPERLINK"), row)
     }
 
@@ -68,5 +68,13 @@ final class ExportServiceTests: XCTestCase {
         let r = SpeedTestResult(downloadSpeed: 1, uploadSpeed: 1, ping: 1, jitter: 1, ssid: "Ev\rSalon")
         let row = String(ExportService.csv([r]).split(separator: "\n")[1])
         XCTAssertTrue(row.contains("\"Ev\rSalon\""), row)
+    }
+
+    /// Baştaki boşluktan sonra gelen tetikleyici de etkisizleştirilir; noktalı virgül içeren alan tırnaklı kalır.
+    func test_csvTrimsLeadingWhitespaceBeforeTriggerCheck() {
+        XCTAssertEqual(ExportService.escape("  =1+1"), "\"'  =1+1\"")
+        XCTAssertEqual(ExportService.escape("a;b"), "\"a;b\"")
+        XCTAssertEqual(ExportService.escape("\n=x"), "\"'\n=x\"")
+        XCTAssertEqual(ExportService.escape("Ev"), "\"Ev\"")
     }
 }
