@@ -3,11 +3,32 @@ import Foundation
 @MainActor
 class HistoryViewModel: ObservableObject {
     @Published var results: [SpeedTestResult] = []
+    @Published var range: HistoryRange = .day
+    @Published var kind: ConnectionKind? = nil
+    @Published var carrier: String? = nil
 
     private let historyService = HistoryService()
 
     func load(isPro: Bool = false) {
         results = isPro ? historyService.loadAll() : historyService.loadFree()
+    }
+
+    /// Grafik verisi: ücretsizde son 3 test, Pro'da seçili aralık ve filtreler.
+    func chartResults(isPro: Bool, now: Date = Date()) -> [SpeedTestResult] {
+        HistoryQuery.filter(historyService.loadAll(), kind: kind, carrier: carrier, range: range, now: now, isPro: isPro)
+    }
+
+    /// Benzersiz sağlayıcılar, alfabetik.
+    var carriers: [String] {
+        Array(Set(results.map { $0.carrier ?? $0.isp }.filter { !$0.isEmpty && $0 != "-" })).sorted()
+    }
+
+    /// Pro değilse Hafta/Ay seçilemez (false döner, görünüm Pro sayfasını açar).
+    @discardableResult
+    func requestRange(_ r: HistoryRange, isPro: Bool) -> Bool {
+        if !isPro && r != .day { return false }
+        range = r
+        return true
     }
 
     func delete(_ id: UUID) {
