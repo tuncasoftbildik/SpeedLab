@@ -96,6 +96,21 @@ class LocalizationService: ObservableObject {
         "export_pdf": ["tr": "PDF (seçili aralık)", "en": "PDF (selected range)"],
         "export_title": ["tr": "SpeedLab geçmişi", "en": "SpeedLab history"],
 
+        // WiFi 1.2
+        "signal_quality": ["tr": "Sinyal kalitesi", "en": "Signal quality"],
+        "signal_weak": ["tr": "Zayıf", "en": "Weak"],
+        "signal_fair": ["tr": "Orta", "en": "Fair"],
+        "signal_good": ["tr": "İyi", "en": "Good"],
+        "signal_excellent": ["tr": "Mükemmel", "en": "Excellent"],
+        "signal_unavailable": ["tr": "Ölçülemiyor", "en": "Not measurable"],
+        "signal_history": ["tr": "Sinyal geçmişi · 60 sn", "en": "Signal history · 60 s"],
+        "ios_not_shared": ["tr": "iOS paylaşmıyor", "en": "not shared by iOS"],
+        "band": ["tr": "Bant", "en": "Band"],
+        "channel": ["tr": "Kanal", "en": "Channel"],
+        "bssid": ["tr": "BSSID", "en": "BSSID"],
+        "radio_tech": ["tr": "Radyo", "en": "Radio"],
+        "unknown": ["tr": "Bilinmiyor", "en": "Unknown"],
+
         // Tab Bar
         "tab_speed": ["tr": "Hız Testi", "en": "Speed Test"],
         "tab_wifi": ["tr": "WiFi Analiz", "en": "WiFi Analyzer"],
