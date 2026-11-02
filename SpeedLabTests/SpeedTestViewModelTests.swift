@@ -32,12 +32,17 @@ final class SpeedTestViewModelTests: XCTestCase {
         XCTAssertEqual(ads(), 1)
     }
 
+    /// Kartlar açıldıktan sonra, reklam gecikmesi dolmadan faz değişirse reklam gösterilmez.
+    /// Geniş zaman payı: kart 10 ms, faz değişimi 120 ms, reklam 500 ms.
     func test_phaseLeftCompletedCancelsAd() async {
         let (vm, ads) = makeVM()
+        vm.cardsDelayNs = 10_000_000
+        vm.interstitialDelayNs = 500_000_000
         let id = vm.beginRun()
         vm.phase = .completed
-        Task { try? await Task.sleep(nanoseconds: 30_000_000); vm.phase = .testingPing }
+        Task { try? await Task.sleep(nanoseconds: 120_000_000); vm.phase = .testingPing }
         await vm.finishPresentation(runID: id)
+        XCTAssertTrue(vm.showResultCards)
         XCTAssertEqual(ads(), 0)
     }
 }
