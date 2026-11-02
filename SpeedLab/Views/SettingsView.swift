@@ -273,10 +273,10 @@ struct ProUpgradeSheet: View {
                 )
             Text("SpeedLab Pro")
                 .font(.system(size: 28, weight: .bold))
+            ProBenefitCards()
             VStack(alignment: .leading, spacing: 12) {
                 ProFeatureRow(icon: "eye.slash.fill", text: loc.t("feature_no_ads"), color: .npCyan)
                 ProFeatureRow(icon: "infinity", text: loc.t("feature_unlimited_history"), color: .npPurple)
-                ProFeatureRow(icon: "map.fill", text: loc.t("feature_wifi_map"), color: .npGreen)
                 ProFeatureRow(icon: "square.and.arrow.up.fill", text: loc.t("feature_export"), color: .npBlue)
                 ProFeatureRow(icon: "rectangle.on.rectangle.fill", text: loc.t("feature_widget"), color: .npOrange)
             }
@@ -315,10 +315,11 @@ struct ProUpgradeSheet: View {
                     .foregroundColor(.white)
 
                 // Features
+                ProBenefitCards()
+                    .padding(.horizontal, 20)
                 VStack(alignment: .leading, spacing: 12) {
                     ProFeatureRow(icon: "eye.slash.fill", text: loc.t("feature_no_ads"), color: .npCyan)
                     ProFeatureRow(icon: "infinity", text: loc.t("feature_unlimited_history"), color: .npPurple)
-                    ProFeatureRow(icon: "map.fill", text: loc.t("feature_wifi_map"), color: .npGreen)
                     ProFeatureRow(icon: "square.and.arrow.up.fill", text: loc.t("feature_export"), color: .npBlue)
                     ProFeatureRow(icon: "rectangle.on.rectangle.fill", text: loc.t("feature_widget"), color: .npOrange)
                 }

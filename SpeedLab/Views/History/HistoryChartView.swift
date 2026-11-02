@@ -4,6 +4,9 @@ import Charts
 /// Geçmiş grafiği: indirme (cyan alan + çizgi), yükleme (mor çizgi), ping soluk (ikinci ölçek: ms/10).
 struct HistoryChartView: View {
     let results: [SpeedTestResult]
+    var height: CGFloat = 160
+    /// Eksen ve etiketler gizli (Pro fayda kartı gibi küçük yerler için).
+    var compact: Bool = false
     @StateObject private var loc = LocalizationService.shared
 
     var body: some View {
@@ -11,7 +14,7 @@ struct HistoryChartView: View {
             Text(loc.t("no_results"))
                 .font(.system(size: 13, weight: .medium))
                 .foregroundColor(.npTextSecondary)
-                .frame(maxWidth: .infinity, minHeight: 160)
+                .frame(maxWidth: .infinity, minHeight: height)
         } else {
             Chart {
                 ForEach(results) { r in
@@ -37,17 +40,25 @@ struct HistoryChartView: View {
                 }
             }
             .chartYAxis {
-                AxisMarks(position: .leading) { _ in
-                    AxisGridLine().foregroundStyle(Color.npTextSecondary.opacity(0.15))
-                    AxisValueLabel().foregroundStyle(Color.npTextSecondary).font(.system(size: 10))
+                if compact {
+                    AxisMarks { _ in }
+                } else {
+                    AxisMarks(position: .leading) { _ in
+                        AxisGridLine().foregroundStyle(Color.npTextSecondary.opacity(0.15))
+                        AxisValueLabel().foregroundStyle(Color.npTextSecondary).font(.system(size: 10))
+                    }
                 }
             }
             .chartXAxis {
-                AxisMarks { _ in
-                    AxisValueLabel().foregroundStyle(Color.npTextSecondary).font(.system(size: 10))
+                if compact {
+                    AxisMarks { _ in }
+                } else {
+                    AxisMarks { _ in
+                        AxisValueLabel().foregroundStyle(Color.npTextSecondary).font(.system(size: 10))
+                    }
                 }
             }
-            .frame(height: 160)
+            .frame(height: height)
         }
     }
 }
