@@ -77,4 +77,12 @@ final class ExportServiceTests: XCTestCase {
         XCTAssertEqual(ExportService.escape("\n=x"), "\"'\n=x\"")
         XCTAssertEqual(ExportService.escape("Ev"), "\"Ev\"")
     }
+
+    /// Eski kayıtlardaki "-" yer tutucusu CSV'de boş hücre olur, "'-" değil.
+    func test_csvLegacyDashBecomesEmpty() {
+        let r = SpeedTestResult(downloadSpeed: 1, uploadSpeed: 1, ping: 1, jitter: 1, ssid: "-", isp: "Vodafone", ipAddress: "-")
+        let row = String(ExportService.csv([r]).split(separator: "\n")[1])
+        XCTAssertTrue(row.hasSuffix(",\"cellular\",\"\",\"Vodafone\",1.00,1.00,1.00,1.00,\"\""), row)
+        XCTAssertFalse(row.contains("'-"), row)
+    }
 }

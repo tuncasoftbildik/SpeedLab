@@ -22,9 +22,28 @@ class SpeedTestViewModel: ObservableObject {
     /// Sonuç kartları kadranın altından kayarak gelir (bitişten 0.8 sn sonra).
     @Published var showResultCards = false
 
-    /// Bitiş → kartlar → interstitial zamanlaması (spec: 0.8 sn + 1.5 sn).
-    static let cardsDelay: UInt64 = 800_000_000
-    static let interstitialDelay: UInt64 = 1_500_000_000
+    /// Bitiş → kartlar → interstitial zamanlaması (spec: 0.8 sn + 1.5 sn). Testlerde kısaltılır.
+    var cardsDelayNs: UInt64 = 800_000_000
+    var interstitialDelayNs: UInt64 = 1_500_000_000
+    /// Reklam sunumu; testlerde sayaçla değiştirilir.
+    var presentInterstitial: () -> Void = { AdManager.shared.showInterstitialIfNeeded() }
+
+    /// Her testin koşu kimliği: bitiş dizisi (kartlar, reklam) yalnız kendi koşusu hâlâ güncelse ilerler.
+    private var runID = UUID()
+
+    @discardableResult
+    func beginRun() -> UUID { runID = UUID(); return runID }
+    func invalidateRun() { runID = UUID() }
+
+    /// İbre bekler → kartlar kayar → interstitial. Yeni test başladıysa ya da faz değiştiyse sessizce çıkar.
+    func finishPresentation(runID id: UUID) async {
+        try? await Task.sleep(nanoseconds: cardsDelayNs)
+        guard id == runID, phase == .completed else { return }
+        withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) { showResultCards = true }
+        try? await Task.sleep(nanoseconds: interstitialDelayNs)
+        guard id == runID, phase == .completed else { return }
+        presentInterstitial()
+    }
 
     private let speedService = SpeedTestService()
     private let networkService = NetworkService()
@@ -42,6 +61,7 @@ class SpeedTestViewModel: ObservableObject {
     func startTest() async {
         guard !isRunning else { return }
         isRunning = true
+        let myRun = beginRun()
         resetValues()
         haptic(.medium)
 
@@ -135,11 +155,8 @@ class SpeedTestViewModel: ObservableObject {
         historyService.save(result)
         isRunning = false
 
-        // İbre son değerde bekler → kartlar kayar → interstitial (Pro hariç)
-        try? await Task.sleep(nanoseconds: Self.cardsDelay)
-        withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) { showResultCards = true }
-        try? await Task.sleep(nanoseconds: Self.interstitialDelay)
-        AdManager.shared.showInterstitialIfNeeded()
+        // İbre son değerde bekler → kartlar kayar → interstitial (Pro hariç); yeni dokunuş gelirse iptal.
+        await finishPresentation(runID: myRun)
     }
 
     private func resetValues() {

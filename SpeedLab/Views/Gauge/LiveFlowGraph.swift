@@ -64,8 +64,8 @@ struct LiveFlowGraph: View {
 
             // Son nokta
             if !download.isEmpty, let last = dl.last {
-                ctx.fill(Path(ellipseIn: CGRect(x: last.x - 7, y: last.y - 7, width: 14, height: 14)), with: .color(.white.opacity(0.18)))
-                ctx.fill(Path(ellipseIn: CGRect(x: last.x - 3.5, y: last.y - 3.5, width: 7, height: 7)), with: .color(.white))
+                ctx.fill(Path(ellipseIn: CGRect(x: last.x - 7, y: last.y - 7, width: 14, height: 14)), with: .color(Color.npTextPrimary.opacity(0.18)))
+                ctx.fill(Path(ellipseIn: CGRect(x: last.x - 3.5, y: last.y - 3.5, width: 7, height: 7)), with: .color(.npTextPrimary))
             }
         }
         .frame(height: height)

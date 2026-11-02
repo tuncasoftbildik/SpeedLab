@@ -132,7 +132,7 @@ struct OnboardingView: View {
                             Image(systemName: currentPage < pages.count - 1 ? "arrow.right" : "bolt.fill")
                                 .font(.system(size: 14, weight: .bold))
                         }
-                        .foregroundColor(.npTextPrimary)
+                        .foregroundColor(.npBrandTextPrimary)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
                         .background(

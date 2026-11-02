@@ -45,7 +45,7 @@ struct HistoryView: View {
                                 .listRowInsets(EdgeInsets(top: 4, leading: 20, bottom: 4, trailing: 20))
                         }
 
-                        ForEach(historyVM.results) { result in
+                        ForEach(historyVM.filteredResults) { result in
                             HistoryCard(result: result)
                                 .listRowBackground(Color.clear)
                                 .listRowSeparator(.hidden)
@@ -63,6 +63,7 @@ struct HistoryView: View {
             }
         }
         .onAppear { historyVM.load(isPro: storeVM.isPro) }
+        .onChange(of: storeVM.isPro) { historyVM.load(isPro: $0) }
         .alert(loc.t("delete_confirm"), isPresented: $showDeleteAlert) {
             Button(loc.t("cancel"), role: .cancel) {}
             Button(loc.t("delete_all"), role: .destructive) { historyVM.deleteAll() }
@@ -78,15 +79,16 @@ struct HistoryView: View {
     // MARK: - Dışa aktarma (Pro)
 
     private func exportCSV() {
-        let all = historyVM.results
-        let data = Data(ExportService.csv(all).utf8)
+        let data = Data(ExportService.csv(historyVM.allResults()).utf8)
         ShareSheet.presentFile(data: data, name: ExportService.fileName(kind: "csv", range: historyVM.range, now: Date()))
     }
 
     @MainActor
     private func exportPDF() {
         let rows = historyVM.chartResults(isPro: true)
-        let chartImage = ImageRenderer(content: HistoryChartView(results: rows).frame(width: 515, height: 170).padding(8).background(Color.npBrandBackground)).uiImage
+        let chartImage = ImageRenderer(content: HistoryChartView(results: rows)
+            .frame(width: 515, height: 170).padding(8).background(Color.npBrandBackground)
+            .environment(\.colorScheme, .dark)).uiImage
         let data = ExportService.pdf(results: rows, range: historyVM.range, chart: chartImage, title: loc.t("export_title"))
         ShareSheet.presentFile(data: data, name: ExportService.fileName(kind: "pdf", range: historyVM.range, now: Date()))
     }
