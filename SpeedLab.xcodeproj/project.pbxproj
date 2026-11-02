@@ -48,7 +48,9 @@
 		9105A291CBF1EE24EE354AE9 /* ShareCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D6E08A9DA58BA5C0D4EA1 /* ShareCardView.swift */; };
 		94F15B6CBE415D0B5EB3EF59 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 98301A010E467192804CD196 /* GoogleMobileAds */; };
 		95509055063FFB7264CCC783 /* WiFiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D02F936F41B69DE75C85AC4 /* WiFiViewModel.swift */; };
+		A6B5E6E527DDCBC8AD58C15B /* Ortak.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 328081D14509CD7FF486DEAC /* Ortak.xcassets */; };
 		A7A8A77ED4FA79373694936D /* HistoryQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = A196807641EE7E548418D0EA /* HistoryQuery.swift */; };
+		AF6DDE25CA705BBB249CFAA9 /* Ortak.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 328081D14509CD7FF486DEAC /* Ortak.xcassets */; };
 		B538CF7944DC9D3F4F9696AE /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBCD597FD3E5F2BCE0A98C9 /* HistoryService.swift */; };
 		B6FD93B0DC6B6D66AB2C3347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 406089864A2DE55136B8A6F3 /* Assets.xcassets */; };
 		B92811C0972CB13DF170E2C0 /* AdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D391FF6A79861108361809 /* AdManager.swift */; };
@@ -123,6 +125,7 @@
 		2D02F936F41B69DE75C85AC4 /* WiFiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiViewModel.swift; sourceTree = "<group>"; };
 		2EFBDD51652760260414DE20 /* LocalizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationService.swift; sourceTree = "<group>"; };
 		2F0BDCDBD391C5D052115019 /* SpeedLab.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SpeedLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		328081D14509CD7FF486DEAC /* Ortak.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Ortak.xcassets; sourceTree = "<group>"; };
 		35EEE70D1311A2C992F8CD8D /* SpeedLabTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SpeedLabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		387C7A6E6511BABBBF0C71B9 /* ShareCardFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardFormat.swift; sourceTree = "<group>"; };
 		3A61F9BE35C9714F927618A0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -260,6 +263,7 @@
 		8A36E3ABC293B512FB357D9C /* WidgetShared */ = {
 			isa = PBXGroup;
 			children = (
+				328081D14509CD7FF486DEAC /* Ortak.xcassets */,
 				56741D3B4B75B5AF42C0FA9B /* SharedStore.swift */,
 				2704678E2B63520B7C9591BD /* WidgetSnapshot.swift */,
 			);
@@ -416,6 +420,7 @@
 			buildConfigurationList = 44E38834058A8D3F9D705019 /* Build configuration list for PBXNativeTarget "SpeedLabWidget" */;
 			buildPhases = (
 				21D4D16C3DBABD96DAC4D177 /* Sources */,
+				CA846D4433B60046C03BA243 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -501,6 +506,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6FD93B0DC6B6D66AB2C3347 /* Assets.xcassets in Resources */,
+				AF6DDE25CA705BBB249CFAA9 /* Ortak.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA846D4433B60046C03BA243 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6B5E6E527DDCBC8AD58C15B /* Ortak.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

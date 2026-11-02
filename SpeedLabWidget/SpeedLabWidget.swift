@@ -79,7 +79,7 @@ struct SpeedLabWidgetEntryView: View {
 
     private var empty: some View {
         VStack(spacing: 8) {
-            Image(systemName: "gauge.high").font(.system(size: 26)).foregroundStyle(LinearGradient.npMain)
+            Image("IkonKucuk").resizable().scaledToFit().frame(width: 31, height: 31)
             Text(loc.t("widget_empty"))
                 .font(.system(size: 13, weight: .semibold))
                 .foregroundColor(.npBrandTextSecondary)
@@ -98,7 +98,7 @@ struct SpeedLabWidgetEntryView: View {
     private func small(_ s: WidgetSnapshot) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(spacing: 4) {
-                Image(systemName: "gauge.high").font(.system(size: 13)).foregroundStyle(LinearGradient.npMain)
+                Image("IkonKucuk").resizable().scaledToFit().frame(width: 16, height: 16)
                 Text("SpeedLab").font(.system(size: 12, weight: .bold)).foregroundColor(.white)
             }
             Spacer()
@@ -119,7 +119,7 @@ struct SpeedLabWidgetEntryView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 HStack(spacing: 6) {
-                    Image(systemName: "gauge.high").font(.system(size: 15)).foregroundStyle(LinearGradient.npMain)
+                    Image("IkonKucuk").resizable().scaledToFit().frame(width: 18, height: 18)
                     Text("SpeedLab").font(.system(size: 15, weight: .bold)).foregroundColor(.white)
                 }
                 Spacer()
@@ -142,7 +142,7 @@ struct SpeedLabWidgetEntryView: View {
     private func large(_ s: WidgetSnapshot) -> some View {
         VStack(spacing: 12) {
             HStack(spacing: 6) {
-                Image(systemName: "gauge.high").font(.system(size: 16)).foregroundStyle(LinearGradient.npMain)
+                Image("IkonKucuk").resizable().scaledToFit().frame(width: 19, height: 19)
                 Text("SpeedLab").font(.system(size: 16, weight: .bold)).foregroundColor(.white)
                 Spacer()
                 Text(relative(s.date)).font(.system(size: 11)).foregroundColor(.npBrandTextSecondary)
