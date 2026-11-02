@@ -63,6 +63,7 @@
 		C9C78A83F57A93F0AA4E7494 /* SpeedTestViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3226B6A11F4D114B56B32151 /* SpeedTestViewModelTests.swift */; };
 		CDA71DA49E8E7AEFF89450FC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61F9BE35C9714F927618A0 /* SettingsView.swift */; };
 		CE91909F39823300F34AD099 /* ShareCardFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C95BE673B90C5520D39E761 /* ShareCardFormatTests.swift */; };
+		D3B88D822A131B9A9697DC18 /* ConnectionHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0377E2331F2B3A576001E2EE /* ConnectionHealth.swift */; };
 		D550385E233FE705709BABA6 /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFBDD51652760260414DE20 /* LocalizationService.swift */; };
 		D9BB5EC41734085B5163CE67 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D131BBCB9D46E667CEAC03E /* QRCodeGenerator.swift */; };
 		DBA5DB3A3C7E6F2ADF3740C0 /* ProBenefitCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD498C44B875DAE34EE1194 /* ProBenefitCards.swift */; };
@@ -112,6 +113,7 @@
 
 /* Begin PBXFileReference section */
 		0148F7F1A5B8F67BCADE9AC4 /* SpeedTestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestService.swift; sourceTree = "<group>"; };
+		0377E2331F2B3A576001E2EE /* ConnectionHealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionHealth.swift; sourceTree = "<group>"; };
 		03B537474ED9EE620D4B0055 /* WiFiAnalyzerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiAnalyzerView.swift; sourceTree = "<group>"; };
 		041381BA2C443B0DB267686A /* HistoryQueryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryQueryTests.swift; sourceTree = "<group>"; };
 		0848AEBDA39CB54E1B9D1A47 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 		C00469F7C7D6290417E10031 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0377E2331F2B3A576001E2EE /* ConnectionHealth.swift */,
 				50DA6BBE4BD3376A9369B6B6 /* GaugeScale.swift */,
 				A196807641EE7E548418D0EA /* HistoryQuery.swift */,
 				ED6DE7F12430D0A0B1B2AEF2 /* SampleBuffer.swift */,
@@ -567,6 +570,7 @@
 				E6C1253CE1242C6086E83BBC /* AppearanceSetting.swift in Sources */,
 				40FC0606F8668B710620537B /* BannerAdView.swift in Sources */,
 				36B86CE4560ECF77C1BFC50D /* Color+Theme.swift in Sources */,
+				D3B88D822A131B9A9697DC18 /* ConnectionHealth.swift in Sources */,
 				1CF9DA5CEF30E6AE2F83EF5C /* ContextResultCard.swift in Sources */,
 				822A5F9FBFEEEBA9F41DFACB /* DialGaugeView.swift in Sources */,
 				13F748C8B533CE43B88B5E1F /* DialGeometry.swift in Sources */,

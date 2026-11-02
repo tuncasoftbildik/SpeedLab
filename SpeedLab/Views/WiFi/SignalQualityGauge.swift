@@ -57,7 +57,7 @@ struct SignalQualityGauge: View {
                             .foregroundColor(.npTextPrimary)
                             .contentTransition(.numericText())
                     } else {
-                        Image(systemName: "wifi.slash")
+                        Image(systemName: "gauge.with.dots.needle.0percent")
                             .font(.system(size: 28))
                             .foregroundColor(.npTextSecondary)
                     }
