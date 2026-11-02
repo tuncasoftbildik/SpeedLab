@@ -107,6 +107,7 @@ class LocalizationService: ObservableObject {
         "health_no_test": ["tr": "iOS sinyal gücünü paylaşmıyor · bir hız testi yapın", "en": "iOS doesn't share signal strength · run a speed test"],
         "signal_history": ["tr": "Sinyal geçmişi · 60 sn", "en": "Signal history · 60 s"],
         "ios_not_shared": ["tr": "iOS paylaşmıyor", "en": "not shared by iOS"],
+        "ios_limitation_note": ["tr": "iOS, uygulamalara sinyal gücü (dBm), bant ve kanal bilgisini vermez; bu değerler yalnız Ayarlar > Wi-Fi'da görünür.", "en": "iOS doesn't expose signal strength (dBm), band or channel to apps; those are only visible in Settings > Wi-Fi."],
         "band": ["tr": "Bant", "en": "Band"],
         "channel": ["tr": "Kanal", "en": "Channel"],
         "bssid": ["tr": "BSSID", "en": "BSSID"],
