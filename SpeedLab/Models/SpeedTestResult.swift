@@ -68,8 +68,14 @@ struct NetworkInfo {
     var ssid: String = "-"
     var bssid: String = "-"
     var ipAddress: String = "-"
+    var publicIP: String = "-"
     var isp: String = "-"
-    var signalStrength: Int = 0 // -100 to 0 dBm
+    var signalStrength: Int = 0 // (kullanılmıyor; iOS dBm vermez)
     var frequency: String = "-"
     var linkSpeed: String = "-"
+    /// NEHotspotNetwork.signalStrength (0–1); nil = yok/ölçülemiyor.
+    var signalQuality: Double? = nil
+    /// "5G" / "LTE" / "3G" (hücresel); nil = yok.
+    var radioTech: String? = nil
+    var connectionKind: ConnectionKind? = nil
 }

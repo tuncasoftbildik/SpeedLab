@@ -14,8 +14,11 @@ class WiFiViewModel: ObservableObject {
     struct SignalPoint: Identifiable {
         let id = UUID()
         let timestamp: Date
-        let strength: Int
+        let quality: Double
     }
+
+    /// Sinyal değeri hiç gelmiyorsa (simülatör, kısıtlı cihaz) grafik gizlenir.
+    var hasSignalData: Bool { signalHistory.contains { $0.quality > 0 } }
 
     func refresh() async {
         let _ = await networkService.requestLocationPermission()
@@ -28,13 +31,14 @@ class WiFiViewModel: ObservableObject {
         isMonitoring = true
         signalHistory = []
 
-        monitorTask = Task {
-            while !Task.isCancelled && isMonitoring {
-                await refresh()
-                let point = SignalPoint(timestamp: Date(), strength: networkInfo.signalStrength)
-                signalHistory.append(point)
-                if signalHistory.count > 60 { signalHistory.removeFirst() }
-                try? await Task.sleep(nanoseconds: 2_000_000_000) // 2 saniye
+        monitorTask = Task { [weak self] in
+            while !Task.isCancelled {
+                guard let self, self.isMonitoring else { break }
+                let hotspot = await self.networkService.fetchHotspot()
+                if let q = hotspot.quality { self.networkInfo.signalQuality = q }
+                self.signalHistory.append(SignalPoint(timestamp: Date(), quality: hotspot.quality ?? 0))
+                if self.signalHistory.count > 30 { self.signalHistory.removeFirst() }
+                try? await Task.sleep(nanoseconds: 2_000_000_000) // 2 sn × 30 = 60 sn
             }
         }
     }
