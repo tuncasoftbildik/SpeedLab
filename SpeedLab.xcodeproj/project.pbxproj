@@ -19,6 +19,7 @@
 		31A6B479052897A5F4C9D265 /* GaugeScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA6BBE4BD3376A9369B6B6 /* GaugeScale.swift */; };
 		33DA9BA36AFCFC7591B89B20 /* ShareCardFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387C7A6E6511BABBBF0C71B9 /* ShareCardFormat.swift */; };
 		36B86CE4560ECF77C1BFC50D /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C27738C78B658E05497DC27 /* Color+Theme.swift */; };
+		396D839EE5B6EA849D24C468 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280154D58F381655103C304D /* ShareSheet.swift */; };
 		3AC0676622F705E36EE67DEB /* SpeedTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A011E188A363CC94B10F9E50 /* SpeedTestViewModel.swift */; };
 		3E2A36985B422368911E5B3A /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56741D3B4B75B5AF42C0FA9B /* SharedStore.swift */; };
 		40FC0606F8668B710620537B /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848AEBDA39CB54E1B9D1A47 /* BannerAdView.swift */; };
@@ -32,6 +33,7 @@
 		6CA5E3BF13B9D3ADB2D4046D /* SpeedLabWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F53B5324AA9654777470555B /* SpeedLabWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6FA40F46D917F5CE84398784 /* SpeedContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BEEA510923DB1B3341C1C8 /* SpeedContextTests.swift */; };
 		7034A296694D72D0C35E5691 /* HistoryQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041381BA2C443B0DB267686A /* HistoryQueryTests.swift */; };
+		7DDC1AF2EC0B5135B91D896C /* ExportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CCE8AC5E5AE6059F649A02 /* ExportServiceTests.swift */; };
 		8026F1F6B9D6DF7C80429DA2 /* SpeedTestResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F1D527ED2B6C4A8E2E1225 /* SpeedTestResultTests.swift */; };
 		822A5F9FBFEEEBA9F41DFACB /* DialGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B990F7DEC31FCD449DBD27 /* DialGaugeView.swift */; };
 		827A946FC403EE7F7A3EB9D1 /* Glass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A1EB66C583B45BFE4259FD /* Glass.swift */; };
@@ -57,6 +59,7 @@
 		CE91909F39823300F34AD099 /* ShareCardFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C95BE673B90C5520D39E761 /* ShareCardFormatTests.swift */; };
 		D550385E233FE705709BABA6 /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFBDD51652760260414DE20 /* LocalizationService.swift */; };
 		D9BB5EC41734085B5163CE67 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D131BBCB9D46E667CEAC03E /* QRCodeGenerator.swift */; };
+		DDE9DA0350F6F36F2F13BA1A /* ExportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92676CC7A9610D72C738F9 /* ExportService.swift */; };
 		E3DA228211B22612B498E081 /* SpeedTestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD56E7A69937207AED50E82 /* SpeedTestResult.swift */; };
 		E6C1253CE1242C6086E83BBC /* AppearanceSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D732383375E9650E73531A93 /* AppearanceSetting.swift */; };
 		E7D808BA1AD05ECFCF9EDFBC /* SampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6DE7F12430D0A0B1B2AEF2 /* SampleBuffer.swift */; };
@@ -111,6 +114,7 @@
 		1C14A866FDA0FA376C7CBCE1 /* TrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingManager.swift; sourceTree = "<group>"; };
 		236D6E08A9DA58BA5C0D4EA1 /* ShareCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardView.swift; sourceTree = "<group>"; };
 		2704678E2B63520B7C9591BD /* WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshot.swift; sourceTree = "<group>"; };
+		280154D58F381655103C304D /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		2D02F936F41B69DE75C85AC4 /* WiFiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiViewModel.swift; sourceTree = "<group>"; };
 		2EFBDD51652760260414DE20 /* LocalizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationService.swift; sourceTree = "<group>"; };
 		2F0BDCDBD391C5D052115019 /* SpeedLab.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SpeedLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +142,7 @@
 		90F2FFFE1BE78D7D97924490 /* ShareCardRendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardRendererTests.swift; sourceTree = "<group>"; };
 		94F1D527ED2B6C4A8E2E1225 /* SpeedTestResultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestResultTests.swift; sourceTree = "<group>"; };
 		95BEEA510923DB1B3341C1C8 /* SpeedContextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedContextTests.swift; sourceTree = "<group>"; };
+		99CCE8AC5E5AE6059F649A02 /* ExportServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportServiceTests.swift; sourceTree = "<group>"; };
 		9CD21C519C379D9A0DEF1AA7 /* SpeedLabWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpeedLabWidget.entitlements; sourceTree = "<group>"; };
 		A011E188A363CC94B10F9E50 /* SpeedTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestViewModel.swift; sourceTree = "<group>"; };
 		A196807641EE7E548418D0EA /* HistoryQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryQuery.swift; sourceTree = "<group>"; };
@@ -145,6 +150,7 @@
 		A9F80F95C55531188D8E8F1A /* AppearanceSettingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSettingTests.swift; sourceTree = "<group>"; };
 		B1A1EB66C583B45BFE4259FD /* Glass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Glass.swift; sourceTree = "<group>"; };
 		BE3C73635005CF5E098A3FD0 /* ContextResultCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextResultCard.swift; sourceTree = "<group>"; };
+		BE92676CC7A9610D72C738F9 /* ExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportService.swift; sourceTree = "<group>"; };
 		BEC304601AD82B02C524E30B /* SpeedTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestView.swift; sourceTree = "<group>"; };
 		C189602C94FDD49A171B6CF3 /* ShareCardRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardRenderer.swift; sourceTree = "<group>"; };
 		C94C97B859D1EA9831A3C78C /* DialGeometryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialGeometryTests.swift; sourceTree = "<group>"; };
@@ -180,6 +186,7 @@
 			children = (
 				5C27738C78B658E05497DC27 /* Color+Theme.swift */,
 				B1A1EB66C583B45BFE4259FD /* Glass.swift */,
+				280154D58F381655103C304D /* ShareSheet.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -288,6 +295,7 @@
 			children = (
 				A9F80F95C55531188D8E8F1A /* AppearanceSettingTests.swift */,
 				C94C97B859D1EA9831A3C78C /* DialGeometryTests.swift */,
+				99CCE8AC5E5AE6059F649A02 /* ExportServiceTests.swift */,
 				65E5F327AA58D0A2974C2FAC /* GaugeScaleTests.swift */,
 				041381BA2C443B0DB267686A /* HistoryQueryTests.swift */,
 				FCA1D9CC550DF516DFEFF018 /* QRCodeGeneratorTests.swift */,
@@ -342,6 +350,7 @@
 			children = (
 				69D391FF6A79861108361809 /* AdManager.swift */,
 				D732383375E9650E73531A93 /* AppearanceSetting.swift */,
+				BE92676CC7A9610D72C738F9 /* ExportService.swift */,
 				ECBCD597FD3E5F2BCE0A98C9 /* HistoryService.swift */,
 				2EFBDD51652760260414DE20 /* LocalizationService.swift */,
 				CEDA7B17D594747CE7AAADE1 /* NetworkService.swift */,
@@ -489,6 +498,7 @@
 			files = (
 				F06D7077C2AFCE98013EF9C2 /* AppearanceSettingTests.swift in Sources */,
 				5074053A3D6FC09B83E110E5 /* DialGeometryTests.swift in Sources */,
+				7DDC1AF2EC0B5135B91D896C /* ExportServiceTests.swift in Sources */,
 				2288E2081956378D2B709B12 /* GaugeScaleTests.swift in Sources */,
 				7034A296694D72D0C35E5691 /* HistoryQueryTests.swift in Sources */,
 				6B7FE41077BCFF7EA29ED889 /* QRCodeGeneratorTests.swift in Sources */,
@@ -513,6 +523,7 @@
 				1CF9DA5CEF30E6AE2F83EF5C /* ContextResultCard.swift in Sources */,
 				822A5F9FBFEEEBA9F41DFACB /* DialGaugeView.swift in Sources */,
 				13F748C8B533CE43B88B5E1F /* DialGeometry.swift in Sources */,
+				DDE9DA0350F6F36F2F13BA1A /* ExportService.swift in Sources */,
 				31A6B479052897A5F4C9D265 /* GaugeScale.swift in Sources */,
 				827A946FC403EE7F7A3EB9D1 /* Glass.swift in Sources */,
 				415EFED1B8E20D3652D6298D /* HistoryChartView.swift in Sources */,
@@ -532,6 +543,7 @@
 				5C9E2F5B93827671251795B3 /* ShareCardRenderer.swift in Sources */,
 				9105A291CBF1EE24EE354AE9 /* ShareCardView.swift in Sources */,
 				C6848FD1096D371ED8DFDFA7 /* ShareGaugeView.swift in Sources */,
+				396D839EE5B6EA849D24C468 /* ShareSheet.swift in Sources */,
 				3E2A36985B422368911E5B3A /* SharedStore.swift in Sources */,
 				31A05CE1F72A8E1D207F58D1 /* SpeedContext.swift in Sources */,
 				F0ECD685D758BCADCC7A7B6D /* SpeedLabApp.swift in Sources */,

@@ -7,6 +7,7 @@ struct HistoryView: View {
     @StateObject private var loc = LocalizationService.shared
     @State private var showDeleteAlert = false
     @State private var showProSheet = false
+    @State private var showExportDialog = false
 
     var body: some View {
         ZStack {
@@ -67,6 +68,27 @@ struct HistoryView: View {
             Button(loc.t("delete_all"), role: .destructive) { historyVM.deleteAll() }
         }
         .sheet(isPresented: $showProSheet) { ProUpgradeSheet().environmentObject(storeVM) }
+        .confirmationDialog(loc.t("export"), isPresented: $showExportDialog, titleVisibility: .visible) {
+            Button(loc.t("export_csv")) { exportCSV() }
+            Button(loc.t("export_pdf")) { exportPDF() }
+            Button(loc.t("cancel"), role: .cancel) {}
+        }
+    }
+
+    // MARK: - Dışa aktarma (Pro)
+
+    private func exportCSV() {
+        let all = historyVM.results
+        let data = Data(ExportService.csv(all).utf8)
+        ShareSheet.presentFile(data: data, name: ExportService.fileName(kind: "csv", range: historyVM.range, now: Date()))
+    }
+
+    @MainActor
+    private func exportPDF() {
+        let rows = historyVM.chartResults(isPro: true)
+        let chartImage = ImageRenderer(content: HistoryChartView(results: rows).frame(width: 515, height: 170).padding(8).background(Color.npBrandBackground)).uiImage
+        let data = ExportService.pdf(results: rows, range: historyVM.range, chart: chartImage, title: loc.t("export_title"))
+        ShareSheet.presentFile(data: data, name: ExportService.fileName(kind: "pdf", range: historyVM.range, now: Date()))
     }
 
     // MARK: - Parçalar
@@ -78,6 +100,20 @@ struct HistoryView: View {
                 .foregroundColor(.npTextPrimary)
             Spacer()
             if !historyVM.results.isEmpty {
+                Button {
+                    if storeVM.isPro { showExportDialog = true } else { showProSheet = true }
+                } label: {
+                    HStack(spacing: 4) {
+                        Image(systemName: "square.and.arrow.up")
+                        Text(loc.t("export"))
+                    }
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundColor(.npCyan)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 7)
+                    .background(Color.npCyan.opacity(0.12))
+                    .clipShape(Capsule())
+                }
                 Button { showDeleteAlert = true } label: {
                     Image(systemName: "trash")
                         .font(.system(size: 14))
