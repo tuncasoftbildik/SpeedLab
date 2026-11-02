@@ -153,9 +153,5 @@ class LocalizationService: ObservableObject {
         "about": ["tr": "Hakkında", "en": "About"],
         "made_by": ["tr": "ViaLab tarafından geliştirildi", "en": "Developed by ViaLab"],
 
-        // Rewarded Ad
-        "watch_ad_extra_test": ["tr": "Reklam İzle, Ekstra Test Kazan", "en": "Watch Ad, Earn Extra Test"],
-        "watch_ad_detail": ["tr": "Reklam izleyerek detaylı raporu gör", "en": "Watch ad to see detailed report"],
-        "reward_earned": ["tr": "Ekstra test hakkı kazandın!", "en": "You earned an extra test!"],
     ]
 }

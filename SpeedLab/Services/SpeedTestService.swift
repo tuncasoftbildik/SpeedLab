@@ -12,7 +12,7 @@ class SpeedTestService {
     private let uploadURL = "https://speed.cloudflare.com/__up"
 
     // MARK: - Ping Test
-    func measurePing(count: Int = 10) async -> (ping: Double, jitter: Double) {
+    func measurePing(count: Int = 10) async -> (ping: Double, jitter: Double, loss: Double) {
         var pings: [Double] = []
 
         for _ in 0..<count {
@@ -29,7 +29,8 @@ class SpeedTestService {
             }
         }
 
-        guard pings.count >= 2 else { return (0, 0) }
+        let loss = count > 0 ? Double(count - pings.count) / Double(count) : 0
+        guard pings.count >= 2 else { return (0, 0, loss) }
 
         let sorted = pings.sorted()
         let trimmed = Array(sorted.dropFirst().dropLast())
@@ -41,7 +42,7 @@ class SpeedTestService {
         }
         let jitter = jitterSum / Double(pings.count - 1)
 
-        return (avgPing, jitter)
+        return (avgPing, jitter, loss)
     }
 
     // MARK: - Download Test

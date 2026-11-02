@@ -10,6 +10,7 @@
 		0F6427637253E1B4549C37ED /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C27738C78B658E05497DC27 /* Color+Theme.swift */; };
 		1025A3666B43B99C5C9CACD9 /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56741D3B4B75B5AF42C0FA9B /* SharedStore.swift */; };
 		2288E2081956378D2B709B12 /* GaugeScaleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E5F327AA58D0A2974C2FAC /* GaugeScaleTests.swift */; };
+		2F96C72D764EE6FCF9A20C37 /* SampleBufferTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E3E2D7074DAFBA420DE58 /* SampleBufferTests.swift */; };
 		30B501B21EEF9A2561FEBBAD /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2704678E2B63520B7C9591BD /* WidgetSnapshot.swift */; };
 		31A05CE1F72A8E1D207F58D1 /* SpeedContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D006F63BF8DFAA6AE0BA01 /* SpeedContext.swift */; };
 		31A6B479052897A5F4C9D265 /* GaugeScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA6BBE4BD3376A9369B6B6 /* GaugeScale.swift */; };
@@ -49,6 +50,7 @@
 		D9BB5EC41734085B5163CE67 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D131BBCB9D46E667CEAC03E /* QRCodeGenerator.swift */; };
 		E3DA228211B22612B498E081 /* SpeedTestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD56E7A69937207AED50E82 /* SpeedTestResult.swift */; };
 		E6C1253CE1242C6086E83BBC /* AppearanceSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D732383375E9650E73531A93 /* AppearanceSetting.swift */; };
+		E7D808BA1AD05ECFCF9EDFBC /* SampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6DE7F12430D0A0B1B2AEF2 /* SampleBuffer.swift */; };
 		F06D7077C2AFCE98013EF9C2 /* AppearanceSettingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F80F95C55531188D8E8F1A /* AppearanceSettingTests.swift */; };
 		F0ECD685D758BCADCC7A7B6D /* SpeedLabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B433922C4A60EE20CBF1EF4 /* SpeedLabApp.swift */; };
 		F116180B594535C0319A164E /* ShareCardRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F2FFFE1BE78D7D97924490 /* ShareCardRendererTests.swift */; };
@@ -114,6 +116,7 @@
 		59E8B607BA999C2FC1638DF1 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		5C27738C78B658E05497DC27 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
 		5CF9B383B966AC8A5F0FDB0E /* StoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
+		5E0E3E2D7074DAFBA420DE58 /* SampleBufferTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBufferTests.swift; sourceTree = "<group>"; };
 		65BD5C301BF237A04D6E2730 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		65E5F327AA58D0A2974C2FAC /* GaugeScaleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeScaleTests.swift; sourceTree = "<group>"; };
 		69D391FF6A79861108361809 /* AdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdManager.swift; sourceTree = "<group>"; };
@@ -138,6 +141,7 @@
 		EAD56E7A69937207AED50E82 /* SpeedTestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestResult.swift; sourceTree = "<group>"; };
 		EC3660514E9FB7BFA77A1ACA /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
 		ECBCD597FD3E5F2BCE0A98C9 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
+		ED6DE7F12430D0A0B1B2AEF2 /* SampleBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBuffer.swift; sourceTree = "<group>"; };
 		F53B5324AA9654777470555B /* SpeedLabWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = SpeedLabWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F54E5D6B797BE47715BA82D0 /* SpeedLabWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLabWidget.swift; sourceTree = "<group>"; };
 		FCA1D9CC550DF516DFEFF018 /* QRCodeGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGeneratorTests.swift; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				50DA6BBE4BD3376A9369B6B6 /* GaugeScale.swift */,
+				ED6DE7F12430D0A0B1B2AEF2 /* SampleBuffer.swift */,
 				A3D006F63BF8DFAA6AE0BA01 /* SpeedContext.swift */,
 				EAD56E7A69937207AED50E82 /* SpeedTestResult.swift */,
 			);
@@ -246,6 +251,7 @@
 				A9F80F95C55531188D8E8F1A /* AppearanceSettingTests.swift */,
 				65E5F327AA58D0A2974C2FAC /* GaugeScaleTests.swift */,
 				FCA1D9CC550DF516DFEFF018 /* QRCodeGeneratorTests.swift */,
+				5E0E3E2D7074DAFBA420DE58 /* SampleBufferTests.swift */,
 				0C95BE673B90C5520D39E761 /* ShareCardFormatTests.swift */,
 				90F2FFFE1BE78D7D97924490 /* ShareCardRendererTests.swift */,
 				D9C5CB407D918CB4D4CD9A3B /* SharedStoreTests.swift */,
@@ -444,6 +450,7 @@
 				F06D7077C2AFCE98013EF9C2 /* AppearanceSettingTests.swift in Sources */,
 				2288E2081956378D2B709B12 /* GaugeScaleTests.swift in Sources */,
 				6B7FE41077BCFF7EA29ED889 /* QRCodeGeneratorTests.swift in Sources */,
+				2F96C72D764EE6FCF9A20C37 /* SampleBufferTests.swift in Sources */,
 				CE91909F39823300F34AD099 /* ShareCardFormatTests.swift in Sources */,
 				F116180B594535C0319A164E /* ShareCardRendererTests.swift in Sources */,
 				8ED1C4332134B4661B69C9F2 /* SharedStoreTests.swift in Sources */,
@@ -471,6 +478,7 @@
 				F57167444CC873EBF58FBAFC /* NetworkService.swift in Sources */,
 				84BDB892CCC2689B5019EF57 /* OnboardingView.swift in Sources */,
 				D9BB5EC41734085B5163CE67 /* QRCodeGenerator.swift in Sources */,
+				E7D808BA1AD05ECFCF9EDFBC /* SampleBuffer.swift in Sources */,
 				CDA71DA49E8E7AEFF89450FC /* SettingsView.swift in Sources */,
 				33DA9BA36AFCFC7591B89B20 /* ShareCardFormat.swift in Sources */,
 				5C9E2F5B93827671251795B3 /* ShareCardRenderer.swift in Sources */,
