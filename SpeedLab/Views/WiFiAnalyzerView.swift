@@ -45,6 +45,7 @@ struct WiFiAnalyzerView: View {
                     .glassCard(cornerRadius: 20)
 
                     infoCard
+                    limitationNote
 
                     if vm.hasSignalData {
                         VStack(alignment: .leading, spacing: 6) {
@@ -99,10 +100,6 @@ struct WiFiAnalyzerView: View {
             Divider().background(Color.npBorder)
             WiFiInfoRow(icon: "dot.radiowaves.left.and.right", label: loc.t("bssid"), value: shortBSSID, color: .npBlue)
             Divider().background(Color.npBorder)
-            WiFiInfoRow(icon: "waveform.path", label: loc.t("band"), value: loc.t("ios_not_shared"), color: .npPurple, dimmed: true)
-            Divider().background(Color.npBorder)
-            WiFiInfoRow(icon: "number.square", label: loc.t("channel"), value: loc.t("ios_not_shared"), color: .npPurple, dimmed: true)
-            Divider().background(Color.npBorder)
             WiFiInfoRow(icon: "network", label: loc.t("local_ip"), value: vm.networkInfo.ipAddress, color: .npBlue)
             Divider().background(Color.npBorder)
             WiFiInfoRow(icon: "globe", label: loc.t("public_ip"), value: vm.networkInfo.publicIP, color: .npGreen)
@@ -111,6 +108,19 @@ struct WiFiAnalyzerView: View {
         }
         .glassCard(cornerRadius: 16)
         .padding(.horizontal, 20)
+    }
+
+    /// Bant/kanal/dBm: iOS üçüncü taraf uygulamalara vermiyor; tek satırlık dürüst not.
+    private var limitationNote: some View {
+        HStack(alignment: .top, spacing: 6) {
+            Image(systemName: "info.circle")
+                .font(.system(size: 11))
+            Text(loc.t("ios_limitation_note"))
+                .font(.system(size: 11, weight: .medium))
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .foregroundColor(.npTextSecondary)
+        .padding(.horizontal, 24)
     }
 
     private var shortBSSID: String {
