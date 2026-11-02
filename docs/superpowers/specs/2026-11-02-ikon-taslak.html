@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><title>SpeedLab ikon</title>
+<style>
+  body{margin:0;background:#101322;font-family:-apple-system,Inter,system-ui,sans-serif;color:#cbd5e1}
+  .grid{display:flex;gap:50px;padding:50px 40px}
+  .col{display:flex;flex-direction:column;align-items:center;gap:22px}
+  .cap{font-size:22px;color:#94a3b8;text-align:center;max-width:360px;line-height:1.4}
+  .cap b{color:#fff;display:block;font-size:26px;margin-bottom:4px}
+  .big{width:300px;height:300px;border-radius:67px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.6)}
+  .small{display:flex;gap:18px;align-items:flex-end}
+  .s{overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  .s120{width:120px;height:120px;border-radius:27px}.s60{width:60px;height:60px;border-radius:13px}.s29{width:29px;height:29px;border-radius:7px}
+  .big img{width:100%;height:100%;display:block}
+  svg{width:100%;height:100%;display:block}
+</style></head><body>
+<div class="grid" id="grid"></div>
+
+<script>
+const NS="http://www.w3.org/2000/svg";
+function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+const LOGMAX=Math.log10(1001);const frac=v=>Math.log10(v+1)/LOGMAX;
+function base(svg,id){
+  const d=el("defs",{},svg);
+  const bg=el("linearGradient",{id:id+"bg",x1:"0",y1:"0",x2:"0",y2:"1"},d);
+  el("stop",{offset:"0",'stop-color':"#141a3a"},bg);el("stop",{offset:"1",'stop-color':"#070a1c"},bg);
+  const g=el("linearGradient",{id:id+"g",x1:"0",y1:"1",x2:"1",y2:"0"},d);
+  el("stop",{offset:"0",'stop-color':"#6366F1"},g);el("stop",{offset:".5",'stop-color':"#3B82F6"},g);el("stop",{offset:"1",'stop-color':"#22d3ee"},g);
+  const glow=el("filter",{id:id+"f",x:"-60%",y:"-60%",width:"220%",height:"220%"},d);
+  el("feGaussianBlur",{stdDeviation:"34"},glow);
+  const glow2=el("filter",{id:id+"f2",x:"-60%",y:"-60%",width:"220%",height:"220%"},d);
+  el("feGaussianBlur",{stdDeviation:"12",result:"b"},glow2);const m=el("feMerge",{},glow2);el("feMergeNode",{in:"b"},m);el("feMergeNode",{in:"SourceGraphic"},m);
+  const r=el("radialGradient",{id:id+"r",cx:".5",cy:".35",r:".7"},d);
+  el("stop",{offset:"0",'stop-color':"#2a3270"},r);el("stop",{offset:"1",'stop-color':"#070a1c"},r);
+  el("rect",{width:1024,height:1024,fill:"url(#"+id+"r)"},svg);
+  return d;
+}
+function ang(start,sweep,f){return (start+f*sweep-90)*Math.PI/180}
+function arc(cx,cy,r,start,sweep,f0,f1){const a0=ang(start,sweep,f0),a1=ang(start,sweep,f1);const x0=cx+r*Math.cos(a0),y0=cy+r*Math.sin(a0),x1=cx+r*Math.cos(a1),y1=cy+r*Math.sin(a1);const la=(f1-f0)*sweep>180?1:0;return `M${x0} ${y0}A${r} ${r} 0 ${la} 1 ${x1} ${y1}`}
+
+// 1 — Tek büyük ibre: kadranı taşan, ucu parlayan ibre, minimal
+function icon1(svg){const id="i1";base(svg,id);const cx=512,cy=600,R=430,st=-135,sw=270,fv=0.72;
+  el("path",{d:arc(cx,cy,R,st,sw,0,1),fill:"none",stroke:"rgba(255,255,255,.08)",'stroke-width':54,'stroke-linecap':"round"},svg);
+  el("path",{d:arc(cx,cy,R,st,sw,0,fv),fill:"none",stroke:"url(#"+id+"g)",'stroke-width':54,'stroke-linecap':"round",opacity:".55",filter:"url(#"+id+"f)"},svg);
+  el("path",{d:arc(cx,cy,R,st,sw,0,fv),fill:"none",stroke:"url(#"+id+"g)",'stroke-width':54,'stroke-linecap':"round"},svg);
+  el("path",{d:arc(cx,cy,R,st,sw,fv-.07,fv),fill:"none",stroke:"#fff",'stroke-width':54,'stroke-linecap':"round",opacity:".9",filter:"url(#"+id+"f2)"},svg);
+  const a=ang(st,sw,fv);const L=R+10;const nx=cx+L*Math.cos(a),ny=cy+L*Math.sin(a);
+  el("line",{x1:cx,y1:cy,x2:nx,y2:ny,stroke:"#22d3ee",'stroke-width':44,'stroke-linecap':"round",opacity:".5",filter:"url(#"+id+"f)"},svg);
+  el("line",{x1:cx,y1:cy,x2:nx,y2:ny,stroke:"#fff",'stroke-width':30,'stroke-linecap':"round"},svg);
+  el("circle",{cx,cy,r:70,fill:"#0b0f26",stroke:"#22d3ee",'stroke-width':18},svg);
+  el("circle",{cx,cy,r:20,fill:"#22d3ee"},svg);
+}
+// 2 — Lab kadranı: ince logaritmik skala, parlayan ibre, koyu cam
+function icon2(svg){const id="i2";base(svg,id);const cx=512,cy=560,R=400,st=-135,sw=270,fv=0.68;
+  // glass disc
+  el("circle",{cx,cy,r:470,fill:"rgba(255,255,255,.035)",stroke:"rgba(255,255,255,.08)",'stroke-width':4},svg);
+  el("path",{d:arc(cx,cy,R,st,sw,0,1),fill:"none",stroke:"rgba(255,255,255,.1)",'stroke-width':30,'stroke-linecap':"round"},svg);
+  el("path",{d:arc(cx,cy,R,st,sw,0,fv),fill:"none",stroke:"url(#"+id+"g)",'stroke-width':30,'stroke-linecap':"round",opacity:".6",filter:"url(#"+id+"f)"},svg);
+  el("path",{d:arc(cx,cy,R,st,sw,0,fv),fill:"none",stroke:"url(#"+id+"g)",'stroke-width':30,'stroke-linecap':"round"},svg);
+  el("path",{d:arc(cx,cy,R,st,sw,fv-.06,fv),fill:"none",stroke:"#fff",'stroke-width':30,'stroke-linecap':"round",opacity:".9",filter:"url(#"+id+"f2)"},svg);
+  for(let i=0;i<=36;i++){const f=i/36,major=i%6===0;const a=ang(st,sw,f);const r0=R-50,r1=R-(major?100:76);
+    el("line",{x1:cx+r0*Math.cos(a),y1:cy+r0*Math.sin(a),x2:cx+r1*Math.cos(a),y2:cy+r1*Math.sin(a),stroke:f<=fv?"rgba(34,211,238,.95)":"rgba(255,255,255,.28)",'stroke-width':major?12:6,'stroke-linecap':"round"},svg)}
+  const a=ang(st,sw,fv);const L=R-70;const nx=cx+L*Math.cos(a),ny=cy+L*Math.sin(a);
+  el("line",{x1:cx,y1:cy,x2:nx,y2:ny,stroke:"#22d3ee",'stroke-width':30,'stroke-linecap':"round",opacity:".55",filter:"url(#"+id+"f)"},svg);
+  el("line",{x1:cx,y1:cy,x2:nx,y2:ny,stroke:"#fff",'stroke-width':16,'stroke-linecap':"round"},svg);
+  el("circle",{cx,cy,r:52,fill:"#0b0f26",stroke:"#22d3ee",'stroke-width':14},svg);
+  el("circle",{cx,cy,r:16,fill:"#22d3ee"},svg);
+}
+// 3 — Neon ivme izi: ibre yok, hızın bıraktığı kuyruk + uçta ışık noktası
+function icon3(svg){const id="i3";base(svg,id);const cx=512,cy=560,st=-135,sw=270,fv=0.74;
+  const rings=[{r:430,w:16,o:.18},{r:360,w:16,o:.12},{r:290,w:16,o:.08}];
+  for(const q of rings)el("path",{d:arc(cx,cy,q.r,st,sw,0,1),fill:"none",stroke:"rgba(255,255,255,"+q.o+")",'stroke-width':q.w,'stroke-linecap':"round"},svg);
+  // tail: widening stroke via stacked arcs
+  for(let k=0;k<10;k++){const f0=fv*(k/10),f1=fv*((k+1)/10);el("path",{d:arc(cx,cy,430,st,sw,f0,f1+.004),fill:"none",stroke:"url(#"+id+"g)",'stroke-width':14+k*7,'stroke-linecap':"round",opacity:.25+k*.075},svg)}
+  el("path",{d:arc(cx,cy,430,st,sw,fv*.5,fv),fill:"none",stroke:"#22d3ee",'stroke-width':70,'stroke-linecap':"round",opacity:".45",filter:"url(#"+id+"f)"},svg);
+  const a=ang(st,sw,fv);const px=cx+430*Math.cos(a),py=cy+430*Math.sin(a);
+  el("circle",{cx:px,cy:py,r:70,fill:"#fff",opacity:".5",filter:"url(#"+id+"f)"},svg);
+  el("circle",{cx:px,cy:py,r:40,fill:"#fff"},svg);
+  // center speed glyph: short bold needle stub pointing to tip
+  const L=250;el("line",{x1:cx,y1:cy,x2:cx+L*Math.cos(a),y2:cy+L*Math.sin(a),stroke:"#fff",'stroke-width':34,'stroke-linecap':"round",opacity:".95"},svg);
+  el("circle",{cx,cy,r:60,fill:"#0b0f26",stroke:"#22d3ee",'stroke-width':16},svg);
+}
+const defs=[["1 · Tek büyük ibre","Kadranı taşan kalın ibre, minimal; en uzaktan okunan.",icon1],["2 · Lab kadranı","Cam disk üstünde ince logaritmik skala, parlayan ibre; A ekranıyla aynı dil.",icon2],["3 · Neon ivme izi","İbre yerine hızın bıraktığı kuyruk ve uçta ışık; hareket hissi.",icon3]];
+const grid=document.getElementById("grid");
+for(const [t,desc,fn] of defs){const col=document.createElement("div");col.className="col";
+  const big=document.createElement("div");big.className="big";const s=el("svg",{viewBox:"0 0 1024 1024"});fn(s);big.appendChild(s);col.appendChild(big);
+  const small=document.createElement("div");small.className="small";for(const c of ["s120","s60","s29"]){const d=document.createElement("div");d.className="s "+c;const s2=el("svg",{viewBox:"0 0 1024 1024"});fn(s2);d.appendChild(s2);small.appendChild(d)}col.appendChild(small);
+  const cap=document.createElement("div");cap.className="cap";cap.innerHTML="<b>"+t+"</b>"+desc;col.appendChild(cap);grid.appendChild(col)}
+{const col=document.createElement("div");col.className="col";const big=document.createElement("div");big.className="big";big.innerHTML='<img src="/cur.png">';col.appendChild(big);const small=document.createElement("div");small.className="small";for(const c of ["s120","s60","s29"]){const d=document.createElement("div");d.className="s "+c;d.innerHTML='<img src="/cur.png" style="width:100%;height:100%;display:block">';small.appendChild(d)}col.appendChild(small);const cap=document.createElement("div");cap.className="cap";cap.innerHTML="<b>Mevcut</b>Karşılaştırma için şu anki ikon.";col.appendChild(cap);grid.appendChild(col)}
+</script></body></html>
