@@ -27,9 +27,9 @@ struct SpeedProvider: TimelineProvider {
 private struct WidgetBackground: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOS 17.0, *) {
-            content.containerBackground(Color.npBackground, for: .widget)
+            content.containerBackground(Color.npBrandBackground, for: .widget)
         } else {
-            content.background(Color.npBackground)
+            content.background(Color.npBrandBackground)
         }
     }
 }
@@ -71,7 +71,7 @@ struct SpeedLabWidgetEntryView: View {
                 .foregroundColor(.white)
             Text(loc.t("widget_pro_sub"))
                 .font(.system(size: 12))
-                .foregroundColor(.npTextSecondary)
+                .foregroundColor(.npBrandTextSecondary)
                 .multilineTextAlignment(.center)
         }
         .padding()
@@ -79,10 +79,10 @@ struct SpeedLabWidgetEntryView: View {
 
     private var empty: some View {
         VStack(spacing: 8) {
-            Image(systemName: "gauge.high").font(.system(size: 26)).foregroundStyle(LinearGradient.npMain)
+            Image("IkonKucuk").resizable().scaledToFit().frame(width: 31, height: 31)
             Text(loc.t("widget_empty"))
                 .font(.system(size: 13, weight: .semibold))
-                .foregroundColor(.npTextSecondary)
+                .foregroundColor(.npBrandTextSecondary)
                 .multilineTextAlignment(.center)
         }
         .padding()
@@ -98,18 +98,18 @@ struct SpeedLabWidgetEntryView: View {
     private func small(_ s: WidgetSnapshot) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(spacing: 4) {
-                Image(systemName: "gauge.high").font(.system(size: 13)).foregroundStyle(LinearGradient.npMain)
+                Image("IkonKucuk").resizable().scaledToFit().frame(width: 16, height: 16)
                 Text("SpeedLab").font(.system(size: 12, weight: .bold)).foregroundColor(.white)
             }
             Spacer()
             Text(String(format: "%.0f", s.download))
                 .font(.system(size: 40, weight: .bold, design: .rounded))
                 .foregroundStyle(LinearGradient.npMain)
-            Text("Mbps ↓").font(.system(size: 11, weight: .semibold)).foregroundColor(.npTextSecondary)
+            Text("Mbps ↓").font(.system(size: 11, weight: .semibold)).foregroundColor(.npBrandTextSecondary)
             Spacer()
             Text("↑\(String(format: "%.0f", s.upload)) · \(String(format: "%.0f", s.ping))ms")
-                .font(.system(size: 11)).foregroundColor(.npTextSecondary)
-            Text(relative(s.date)).font(.system(size: 10)).foregroundColor(.npTextSecondary)
+                .font(.system(size: 11)).foregroundColor(.npBrandTextSecondary)
+            Text(relative(s.date)).font(.system(size: 10)).foregroundColor(.npBrandTextSecondary)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .padding(12)
@@ -119,11 +119,11 @@ struct SpeedLabWidgetEntryView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 HStack(spacing: 6) {
-                    Image(systemName: "gauge.high").font(.system(size: 15)).foregroundStyle(LinearGradient.npMain)
+                    Image("IkonKucuk").resizable().scaledToFit().frame(width: 18, height: 18)
                     Text("SpeedLab").font(.system(size: 15, weight: .bold)).foregroundColor(.white)
                 }
                 Spacer()
-                Text(relative(s.date)).font(.system(size: 11)).foregroundColor(.npTextSecondary)
+                Text(relative(s.date)).font(.system(size: 11)).foregroundColor(.npBrandTextSecondary)
             }
             HStack(spacing: 18) {
                 metric("\(String(format: "%.0f", s.download))", "↓ Mbps", .npCyan)
@@ -132,7 +132,7 @@ struct SpeedLabWidgetEntryView: View {
                 metric("\(String(format: "%.0f", s.jitter))", "jit", .npOrange)
             }
             if !s.isp.isEmpty {
-                Text(s.isp).font(.system(size: 12)).foregroundColor(.npTextSecondary)
+                Text(s.isp).font(.system(size: 12)).foregroundColor(.npBrandTextSecondary)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
@@ -142,10 +142,10 @@ struct SpeedLabWidgetEntryView: View {
     private func large(_ s: WidgetSnapshot) -> some View {
         VStack(spacing: 12) {
             HStack(spacing: 6) {
-                Image(systemName: "gauge.high").font(.system(size: 16)).foregroundStyle(LinearGradient.npMain)
+                Image("IkonKucuk").resizable().scaledToFit().frame(width: 19, height: 19)
                 Text("SpeedLab").font(.system(size: 16, weight: .bold)).foregroundColor(.white)
                 Spacer()
-                Text(relative(s.date)).font(.system(size: 11)).foregroundColor(.npTextSecondary)
+                Text(relative(s.date)).font(.system(size: 11)).foregroundColor(.npBrandTextSecondary)
             }
             ShareGaugeView(value: min(s.download / 200.0, 1.0), speed: s.download, diameter: 150)
             HStack(spacing: 22) {
@@ -155,7 +155,7 @@ struct SpeedLabWidgetEntryView: View {
             }
             if !entry.recent.isEmpty {
                 VStack(spacing: 4) {
-                    Text(loc.t("widget_recent")).font(.system(size: 11, weight: .semibold)).foregroundColor(.npTextSecondary)
+                    Text(loc.t("widget_recent")).font(.system(size: 11, weight: .semibold)).foregroundColor(.npBrandTextSecondary)
                     HStack(spacing: 16) {
                         ForEach(Array(entry.recent.enumerated()), id: \.offset) { _, dl in
                             Text("\(String(format: "%.0f", dl))↓").font(.system(size: 13, weight: .bold)).foregroundColor(.white)

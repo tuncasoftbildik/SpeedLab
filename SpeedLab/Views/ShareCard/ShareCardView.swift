@@ -27,9 +27,10 @@ struct ShareCardView: View {
         VStack(spacing: 0) {
             // Brand
             HStack(spacing: 14) {
-                Image(systemName: "gauge.high")
-                    .font(.system(size: 44, weight: .bold))
-                    .foregroundStyle(LinearGradient.npMain)
+                Image("IkonKucuk")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 56, height: 56)
                 Text("SpeedLab")
                     .font(.system(size: 48, weight: .bold))
                     .foregroundColor(.white)
@@ -69,7 +70,7 @@ struct ShareCardView: View {
             // Footer: ISP · date
             Text(result.isp.isEmpty ? dateText : "\(result.isp) · \(dateText)")
                 .font(.system(size: 30, weight: .medium))
-                .foregroundColor(.npTextSecondary)
+                .foregroundColor(.npBrandTextSecondary)
 
             Spacer(minLength: 36)
 
@@ -92,7 +93,7 @@ struct ShareCardView: View {
         .padding(.vertical, format == .story ? 140 : 80)
         .padding(.horizontal, 80)
         .frame(width: format.pointSize.width, height: format.pointSize.height)
-        .background(Color.npBackground)
+        .background(Color.npBrandBackground)
     }
 
     private func metric(symbol: String, value: String, label: String, color: Color) -> some View {
@@ -105,7 +106,7 @@ struct ShareCardView: View {
                 .foregroundColor(.white)
             Text(label)
                 .font(.system(size: 26, weight: .medium))
-                .foregroundColor(.npTextSecondary)
+                .foregroundColor(.npBrandTextSecondary)
         }
     }
 }

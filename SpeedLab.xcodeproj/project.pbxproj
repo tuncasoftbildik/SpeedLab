@@ -7,49 +7,76 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		082CB15FBD3EABD9BB071C38 /* SignalQualityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C37BF435B7C64B5FE85302D /* SignalQualityTests.swift */; };
 		0F6427637253E1B4549C37ED /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C27738C78B658E05497DC27 /* Color+Theme.swift */; };
 		1025A3666B43B99C5C9CACD9 /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56741D3B4B75B5AF42C0FA9B /* SharedStore.swift */; };
+		13F748C8B533CE43B88B5E1F /* DialGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7CD86E982C410EAE193304 /* DialGeometry.swift */; };
+		1CF9DA5CEF30E6AE2F83EF5C /* ContextResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3C73635005CF5E098A3FD0 /* ContextResultCard.swift */; };
+		1E44D62CF920C3357AA0DDE9 /* TelemetryStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A779FA290D54D9521344CE0 /* TelemetryStrip.swift */; };
+		2288E2081956378D2B709B12 /* GaugeScaleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E5F327AA58D0A2974C2FAC /* GaugeScaleTests.swift */; };
+		2F96C72D764EE6FCF9A20C37 /* SampleBufferTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E3E2D7074DAFBA420DE58 /* SampleBufferTests.swift */; };
 		30B501B21EEF9A2561FEBBAD /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2704678E2B63520B7C9591BD /* WidgetSnapshot.swift */; };
+		31A05CE1F72A8E1D207F58D1 /* SpeedContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D006F63BF8DFAA6AE0BA01 /* SpeedContext.swift */; };
+		31A6B479052897A5F4C9D265 /* GaugeScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DA6BBE4BD3376A9369B6B6 /* GaugeScale.swift */; };
 		33DA9BA36AFCFC7591B89B20 /* ShareCardFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387C7A6E6511BABBBF0C71B9 /* ShareCardFormat.swift */; };
 		36B86CE4560ECF77C1BFC50D /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C27738C78B658E05497DC27 /* Color+Theme.swift */; };
+		396D839EE5B6EA849D24C468 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280154D58F381655103C304D /* ShareSheet.swift */; };
 		3AC0676622F705E36EE67DEB /* SpeedTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A011E188A363CC94B10F9E50 /* SpeedTestViewModel.swift */; };
 		3E2A36985B422368911E5B3A /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56741D3B4B75B5AF42C0FA9B /* SharedStore.swift */; };
 		40FC0606F8668B710620537B /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0848AEBDA39CB54E1B9D1A47 /* BannerAdView.swift */; };
+		415EFED1B8E20D3652D6298D /* HistoryChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881AE8AD2928C165164CF279 /* HistoryChartView.swift */; };
+		5074053A3D6FC09B83E110E5 /* DialGeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C97B859D1EA9831A3C78C /* DialGeometryTests.swift */; };
 		560E1AA98EDA7806758AF6EC /* SpeedLabWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54E5D6B797BE47715BA82D0 /* SpeedLabWidget.swift */; };
 		5B252B5C8A27BE1C78781F29 /* SpeedTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC304601AD82B02C524E30B /* SpeedTestView.swift */; };
 		5C9E2F5B93827671251795B3 /* ShareCardRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C189602C94FDD49A171B6CF3 /* ShareCardRenderer.swift */; };
 		608EA38F686FCAC0502B0C6D /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E8B607BA999C2FC1638DF1 /* HistoryView.swift */; };
 		6B7FE41077BCFF7EA29ED889 /* QRCodeGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D9CC550DF516DFEFF018 /* QRCodeGeneratorTests.swift */; };
 		6CA5E3BF13B9D3ADB2D4046D /* SpeedLabWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F53B5324AA9654777470555B /* SpeedLabWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6FA40F46D917F5CE84398784 /* SpeedContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BEEA510923DB1B3341C1C8 /* SpeedContextTests.swift */; };
+		7034A296694D72D0C35E5691 /* HistoryQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041381BA2C443B0DB267686A /* HistoryQueryTests.swift */; };
+		7A410F00EA18393A2FF83D23 /* SignalQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ABF7D466D0DA93C759943D /* SignalQuality.swift */; };
+		7DDC1AF2EC0B5135B91D896C /* ExportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CCE8AC5E5AE6059F649A02 /* ExportServiceTests.swift */; };
+		8026F1F6B9D6DF7C80429DA2 /* SpeedTestResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F1D527ED2B6C4A8E2E1225 /* SpeedTestResultTests.swift */; };
+		822A5F9FBFEEEBA9F41DFACB /* DialGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B990F7DEC31FCD449DBD27 /* DialGaugeView.swift */; };
 		827A946FC403EE7F7A3EB9D1 /* Glass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A1EB66C583B45BFE4259FD /* Glass.swift */; };
 		8404BB96E283F06F9A33FBA2 /* ShareGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6E1170AAD16ECD3CCEECB /* ShareGaugeView.swift */; };
 		84BDB892CCC2689B5019EF57 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BD5C301BF237A04D6E2730 /* OnboardingView.swift */; };
 		888C277E2A68B944B61A5090 /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2704678E2B63520B7C9591BD /* WidgetSnapshot.swift */; };
 		8ED1C4332134B4661B69C9F2 /* SharedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C5CB407D918CB4D4CD9A3B /* SharedStoreTests.swift */; };
+		8F50CBFC4F50C01C7876DD83 /* SignalQualityGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FD952F8FF0360DDE2F9EC /* SignalQualityGauge.swift */; };
 		8FA372E3AF26D702E1675745 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763214A0377A5CA13678E17C /* MainTabView.swift */; };
 		9105A291CBF1EE24EE354AE9 /* ShareCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D6E08A9DA58BA5C0D4EA1 /* ShareCardView.swift */; };
 		94F15B6CBE415D0B5EB3EF59 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 98301A010E467192804CD196 /* GoogleMobileAds */; };
 		95509055063FFB7264CCC783 /* WiFiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D02F936F41B69DE75C85AC4 /* WiFiViewModel.swift */; };
+		A6B5E6E527DDCBC8AD58C15B /* Ortak.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 328081D14509CD7FF486DEAC /* Ortak.xcassets */; };
+		A7A8A77ED4FA79373694936D /* HistoryQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = A196807641EE7E548418D0EA /* HistoryQuery.swift */; };
+		AF6DDE25CA705BBB249CFAA9 /* Ortak.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 328081D14509CD7FF486DEAC /* Ortak.xcassets */; };
 		B538CF7944DC9D3F4F9696AE /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBCD597FD3E5F2BCE0A98C9 /* HistoryService.swift */; };
 		B6FD93B0DC6B6D66AB2C3347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 406089864A2DE55136B8A6F3 /* Assets.xcassets */; };
 		B92811C0972CB13DF170E2C0 /* AdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D391FF6A79861108361809 /* AdManager.swift */; };
+		BA2C40310949190D64A4824E /* LiveFlowGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB012544BA606015169F92 /* LiveFlowGraph.swift */; };
 		BA5FF3B44486370C49611994 /* TrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C14A866FDA0FA376C7CBCE1 /* TrackingManager.swift */; };
 		BF63B4A7CF90613AAC9186E5 /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3660514E9FB7BFA77A1ACA /* SmokeTests.swift */; };
 		C1AD50E59C4E4FA46F7A0088 /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF9B383B966AC8A5F0FDB0E /* StoreViewModel.swift */; };
 		C648512D1BAEFBFB31AABA3E /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D093D29CB962929831ED3C /* HistoryViewModel.swift */; };
 		C6848FD1096D371ED8DFDFA7 /* ShareGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6E1170AAD16ECD3CCEECB /* ShareGaugeView.swift */; };
+		C9C78A83F57A93F0AA4E7494 /* SpeedTestViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3226B6A11F4D114B56B32151 /* SpeedTestViewModelTests.swift */; };
 		CDA71DA49E8E7AEFF89450FC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61F9BE35C9714F927618A0 /* SettingsView.swift */; };
 		CE91909F39823300F34AD099 /* ShareCardFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C95BE673B90C5520D39E761 /* ShareCardFormatTests.swift */; };
 		D550385E233FE705709BABA6 /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFBDD51652760260414DE20 /* LocalizationService.swift */; };
 		D9BB5EC41734085B5163CE67 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D131BBCB9D46E667CEAC03E /* QRCodeGenerator.swift */; };
+		DBA5DB3A3C7E6F2ADF3740C0 /* ProBenefitCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD498C44B875DAE34EE1194 /* ProBenefitCards.swift */; };
+		DDE9DA0350F6F36F2F13BA1A /* ExportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92676CC7A9610D72C738F9 /* ExportService.swift */; };
 		E3DA228211B22612B498E081 /* SpeedTestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD56E7A69937207AED50E82 /* SpeedTestResult.swift */; };
+		E6C1253CE1242C6086E83BBC /* AppearanceSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D732383375E9650E73531A93 /* AppearanceSetting.swift */; };
+		E7D808BA1AD05ECFCF9EDFBC /* SampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6DE7F12430D0A0B1B2AEF2 /* SampleBuffer.swift */; };
+		F06D7077C2AFCE98013EF9C2 /* AppearanceSettingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F80F95C55531188D8E8F1A /* AppearanceSettingTests.swift */; };
 		F0ECD685D758BCADCC7A7B6D /* SpeedLabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B433922C4A60EE20CBF1EF4 /* SpeedLabApp.swift */; };
 		F116180B594535C0319A164E /* ShareCardRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F2FFFE1BE78D7D97924490 /* ShareCardRendererTests.swift */; };
 		F165518AC76746280D7F8D29 /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFBDD51652760260414DE20 /* LocalizationService.swift */; };
 		F513A334B7B15C2FF46498A9 /* SpeedTestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0148F7F1A5B8F67BCADE9AC4 /* SpeedTestService.swift */; };
 		F57167444CC873EBF58FBAFC /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA7B17D594747CE7AAADE1 /* NetworkService.swift */; };
 		F87344962179ABF60F9BF4FA /* WiFiAnalyzerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B537474ED9EE620D4B0055 /* WiFiAnalyzerView.swift */; };
-		FF775D8BE5213BDD568D3936 /* SpeedGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD00C0AD9EBADCA1EF6359 /* SpeedGaugeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,44 +113,70 @@
 /* Begin PBXFileReference section */
 		0148F7F1A5B8F67BCADE9AC4 /* SpeedTestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestService.swift; sourceTree = "<group>"; };
 		03B537474ED9EE620D4B0055 /* WiFiAnalyzerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiAnalyzerView.swift; sourceTree = "<group>"; };
+		041381BA2C443B0DB267686A /* HistoryQueryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryQueryTests.swift; sourceTree = "<group>"; };
 		0848AEBDA39CB54E1B9D1A47 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
 		0C95BE673B90C5520D39E761 /* ShareCardFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardFormatTests.swift; sourceTree = "<group>"; };
 		0D131BBCB9D46E667CEAC03E /* QRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
+		0FD498C44B875DAE34EE1194 /* ProBenefitCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProBenefitCards.swift; sourceTree = "<group>"; };
 		16D093D29CB962929831ED3C /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
-		1BDD00C0AD9EBADCA1EF6359 /* SpeedGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedGaugeView.swift; sourceTree = "<group>"; };
 		1C14A866FDA0FA376C7CBCE1 /* TrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingManager.swift; sourceTree = "<group>"; };
 		236D6E08A9DA58BA5C0D4EA1 /* ShareCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardView.swift; sourceTree = "<group>"; };
 		2704678E2B63520B7C9591BD /* WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshot.swift; sourceTree = "<group>"; };
+		280154D58F381655103C304D /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		2D02F936F41B69DE75C85AC4 /* WiFiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiViewModel.swift; sourceTree = "<group>"; };
 		2EFBDD51652760260414DE20 /* LocalizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationService.swift; sourceTree = "<group>"; };
 		2F0BDCDBD391C5D052115019 /* SpeedLab.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SpeedLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3226B6A11F4D114B56B32151 /* SpeedTestViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestViewModelTests.swift; sourceTree = "<group>"; };
+		328081D14509CD7FF486DEAC /* Ortak.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Ortak.xcassets; sourceTree = "<group>"; };
 		35EEE70D1311A2C992F8CD8D /* SpeedLabTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SpeedLabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		387C7A6E6511BABBBF0C71B9 /* ShareCardFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardFormat.swift; sourceTree = "<group>"; };
 		3A61F9BE35C9714F927618A0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		406089864A2DE55136B8A6F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		46B990F7DEC31FCD449DBD27 /* DialGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialGaugeView.swift; sourceTree = "<group>"; };
+		47ABF7D466D0DA93C759943D /* SignalQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalQuality.swift; sourceTree = "<group>"; };
 		4B433922C4A60EE20CBF1EF4 /* SpeedLabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLabApp.swift; sourceTree = "<group>"; };
+		50DA6BBE4BD3376A9369B6B6 /* GaugeScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeScale.swift; sourceTree = "<group>"; };
 		56741D3B4B75B5AF42C0FA9B /* SharedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStore.swift; sourceTree = "<group>"; };
 		59E8B607BA999C2FC1638DF1 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		5A779FA290D54D9521344CE0 /* TelemetryStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelemetryStrip.swift; sourceTree = "<group>"; };
 		5C27738C78B658E05497DC27 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
+		5C37BF435B7C64B5FE85302D /* SignalQualityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalQualityTests.swift; sourceTree = "<group>"; };
 		5CF9B383B966AC8A5F0FDB0E /* StoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
+		5E0E3E2D7074DAFBA420DE58 /* SampleBufferTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBufferTests.swift; sourceTree = "<group>"; };
 		65BD5C301BF237A04D6E2730 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		65E5F327AA58D0A2974C2FAC /* GaugeScaleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeScaleTests.swift; sourceTree = "<group>"; };
 		69D391FF6A79861108361809 /* AdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdManager.swift; sourceTree = "<group>"; };
 		7111FCDEBBC0A2B14F0B36A3 /* SpeedLab.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpeedLab.entitlements; sourceTree = "<group>"; };
 		763214A0377A5CA13678E17C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		82DBA17A483B756E07B91C7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		881AE8AD2928C165164CF279 /* HistoryChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryChartView.swift; sourceTree = "<group>"; };
+		8A7CD86E982C410EAE193304 /* DialGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialGeometry.swift; sourceTree = "<group>"; };
 		90F2FFFE1BE78D7D97924490 /* ShareCardRendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardRendererTests.swift; sourceTree = "<group>"; };
+		94F1D527ED2B6C4A8E2E1225 /* SpeedTestResultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestResultTests.swift; sourceTree = "<group>"; };
+		95BEEA510923DB1B3341C1C8 /* SpeedContextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedContextTests.swift; sourceTree = "<group>"; };
+		99CCE8AC5E5AE6059F649A02 /* ExportServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportServiceTests.swift; sourceTree = "<group>"; };
 		9CD21C519C379D9A0DEF1AA7 /* SpeedLabWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpeedLabWidget.entitlements; sourceTree = "<group>"; };
 		A011E188A363CC94B10F9E50 /* SpeedTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestViewModel.swift; sourceTree = "<group>"; };
+		A196807641EE7E548418D0EA /* HistoryQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryQuery.swift; sourceTree = "<group>"; };
+		A3D006F63BF8DFAA6AE0BA01 /* SpeedContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedContext.swift; sourceTree = "<group>"; };
+		A9F80F95C55531188D8E8F1A /* AppearanceSettingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSettingTests.swift; sourceTree = "<group>"; };
+		B05FD952F8FF0360DDE2F9EC /* SignalQualityGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalQualityGauge.swift; sourceTree = "<group>"; };
 		B1A1EB66C583B45BFE4259FD /* Glass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Glass.swift; sourceTree = "<group>"; };
+		BE3C73635005CF5E098A3FD0 /* ContextResultCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextResultCard.swift; sourceTree = "<group>"; };
+		BE92676CC7A9610D72C738F9 /* ExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportService.swift; sourceTree = "<group>"; };
 		BEC304601AD82B02C524E30B /* SpeedTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestView.swift; sourceTree = "<group>"; };
 		C189602C94FDD49A171B6CF3 /* ShareCardRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardRenderer.swift; sourceTree = "<group>"; };
+		C94C97B859D1EA9831A3C78C /* DialGeometryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialGeometryTests.swift; sourceTree = "<group>"; };
 		CEDA7B17D594747CE7AAADE1 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		D732383375E9650E73531A93 /* AppearanceSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSetting.swift; sourceTree = "<group>"; };
+		D9BB012544BA606015169F92 /* LiveFlowGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveFlowGraph.swift; sourceTree = "<group>"; };
 		D9C5CB407D918CB4D4CD9A3B /* SharedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStoreTests.swift; sourceTree = "<group>"; };
 		E11E631DBFD74A79C366B11C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E9D6E1170AAD16ECD3CCEECB /* ShareGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareGaugeView.swift; sourceTree = "<group>"; };
 		EAD56E7A69937207AED50E82 /* SpeedTestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestResult.swift; sourceTree = "<group>"; };
 		EC3660514E9FB7BFA77A1ACA /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
 		ECBCD597FD3E5F2BCE0A98C9 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
+		ED6DE7F12430D0A0B1B2AEF2 /* SampleBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBuffer.swift; sourceTree = "<group>"; };
 		F53B5324AA9654777470555B /* SpeedLabWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = SpeedLabWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F54E5D6B797BE47715BA82D0 /* SpeedLabWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLabWidget.swift; sourceTree = "<group>"; };
 		FCA1D9CC550DF516DFEFF018 /* QRCodeGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGeneratorTests.swift; sourceTree = "<group>"; };
@@ -146,6 +199,7 @@
 			children = (
 				5C27738C78B658E05497DC27 /* Color+Theme.swift */,
 				B1A1EB66C583B45BFE4259FD /* Glass.swift */,
+				280154D58F381655103C304D /* ShareSheet.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -158,10 +212,13 @@
 				763214A0377A5CA13678E17C /* MainTabView.swift */,
 				65BD5C301BF237A04D6E2730 /* OnboardingView.swift */,
 				3A61F9BE35C9714F927618A0 /* SettingsView.swift */,
-				1BDD00C0AD9EBADCA1EF6359 /* SpeedGaugeView.swift */,
 				BEC304601AD82B02C524E30B /* SpeedTestView.swift */,
 				03B537474ED9EE620D4B0055 /* WiFiAnalyzerView.swift */,
+				A4264A92A1C0415526476E3F /* Gauge */,
+				61FB7808BB4897C8E7679F27 /* History */,
+				9CDF4BFA897EA538EB792F05 /* Pro */,
 				9DF438D97268E6570877D810 /* ShareCard */,
+				A7632558F3E9E4C56A62A6FE /* WiFi */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -197,13 +254,30 @@
 			);
 			sourceTree = "<group>";
 		};
+		61FB7808BB4897C8E7679F27 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				881AE8AD2928C165164CF279 /* HistoryChartView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 		8A36E3ABC293B512FB357D9C /* WidgetShared */ = {
 			isa = PBXGroup;
 			children = (
+				328081D14509CD7FF486DEAC /* Ortak.xcassets */,
 				56741D3B4B75B5AF42C0FA9B /* SharedStore.swift */,
 				2704678E2B63520B7C9591BD /* WidgetSnapshot.swift */,
 			);
 			path = WidgetShared;
+			sourceTree = "<group>";
+		};
+		9CDF4BFA897EA538EB792F05 /* Pro */ = {
+			isa = PBXGroup;
+			children = (
+				0FD498C44B875DAE34EE1194 /* ProBenefitCards.swift */,
+			);
+			path = Pro;
 			sourceTree = "<group>";
 		};
 		9DF438D97268E6570877D810 /* ShareCard */ = {
@@ -216,9 +290,34 @@
 			path = ShareCard;
 			sourceTree = "<group>";
 		};
+		A4264A92A1C0415526476E3F /* Gauge */ = {
+			isa = PBXGroup;
+			children = (
+				BE3C73635005CF5E098A3FD0 /* ContextResultCard.swift */,
+				46B990F7DEC31FCD449DBD27 /* DialGaugeView.swift */,
+				8A7CD86E982C410EAE193304 /* DialGeometry.swift */,
+				D9BB012544BA606015169F92 /* LiveFlowGraph.swift */,
+				5A779FA290D54D9521344CE0 /* TelemetryStrip.swift */,
+			);
+			path = Gauge;
+			sourceTree = "<group>";
+		};
+		A7632558F3E9E4C56A62A6FE /* WiFi */ = {
+			isa = PBXGroup;
+			children = (
+				B05FD952F8FF0360DDE2F9EC /* SignalQualityGauge.swift */,
+			);
+			path = WiFi;
+			sourceTree = "<group>";
+		};
 		C00469F7C7D6290417E10031 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				50DA6BBE4BD3376A9369B6B6 /* GaugeScale.swift */,
+				A196807641EE7E548418D0EA /* HistoryQuery.swift */,
+				ED6DE7F12430D0A0B1B2AEF2 /* SampleBuffer.swift */,
+				47ABF7D466D0DA93C759943D /* SignalQuality.swift */,
+				A3D006F63BF8DFAA6AE0BA01 /* SpeedContext.swift */,
 				EAD56E7A69937207AED50E82 /* SpeedTestResult.swift */,
 			);
 			path = Models;
@@ -227,11 +326,21 @@
 		CEF961B4CB5A5D9589652427 /* SpeedLabTests */ = {
 			isa = PBXGroup;
 			children = (
+				A9F80F95C55531188D8E8F1A /* AppearanceSettingTests.swift */,
+				C94C97B859D1EA9831A3C78C /* DialGeometryTests.swift */,
+				99CCE8AC5E5AE6059F649A02 /* ExportServiceTests.swift */,
+				65E5F327AA58D0A2974C2FAC /* GaugeScaleTests.swift */,
+				041381BA2C443B0DB267686A /* HistoryQueryTests.swift */,
 				FCA1D9CC550DF516DFEFF018 /* QRCodeGeneratorTests.swift */,
+				5E0E3E2D7074DAFBA420DE58 /* SampleBufferTests.swift */,
 				0C95BE673B90C5520D39E761 /* ShareCardFormatTests.swift */,
 				90F2FFFE1BE78D7D97924490 /* ShareCardRendererTests.swift */,
 				D9C5CB407D918CB4D4CD9A3B /* SharedStoreTests.swift */,
+				5C37BF435B7C64B5FE85302D /* SignalQualityTests.swift */,
 				EC3660514E9FB7BFA77A1ACA /* SmokeTests.swift */,
+				95BEEA510923DB1B3341C1C8 /* SpeedContextTests.swift */,
+				94F1D527ED2B6C4A8E2E1225 /* SpeedTestResultTests.swift */,
+				3226B6A11F4D114B56B32151 /* SpeedTestViewModelTests.swift */,
 			);
 			path = SpeedLabTests;
 			sourceTree = "<group>";
@@ -275,6 +384,8 @@
 			isa = PBXGroup;
 			children = (
 				69D391FF6A79861108361809 /* AdManager.swift */,
+				D732383375E9650E73531A93 /* AppearanceSetting.swift */,
+				BE92676CC7A9610D72C738F9 /* ExportService.swift */,
 				ECBCD597FD3E5F2BCE0A98C9 /* HistoryService.swift */,
 				2EFBDD51652760260414DE20 /* LocalizationService.swift */,
 				CEDA7B17D594747CE7AAADE1 /* NetworkService.swift */,
@@ -312,6 +423,7 @@
 			buildConfigurationList = 44E38834058A8D3F9D705019 /* Build configuration list for PBXNativeTarget "SpeedLabWidget" */;
 			buildPhases = (
 				21D4D16C3DBABD96DAC4D177 /* Sources */,
+				CA846D4433B60046C03BA243 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -397,6 +509,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6FD93B0DC6B6D66AB2C3347 /* Assets.xcassets in Resources */,
+				AF6DDE25CA705BBB249CFAA9 /* Ortak.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA846D4433B60046C03BA243 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6B5E6E527DDCBC8AD58C15B /* Ortak.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,11 +541,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F06D7077C2AFCE98013EF9C2 /* AppearanceSettingTests.swift in Sources */,
+				5074053A3D6FC09B83E110E5 /* DialGeometryTests.swift in Sources */,
+				7DDC1AF2EC0B5135B91D896C /* ExportServiceTests.swift in Sources */,
+				2288E2081956378D2B709B12 /* GaugeScaleTests.swift in Sources */,
+				7034A296694D72D0C35E5691 /* HistoryQueryTests.swift in Sources */,
 				6B7FE41077BCFF7EA29ED889 /* QRCodeGeneratorTests.swift in Sources */,
+				2F96C72D764EE6FCF9A20C37 /* SampleBufferTests.swift in Sources */,
 				CE91909F39823300F34AD099 /* ShareCardFormatTests.swift in Sources */,
 				F116180B594535C0319A164E /* ShareCardRendererTests.swift in Sources */,
 				8ED1C4332134B4661B69C9F2 /* SharedStoreTests.swift in Sources */,
+				082CB15FBD3EABD9BB071C38 /* SignalQualityTests.swift in Sources */,
 				BF63B4A7CF90613AAC9186E5 /* SmokeTests.swift in Sources */,
+				6FA40F46D917F5CE84398784 /* SpeedContextTests.swift in Sources */,
+				8026F1F6B9D6DF7C80429DA2 /* SpeedTestResultTests.swift in Sources */,
+				C9C78A83F57A93F0AA4E7494 /* SpeedTestViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,30 +564,45 @@
 			buildActionMask = 2147483647;
 			files = (
 				B92811C0972CB13DF170E2C0 /* AdManager.swift in Sources */,
+				E6C1253CE1242C6086E83BBC /* AppearanceSetting.swift in Sources */,
 				40FC0606F8668B710620537B /* BannerAdView.swift in Sources */,
 				36B86CE4560ECF77C1BFC50D /* Color+Theme.swift in Sources */,
+				1CF9DA5CEF30E6AE2F83EF5C /* ContextResultCard.swift in Sources */,
+				822A5F9FBFEEEBA9F41DFACB /* DialGaugeView.swift in Sources */,
+				13F748C8B533CE43B88B5E1F /* DialGeometry.swift in Sources */,
+				DDE9DA0350F6F36F2F13BA1A /* ExportService.swift in Sources */,
+				31A6B479052897A5F4C9D265 /* GaugeScale.swift in Sources */,
 				827A946FC403EE7F7A3EB9D1 /* Glass.swift in Sources */,
+				415EFED1B8E20D3652D6298D /* HistoryChartView.swift in Sources */,
+				A7A8A77ED4FA79373694936D /* HistoryQuery.swift in Sources */,
 				B538CF7944DC9D3F4F9696AE /* HistoryService.swift in Sources */,
 				608EA38F686FCAC0502B0C6D /* HistoryView.swift in Sources */,
 				C648512D1BAEFBFB31AABA3E /* HistoryViewModel.swift in Sources */,
+				BA2C40310949190D64A4824E /* LiveFlowGraph.swift in Sources */,
 				F165518AC76746280D7F8D29 /* LocalizationService.swift in Sources */,
 				8FA372E3AF26D702E1675745 /* MainTabView.swift in Sources */,
 				F57167444CC873EBF58FBAFC /* NetworkService.swift in Sources */,
 				84BDB892CCC2689B5019EF57 /* OnboardingView.swift in Sources */,
+				DBA5DB3A3C7E6F2ADF3740C0 /* ProBenefitCards.swift in Sources */,
 				D9BB5EC41734085B5163CE67 /* QRCodeGenerator.swift in Sources */,
+				E7D808BA1AD05ECFCF9EDFBC /* SampleBuffer.swift in Sources */,
 				CDA71DA49E8E7AEFF89450FC /* SettingsView.swift in Sources */,
 				33DA9BA36AFCFC7591B89B20 /* ShareCardFormat.swift in Sources */,
 				5C9E2F5B93827671251795B3 /* ShareCardRenderer.swift in Sources */,
 				9105A291CBF1EE24EE354AE9 /* ShareCardView.swift in Sources */,
 				C6848FD1096D371ED8DFDFA7 /* ShareGaugeView.swift in Sources */,
+				396D839EE5B6EA849D24C468 /* ShareSheet.swift in Sources */,
 				3E2A36985B422368911E5B3A /* SharedStore.swift in Sources */,
-				FF775D8BE5213BDD568D3936 /* SpeedGaugeView.swift in Sources */,
+				7A410F00EA18393A2FF83D23 /* SignalQuality.swift in Sources */,
+				8F50CBFC4F50C01C7876DD83 /* SignalQualityGauge.swift in Sources */,
+				31A05CE1F72A8E1D207F58D1 /* SpeedContext.swift in Sources */,
 				F0ECD685D758BCADCC7A7B6D /* SpeedLabApp.swift in Sources */,
 				E3DA228211B22612B498E081 /* SpeedTestResult.swift in Sources */,
 				F513A334B7B15C2FF46498A9 /* SpeedTestService.swift in Sources */,
 				5B252B5C8A27BE1C78781F29 /* SpeedTestView.swift in Sources */,
 				3AC0676622F705E36EE67DEB /* SpeedTestViewModel.swift in Sources */,
 				C1AD50E59C4E4FA46F7A0088 /* StoreViewModel.swift in Sources */,
+				1E44D62CF920C3357AA0DDE9 /* TelemetryStrip.swift in Sources */,
 				BA5FF3B44486370C49611994 /* TrackingManager.swift in Sources */,
 				F87344962179ABF60F9BF4FA /* WiFiAnalyzerView.swift in Sources */,
 				95509055063FFB7264CCC783 /* WiFiViewModel.swift in Sources */,
@@ -628,7 +774,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = ZCPND5K7H5;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -642,7 +788,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -688,7 +834,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = ZCPND5K7H5;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -708,7 +854,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

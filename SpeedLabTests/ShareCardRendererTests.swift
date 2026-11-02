@@ -39,3 +39,12 @@ final class ShareCardRendererTests: XCTestCase {
         XCTAssertGreaterThan(colors.count, 3, "card looks blank — gauge/content not rendered")
     }
 }
+
+extension ShareCardRendererTests {
+    /// Gözle inceleme: yeni küçük logo ile paylaşım kartını /tmp'ye yazar.
+    func test_renderSampleCardForReview() throws {
+        let r = SpeedTestResult(downloadSpeed: 85.5, uploadSpeed: 20.1, ping: 23, jitter: 4.1, ssid: "Ev", isp: "Turknet", ipAddress: "1.2.3.4")
+        let image = try XCTUnwrap(ShareCardRenderer.render(result: r, format: .square))
+        try XCTUnwrap(image.pngData()).write(to: URL(fileURLWithPath: "/tmp/speedlab-sharecard.png"))
+    }
+}
