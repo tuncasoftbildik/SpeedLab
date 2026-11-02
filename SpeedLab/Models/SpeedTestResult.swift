@@ -1,5 +1,12 @@
 import Foundation
 
+/// Bağlantı türü; `SpeedTestResult.connectionType` ham değeri ve geçmiş filtresi bunu kullanır.
+enum ConnectionKind: String, CaseIterable, Codable {
+    case wifi
+    case cellular
+    case wired
+}
+
 struct SpeedTestResult: Identifiable, Codable {
     let id: UUID
     let downloadSpeed: Double // Mbps
@@ -11,7 +18,17 @@ struct SpeedTestResult: Identifiable, Codable {
     let ipAddress: String
     let date: Date
 
-    init(downloadSpeed: Double, uploadSpeed: Double, ping: Double, jitter: Double, ssid: String = "", isp: String = "", ipAddress: String = "") {
+    // 1.2.0 — opsiyonel; 1.1.2 kayıtlarında yok, decode'da nil kalır.
+    let downloadSamples: [Double]?
+    let uploadSamples: [Double]?
+    let connectionType: String?   // ConnectionKind.rawValue
+    let carrier: String?          // ipinfo org (ISP)
+
+    init(downloadSpeed: Double, uploadSpeed: Double, ping: Double, jitter: Double,
+         ssid: String = "", isp: String = "", ipAddress: String = "",
+         downloadSamples: [Double]? = nil, uploadSamples: [Double]? = nil,
+         connectionType: String? = nil, carrier: String? = nil,
+         date: Date = Date()) {
         self.id = UUID()
         self.downloadSpeed = downloadSpeed
         self.uploadSpeed = uploadSpeed
@@ -20,8 +37,20 @@ struct SpeedTestResult: Identifiable, Codable {
         self.ssid = ssid
         self.isp = isp
         self.ipAddress = ipAddress
-        self.date = Date()
+        self.downloadSamples = downloadSamples
+        self.uploadSamples = uploadSamples
+        self.connectionType = connectionType
+        self.carrier = carrier
+        self.date = date
     }
+
+    /// Kayıtlı tür; eski kayıtlarda SSID boş/"-" ise hücresel, aksi WiFi sayılır.
+    var effectiveConnectionType: String {
+        if let connectionType, !connectionType.isEmpty { return connectionType }
+        return (ssid.isEmpty || ssid == "-") ? ConnectionKind.cellular.rawValue : ConnectionKind.wifi.rawValue
+    }
+
+    var effectiveKind: ConnectionKind { ConnectionKind(rawValue: effectiveConnectionType) ?? .wifi }
 }
 
 enum SpeedTestPhase: String {

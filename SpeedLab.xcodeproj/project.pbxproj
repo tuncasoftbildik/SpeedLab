@@ -21,6 +21,7 @@
 		608EA38F686FCAC0502B0C6D /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E8B607BA999C2FC1638DF1 /* HistoryView.swift */; };
 		6B7FE41077BCFF7EA29ED889 /* QRCodeGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D9CC550DF516DFEFF018 /* QRCodeGeneratorTests.swift */; };
 		6CA5E3BF13B9D3ADB2D4046D /* SpeedLabWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F53B5324AA9654777470555B /* SpeedLabWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8026F1F6B9D6DF7C80429DA2 /* SpeedTestResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F1D527ED2B6C4A8E2E1225 /* SpeedTestResultTests.swift */; };
 		827A946FC403EE7F7A3EB9D1 /* Glass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A1EB66C583B45BFE4259FD /* Glass.swift */; };
 		8404BB96E283F06F9A33FBA2 /* ShareGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6E1170AAD16ECD3CCEECB /* ShareGaugeView.swift */; };
 		84BDB892CCC2689B5019EF57 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BD5C301BF237A04D6E2730 /* OnboardingView.swift */; };
@@ -43,6 +44,8 @@
 		D550385E233FE705709BABA6 /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFBDD51652760260414DE20 /* LocalizationService.swift */; };
 		D9BB5EC41734085B5163CE67 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D131BBCB9D46E667CEAC03E /* QRCodeGenerator.swift */; };
 		E3DA228211B22612B498E081 /* SpeedTestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD56E7A69937207AED50E82 /* SpeedTestResult.swift */; };
+		E6C1253CE1242C6086E83BBC /* AppearanceSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D732383375E9650E73531A93 /* AppearanceSetting.swift */; };
+		F06D7077C2AFCE98013EF9C2 /* AppearanceSettingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F80F95C55531188D8E8F1A /* AppearanceSettingTests.swift */; };
 		F0ECD685D758BCADCC7A7B6D /* SpeedLabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B433922C4A60EE20CBF1EF4 /* SpeedLabApp.swift */; };
 		F116180B594535C0319A164E /* ShareCardRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F2FFFE1BE78D7D97924490 /* ShareCardRendererTests.swift */; };
 		F165518AC76746280D7F8D29 /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFBDD51652760260414DE20 /* LocalizationService.swift */; };
@@ -112,12 +115,15 @@
 		763214A0377A5CA13678E17C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		82DBA17A483B756E07B91C7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		90F2FFFE1BE78D7D97924490 /* ShareCardRendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardRendererTests.swift; sourceTree = "<group>"; };
+		94F1D527ED2B6C4A8E2E1225 /* SpeedTestResultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestResultTests.swift; sourceTree = "<group>"; };
 		9CD21C519C379D9A0DEF1AA7 /* SpeedLabWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpeedLabWidget.entitlements; sourceTree = "<group>"; };
 		A011E188A363CC94B10F9E50 /* SpeedTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestViewModel.swift; sourceTree = "<group>"; };
+		A9F80F95C55531188D8E8F1A /* AppearanceSettingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSettingTests.swift; sourceTree = "<group>"; };
 		B1A1EB66C583B45BFE4259FD /* Glass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Glass.swift; sourceTree = "<group>"; };
 		BEC304601AD82B02C524E30B /* SpeedTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestView.swift; sourceTree = "<group>"; };
 		C189602C94FDD49A171B6CF3 /* ShareCardRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardRenderer.swift; sourceTree = "<group>"; };
 		CEDA7B17D594747CE7AAADE1 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		D732383375E9650E73531A93 /* AppearanceSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSetting.swift; sourceTree = "<group>"; };
 		D9C5CB407D918CB4D4CD9A3B /* SharedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStoreTests.swift; sourceTree = "<group>"; };
 		E11E631DBFD74A79C366B11C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E9D6E1170AAD16ECD3CCEECB /* ShareGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareGaugeView.swift; sourceTree = "<group>"; };
@@ -227,11 +233,13 @@
 		CEF961B4CB5A5D9589652427 /* SpeedLabTests */ = {
 			isa = PBXGroup;
 			children = (
+				A9F80F95C55531188D8E8F1A /* AppearanceSettingTests.swift */,
 				FCA1D9CC550DF516DFEFF018 /* QRCodeGeneratorTests.swift */,
 				0C95BE673B90C5520D39E761 /* ShareCardFormatTests.swift */,
 				90F2FFFE1BE78D7D97924490 /* ShareCardRendererTests.swift */,
 				D9C5CB407D918CB4D4CD9A3B /* SharedStoreTests.swift */,
 				EC3660514E9FB7BFA77A1ACA /* SmokeTests.swift */,
+				94F1D527ED2B6C4A8E2E1225 /* SpeedTestResultTests.swift */,
 			);
 			path = SpeedLabTests;
 			sourceTree = "<group>";
@@ -275,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				69D391FF6A79861108361809 /* AdManager.swift */,
+				D732383375E9650E73531A93 /* AppearanceSetting.swift */,
 				ECBCD597FD3E5F2BCE0A98C9 /* HistoryService.swift */,
 				2EFBDD51652760260414DE20 /* LocalizationService.swift */,
 				CEDA7B17D594747CE7AAADE1 /* NetworkService.swift */,
@@ -420,11 +429,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F06D7077C2AFCE98013EF9C2 /* AppearanceSettingTests.swift in Sources */,
 				6B7FE41077BCFF7EA29ED889 /* QRCodeGeneratorTests.swift in Sources */,
 				CE91909F39823300F34AD099 /* ShareCardFormatTests.swift in Sources */,
 				F116180B594535C0319A164E /* ShareCardRendererTests.swift in Sources */,
 				8ED1C4332134B4661B69C9F2 /* SharedStoreTests.swift in Sources */,
 				BF63B4A7CF90613AAC9186E5 /* SmokeTests.swift in Sources */,
+				8026F1F6B9D6DF7C80429DA2 /* SpeedTestResultTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B92811C0972CB13DF170E2C0 /* AdManager.swift in Sources */,
+				E6C1253CE1242C6086E83BBC /* AppearanceSetting.swift in Sources */,
 				40FC0606F8668B710620537B /* BannerAdView.swift in Sources */,
 				36B86CE4560ECF77C1BFC50D /* Color+Theme.swift in Sources */,
 				827A946FC403EE7F7A3EB9D1 /* Glass.swift in Sources */,
@@ -628,7 +640,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = ZCPND5K7H5;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -642,7 +654,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -688,7 +700,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = ZCPND5K7H5;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -708,7 +720,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
