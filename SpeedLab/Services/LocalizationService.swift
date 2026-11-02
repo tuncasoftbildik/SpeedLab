@@ -54,6 +54,22 @@ class LocalizationService: ObservableObject {
         "appearance_dark": ["tr": "Koyu", "en": "Dark"],
         "appearance_light": ["tr": "Açık", "en": "Light"],
 
+        // Bağlam bantları (SpeedContext)
+        "band_dl_music": ["tr": "müzik ve web için yeterli", "en": "fine for music and web"],
+        "band_dl_hd": ["tr": "HD video için yeterli", "en": "enough for HD video"],
+        "band_dl_4k": ["tr": "4K yayın için yeterli", "en": "enough for 4K streaming"],
+        "band_dl_office": ["tr": "ev ofisi için ferah", "en": "roomy for home office"],
+        "band_dl_fiber": ["tr": "fiber sınıfı", "en": "fiber class"],
+        "band_ul_weak": ["tr": "görüşmede zorlanır", "en": "struggles on calls"],
+        "band_ul_call": ["tr": "video görüşme için yeterli", "en": "enough for video calls"],
+        "band_ul_stream": ["tr": "yayın ve yükleme için iyi", "en": "good for streaming and uploads"],
+        "band_ping_gaming": ["tr": "oyun için ideal", "en": "ideal for gaming"],
+        "band_ping_good": ["tr": "iyi", "en": "good"],
+        "band_ping_laggy": ["tr": "gecikmeli", "en": "laggy"],
+        "context_avg": ["tr": "ortalamada", "en": "on average"],
+        "context_up": ["tr": "↑ %{p} ortalamaya göre", "en": "↑ {p}% vs. average"],
+        "context_down": ["tr": "↓ %{p} ortalamaya göre", "en": "↓ {p}% vs. average"],
+
         // Tab Bar
         "tab_speed": ["tr": "Hız Testi", "en": "Speed Test"],
         "tab_wifi": ["tr": "WiFi Analiz", "en": "WiFi Analyzer"],
