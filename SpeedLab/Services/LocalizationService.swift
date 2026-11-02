@@ -91,6 +91,11 @@ class LocalizationService: ObservableObject {
         "free_chart_note": ["tr": "Son 3 test · Pro ile tüm geçmiş", "en": "Last 3 tests · full history with Pro"],
         "export": ["tr": "Dışa aktar", "en": "Export"],
 
+        // Dışa aktarma
+        "export_csv": ["tr": "CSV (tüm kayıtlar)", "en": "CSV (all records)"],
+        "export_pdf": ["tr": "PDF (seçili aralık)", "en": "PDF (selected range)"],
+        "export_title": ["tr": "SpeedLab geçmişi", "en": "SpeedLab history"],
+
         // Tab Bar
         "tab_speed": ["tr": "Hız Testi", "en": "Speed Test"],
         "tab_wifi": ["tr": "WiFi Analiz", "en": "WiFi Analyzer"],

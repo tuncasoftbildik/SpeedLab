@@ -211,16 +211,7 @@ struct SpeedTestView: View {
         if let image = ShareCardRenderer.render(result: result, format: format) {
             items.insert(image, at: 0)
         }
-        let av = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let root = scene.windows.first?.rootViewController {
-            av.popoverPresentationController?.sourceView = root.view
-            av.popoverPresentationController?.sourceRect = CGRect(x: root.view.bounds.midX,
-                                                                  y: root.view.bounds.midY,
-                                                                  width: 0, height: 0)
-            av.popoverPresentationController?.permittedArrowDirections = []
-            root.present(av, animated: true)
-        }
+        ShareSheet.present(items: items)
     }
 }
 
