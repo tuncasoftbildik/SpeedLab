@@ -81,6 +81,16 @@ class LocalizationService: ObservableObject {
         "kind_cellular": ["tr": "Hücresel", "en": "Cellular"],
         "kind_wired": ["tr": "Kablolu", "en": "Wired"],
 
+        // Geçmiş 1.2
+        "range_day": ["tr": "Gün", "en": "Day"],
+        "range_week": ["tr": "Hafta", "en": "Week"],
+        "range_month": ["tr": "Ay", "en": "Month"],
+        "filter_all": ["tr": "Tümü", "en": "All"],
+        "filter_wifi": ["tr": "WiFi", "en": "WiFi"],
+        "filter_cellular": ["tr": "Hücresel", "en": "Cellular"],
+        "free_chart_note": ["tr": "Son 3 test · Pro ile tüm geçmiş", "en": "Last 3 tests · full history with Pro"],
+        "export": ["tr": "Dışa aktar", "en": "Export"],
+
         // Tab Bar
         "tab_speed": ["tr": "Hız Testi", "en": "Speed Test"],
         "tab_wifi": ["tr": "WiFi Analiz", "en": "WiFi Analyzer"],
