@@ -18,3 +18,18 @@ final class SignalQualityTests: XCTestCase {
         XCTAssertEqual(SignalQuality.percent(1.4), 100)
     }
 }
+
+final class ConnectionHealthTests: XCTestCase {
+    func test_scoreFromPingAndJitter() {
+        XCTAssertEqual(ConnectionHealth.score(ping: 10, jitter: 1), 1, accuracy: 1e-9)
+        XCTAssertEqual(ConnectionHealth.score(ping: 200, jitter: 50), 0, accuracy: 1e-9)
+        let mid = ConnectionHealth.score(ping: 100, jitter: 10)
+        XCTAssertGreaterThan(mid, 0.3); XCTAssertLessThan(mid, 0.7)
+        XCTAssertGreaterThan(ConnectionHealth.score(ping: 40, jitter: 2), ConnectionHealth.score(ping: 40, jitter: 30))
+    }
+
+    func test_bandKeysReuseSignalBands() {
+        XCTAssertEqual(SignalQuality.bandKey(ConnectionHealth.score(ping: 15, jitter: 2)), "signal_excellent")
+        XCTAssertEqual(SignalQuality.bandKey(ConnectionHealth.score(ping: 180, jitter: 40)), "signal_weak")
+    }
+}
