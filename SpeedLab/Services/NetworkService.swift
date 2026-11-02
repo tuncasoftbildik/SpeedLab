@@ -111,6 +111,16 @@ class NetworkService: NSObject, CLLocationManagerDelegate {
         return result
     }
 
+    /// Bağlantı türü enum olarak; belirlenemezse nil.
+    func getConnectionKind() -> ConnectionKind? {
+        switch getConnectionType() {
+        case "WiFi": return .wifi
+        case "Hücresel": return .cellular
+        case "Ethernet": return .wired
+        default: return nil
+        }
+    }
+
     // MARK: - Full Network Info
     func getNetworkInfo() async -> NetworkInfo {
         var info = NetworkInfo()

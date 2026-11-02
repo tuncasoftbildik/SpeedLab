@@ -5,7 +5,6 @@ struct SpeedTestView: View {
     @EnvironmentObject var storeVM: StoreViewModel
     @StateObject private var loc = LocalizationService.shared
     @State private var glowPulse = false
-    @State private var showRewardAlert = false
     @State private var showShareFormatDialog = false
 
     var body: some View {
@@ -187,37 +186,10 @@ struct SpeedTestView: View {
                             .glassCard(cornerRadius: 12, tint: .npCyan)
                         }
                         .padding(.horizontal, 20)
-
-                        // Rewarded ad button (sadece ücretsiz kullanıcılar)
-                        if !storeVM.isPro {
-                            Button {
-                                AdManager.shared.showRewarded { rewarded in
-                                    if rewarded {
-                                        showRewardAlert = true
-                                    }
-                                }
-                            } label: {
-                                HStack(spacing: 8) {
-                                    Image(systemName: "play.circle.fill")
-                                    Text(loc.t("watch_ad_extra_test"))
-                                }
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.npOrange)
-                                .padding(.vertical, 12)
-                                .frame(maxWidth: .infinity)
-                                .glassCard(cornerRadius: 12, tint: .npOrange)
-                            }
-                            .padding(.horizontal, 20)
-                        }
                     }
 
                     Spacer(minLength: 40)
                 }
-            }
-        }
-        .alert(loc.t("reward_earned"), isPresented: $showRewardAlert) {
-            Button("OK") {
-                Task { await vm.startTest() }
             }
         }
         .confirmationDialog(loc.t("share_format_title"), isPresented: $showShareFormatDialog, titleVisibility: .visible) {
