@@ -30,4 +30,12 @@ final class HistoryQueryTests: XCTestCase {
         XCTAssertEqual(HistoryRange.week.seconds, 7 * 86400)
         XCTAssertEqual(HistoryRange.month.seconds, 30 * 86400)
     }
+
+    func test_narrowFiltersListByKindAndCarrierKeepingOrder() {
+        let xs = [r(1, daysAgo: 0), r(2, daysAgo: 1, ssid: "-", isp: "Vodafone"), r(3, daysAgo: 2), r(4, daysAgo: 3, isp: "Turknet")]
+        XCTAssertEqual(HistoryQuery.narrow(xs, kind: nil, carrier: nil).map(\.downloadSpeed), [1, 2, 3, 4])
+        XCTAssertEqual(HistoryQuery.narrow(xs, kind: .wifi, carrier: nil).map(\.downloadSpeed), [1, 3, 4])
+        XCTAssertEqual(HistoryQuery.narrow(xs, kind: nil, carrier: "Vodafone").map(\.downloadSpeed), [2])
+        XCTAssertEqual(HistoryQuery.narrow(xs, kind: .cellular, carrier: "Turknet").count, 0)
+    }
 }

@@ -19,11 +19,17 @@ enum HistoryRange: String, CaseIterable {
 enum HistoryQuery {
     static let freeChartLimit = 3
 
-    static func filter(_ results: [SpeedTestResult], kind: ConnectionKind?, carrier: String?,
-                       range: HistoryRange, now: Date, isPro: Bool, freeChartLimit: Int = HistoryQuery.freeChartLimit) -> [SpeedTestResult] {
+    /// Tür ve sağlayıcı filtresi; sırayı korur (liste ve grafik ortak kullanır).
+    static func narrow(_ results: [SpeedTestResult], kind: ConnectionKind?, carrier: String?) -> [SpeedTestResult] {
         var xs = results
         if let kind { xs = xs.filter { $0.effectiveKind == kind } }
         if let carrier, !carrier.isEmpty { xs = xs.filter { ($0.carrier ?? $0.isp) == carrier } }
+        return xs
+    }
+
+    static func filter(_ results: [SpeedTestResult], kind: ConnectionKind?, carrier: String?,
+                       range: HistoryRange, now: Date, isPro: Bool, freeChartLimit: Int = HistoryQuery.freeChartLimit) -> [SpeedTestResult] {
+        var xs = narrow(results, kind: kind, carrier: carrier)
         if isPro {
             let since = now.addingTimeInterval(-range.seconds)
             xs = xs.filter { $0.date >= since }

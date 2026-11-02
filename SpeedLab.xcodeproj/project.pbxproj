@@ -60,6 +60,7 @@
 		C1AD50E59C4E4FA46F7A0088 /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF9B383B966AC8A5F0FDB0E /* StoreViewModel.swift */; };
 		C648512D1BAEFBFB31AABA3E /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D093D29CB962929831ED3C /* HistoryViewModel.swift */; };
 		C6848FD1096D371ED8DFDFA7 /* ShareGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6E1170AAD16ECD3CCEECB /* ShareGaugeView.swift */; };
+		C9C78A83F57A93F0AA4E7494 /* SpeedTestViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3226B6A11F4D114B56B32151 /* SpeedTestViewModelTests.swift */; };
 		CDA71DA49E8E7AEFF89450FC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61F9BE35C9714F927618A0 /* SettingsView.swift */; };
 		CE91909F39823300F34AD099 /* ShareCardFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C95BE673B90C5520D39E761 /* ShareCardFormatTests.swift */; };
 		D550385E233FE705709BABA6 /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFBDD51652760260414DE20 /* LocalizationService.swift */; };
@@ -125,6 +126,7 @@
 		2D02F936F41B69DE75C85AC4 /* WiFiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiViewModel.swift; sourceTree = "<group>"; };
 		2EFBDD51652760260414DE20 /* LocalizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationService.swift; sourceTree = "<group>"; };
 		2F0BDCDBD391C5D052115019 /* SpeedLab.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SpeedLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3226B6A11F4D114B56B32151 /* SpeedTestViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestViewModelTests.swift; sourceTree = "<group>"; };
 		328081D14509CD7FF486DEAC /* Ortak.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Ortak.xcassets; sourceTree = "<group>"; };
 		35EEE70D1311A2C992F8CD8D /* SpeedLabTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SpeedLabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		387C7A6E6511BABBBF0C71B9 /* ShareCardFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardFormat.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				EC3660514E9FB7BFA77A1ACA /* SmokeTests.swift */,
 				95BEEA510923DB1B3341C1C8 /* SpeedContextTests.swift */,
 				94F1D527ED2B6C4A8E2E1225 /* SpeedTestResultTests.swift */,
+				3226B6A11F4D114B56B32151 /* SpeedTestViewModelTests.swift */,
 			);
 			path = SpeedLabTests;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				BF63B4A7CF90613AAC9186E5 /* SmokeTests.swift in Sources */,
 				6FA40F46D917F5CE84398784 /* SpeedContextTests.swift in Sources */,
 				8026F1F6B9D6DF7C80429DA2 /* SpeedTestResultTests.swift in Sources */,
+				C9C78A83F57A93F0AA4E7494 /* SpeedTestViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,12 @@ class HistoryViewModel: ObservableObject {
         HistoryQuery.filter(historyService.loadAll(), kind: kind, carrier: carrier, range: range, now: now, isPro: isPro)
     }
 
+    /// Liste: tür/sağlayıcı çipleri uygulanmış (ücretsiz 10 sınırı `results` üzerinden korunur).
+    var filteredResults: [SpeedTestResult] { HistoryQuery.narrow(results, kind: kind, carrier: carrier) }
+
+    /// Dışa aktarma için tüm kayıtlar (Pro).
+    func allResults() -> [SpeedTestResult] { historyService.loadAll() }
+
     /// Benzersiz sağlayıcılar, alfabetik.
     var carriers: [String] {
         Array(Set(results.map { $0.carrier ?? $0.isp }.filter { !$0.isEmpty && $0 != "-" })).sorted()

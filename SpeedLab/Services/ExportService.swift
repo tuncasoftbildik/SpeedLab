@@ -43,7 +43,7 @@ enum ExportService {
     /// Metin alanı: HER ZAMAN çift tırnaklı (" → ""); baştaki boşluklardan sonra =,+,-,@,\t,\r,\n ile
     /// başlıyorsa ' öneki (formül enjeksiyonu). Tırnaklama ; ile ayıran ayrıştırıcılara karşı da korur.
     static func escape(_ raw: String) -> String {
-        var s = raw
+        var s = raw == "-" ? "" : raw   // eski kayıtların yer tutucusu boş hücre olur
         let trimmed = s.drop(while: { $0 == " " || $0 == "\t" })
         // Not: "\r\n" tek grafem olduğundan dizi yerine Set<Character> kullanılır.
         let triggers: Set<Character> = ["=", "+", "-", "@", "\t", "\r", "\n"]

@@ -368,7 +368,7 @@ struct ProUpgradeSheet: View {
                                     Text(product.displayPrice)
                                         .font(.system(size: 17, weight: .bold))
                                 }
-                                .foregroundColor(.npTextPrimary)
+                                .foregroundColor(product.subscription?.subscriptionPeriod.unit == .year ? .npBrandTextPrimary : .npTextPrimary)
                                 .padding(16)
                                 .background(
                                     product.subscription?.subscriptionPeriod.unit == .year
