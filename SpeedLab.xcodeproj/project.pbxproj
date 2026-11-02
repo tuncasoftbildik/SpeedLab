@@ -62,6 +62,7 @@
 		CE91909F39823300F34AD099 /* ShareCardFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C95BE673B90C5520D39E761 /* ShareCardFormatTests.swift */; };
 		D550385E233FE705709BABA6 /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFBDD51652760260414DE20 /* LocalizationService.swift */; };
 		D9BB5EC41734085B5163CE67 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D131BBCB9D46E667CEAC03E /* QRCodeGenerator.swift */; };
+		DBA5DB3A3C7E6F2ADF3740C0 /* ProBenefitCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD498C44B875DAE34EE1194 /* ProBenefitCards.swift */; };
 		DDE9DA0350F6F36F2F13BA1A /* ExportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92676CC7A9610D72C738F9 /* ExportService.swift */; };
 		E3DA228211B22612B498E081 /* SpeedTestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD56E7A69937207AED50E82 /* SpeedTestResult.swift */; };
 		E6C1253CE1242C6086E83BBC /* AppearanceSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D732383375E9650E73531A93 /* AppearanceSetting.swift */; };
@@ -113,6 +114,7 @@
 		0848AEBDA39CB54E1B9D1A47 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
 		0C95BE673B90C5520D39E761 /* ShareCardFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardFormatTests.swift; sourceTree = "<group>"; };
 		0D131BBCB9D46E667CEAC03E /* QRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
+		0FD498C44B875DAE34EE1194 /* ProBenefitCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProBenefitCards.swift; sourceTree = "<group>"; };
 		16D093D29CB962929831ED3C /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		1C14A866FDA0FA376C7CBCE1 /* TrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingManager.swift; sourceTree = "<group>"; };
 		236D6E08A9DA58BA5C0D4EA1 /* ShareCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardView.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				03B537474ED9EE620D4B0055 /* WiFiAnalyzerView.swift */,
 				A4264A92A1C0415526476E3F /* Gauge */,
 				61FB7808BB4897C8E7679F27 /* History */,
+				9CDF4BFA897EA538EB792F05 /* Pro */,
 				9DF438D97268E6570877D810 /* ShareCard */,
 				A7632558F3E9E4C56A62A6FE /* WiFi */,
 			);
@@ -261,6 +264,14 @@
 				2704678E2B63520B7C9591BD /* WidgetSnapshot.swift */,
 			);
 			path = WidgetShared;
+			sourceTree = "<group>";
+		};
+		9CDF4BFA897EA538EB792F05 /* Pro */ = {
+			isa = PBXGroup;
+			children = (
+				0FD498C44B875DAE34EE1194 /* ProBenefitCards.swift */,
+			);
+			path = Pro;
 			sourceTree = "<group>";
 		};
 		9DF438D97268E6570877D810 /* ShareCard */ = {
@@ -554,6 +565,7 @@
 				8FA372E3AF26D702E1675745 /* MainTabView.swift in Sources */,
 				F57167444CC873EBF58FBAFC /* NetworkService.swift in Sources */,
 				84BDB892CCC2689B5019EF57 /* OnboardingView.swift in Sources */,
+				DBA5DB3A3C7E6F2ADF3740C0 /* ProBenefitCards.swift in Sources */,
 				D9BB5EC41734085B5163CE67 /* QRCodeGenerator.swift in Sources */,
 				E7D808BA1AD05ECFCF9EDFBC /* SampleBuffer.swift in Sources */,
 				CDA71DA49E8E7AEFF89450FC /* SettingsView.swift in Sources */,
