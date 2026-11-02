@@ -1,10 +1,12 @@
 import SwiftUI
 
+/// Ana ekran (A taslağı): başlık + durum, telemetri şeridi, kokpit kadranı, canlı akış grafiği,
+/// test bitince kayarak gelen bağlamlı sonuç kartları, ağ bilgisi ve paylaşım.
 struct SpeedTestView: View {
     @EnvironmentObject var vm: SpeedTestViewModel
     @EnvironmentObject var storeVM: StoreViewModel
+    @EnvironmentObject var historyVM: HistoryViewModel
     @StateObject private var loc = LocalizationService.shared
-    @State private var glowPulse = false
     @State private var showShareFormatDialog = false
 
     var body: some View {
@@ -12,184 +14,37 @@ struct SpeedTestView: View {
             AuroraBackground()
 
             ScrollView(showsIndicators: false) {
-                VStack(spacing: 24) {
-                    // Header
-                    HStack {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Speed")
-                                .font(.system(size: 28, weight: .bold)) +
-                            Text("Lab")
-                                .font(.system(size: 28, weight: .bold))
-                                .foregroundColor(.npCyan)
-                            Text(phaseText)
-                                .font(.system(size: 13, weight: .medium))
-                                .foregroundColor(.npTextSecondary)
-                        }
-                        Spacer()
-                        // Network badge
-                        if !vm.networkInfo.ssid.isEmpty && vm.networkInfo.ssid != "-" {
-                            HStack(spacing: 4) {
-                                Image(systemName: "wifi")
-                                    .font(.system(size: 10))
-                                Text(vm.networkInfo.ssid)
-                                    .font(.system(size: 11, weight: .semibold))
-                            }
-                            .foregroundColor(.npCyan)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 5)
-                            .background(.ultraThinMaterial, in: Capsule())
-                            .overlay(Capsule().stroke(Color.npCyan.opacity(0.35), lineWidth: 1))
-                        }
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.top, 8)
+                VStack(spacing: 18) {
+                    header
 
-                    // Gauge
-                    ZStack {
-                        // Completion glow effect
-                        if vm.showCompletionEffect {
-                            Circle()
-                                .stroke(
-                                    LinearGradient(
-                                        colors: [.npCyan, .npGreen, .npCyan],
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    ),
-                                    lineWidth: 3
-                                )
-                                .frame(width: 260, height: 260)
-                                .scaleEffect(glowPulse ? 1.08 : 1.0)
-                                .opacity(glowPulse ? 0.0 : 0.8)
-                                .animation(
-                                    .easeInOut(duration: 1.5).repeatForever(autoreverses: false),
-                                    value: glowPulse
-                                )
+                    TelemetryStrip(ping: vm.phase == .idle ? nil : vm.ping,
+                                   jitter: vm.phase == .idle ? nil : vm.jitter,
+                                   loss: vm.packetLoss)
+                        .padding(.horizontal, 20)
 
-                            Circle()
-                                .stroke(Color.npCyan.opacity(0.3), lineWidth: 1.5)
-                                .frame(width: 280, height: 280)
-                                .scaleEffect(glowPulse ? 1.15 : 1.0)
-                                .opacity(glowPulse ? 0.0 : 0.5)
-                                .animation(
-                                    .easeInOut(duration: 1.8).repeatForever(autoreverses: false),
-                                    value: glowPulse
-                                )
-                        }
-
-                        DialGaugeView(
-                            speed: currentDisplaySpeed,
-                            phase: vm.phase,
-                            isUploading: vm.phase == .testingUpload || vm.phase == .preparingUpload,
-                            idleTitle: loc.t("start_test")
-                        )
-                    }
+                    DialGaugeView(
+                        speed: currentDisplaySpeed,
+                        phase: vm.phase,
+                        isUploading: isUploading,
+                        idleTitle: loc.t("start_test")
+                    )
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         if vm.phase == .idle || vm.phase == .completed {
                             Task { await vm.startTest() }
                         }
                     }
-                    .onChange(of: vm.showCompletionEffect) { newValue in
-                        if newValue {
-                            glowPulse = true
-                        } else {
-                            glowPulse = false
-                        }
-                    }
+                    .padding(.top, -6)
 
-                    // Phase indicator
-                    if vm.phase != .idle && vm.phase != .completed {
-                        ProgressView(value: vm.progress)
-                            .tint(.npCyan)
-                            .padding(.horizontal, 40)
-                    }
-
-                    if vm.phase == .idle {
-                        Text(loc.t("tap_to_start"))
-                            .font(.system(size: 13, weight: .medium))
-                            .foregroundColor(.npTextSecondary)
-                    }
-
-                    // Completion badge
-                    if vm.showCompletionEffect {
-                        HStack(spacing: 6) {
-                            Image(systemName: "checkmark.circle.fill")
-                                .foregroundColor(.npGreen)
-                            Text(loc.t("completed"))
-                                .foregroundColor(.npGreen)
-                        }
-                        .font(.system(size: 14, weight: .semibold))
-                        .transition(.scale.combined(with: .opacity))
-                    }
-
-                    // Result cards
-                    if vm.phase == .completed || vm.downloadSpeed > 0 {
-                        HStack(spacing: 12) {
-                            ResultCard(
-                                icon: "arrow.down.circle.fill",
-                                label: loc.t("download"),
-                                value: String(format: "%.1f", vm.downloadSpeed),
-                                unit: "Mbps",
-                                color: .npCyan
-                            )
-                            ResultCard(
-                                icon: "arrow.up.circle.fill",
-                                label: loc.t("upload"),
-                                value: String(format: "%.1f", vm.uploadSpeed),
-                                unit: "Mbps",
-                                color: .npPurple
-                            )
-                        }
+                    flowGraph
                         .padding(.horizontal, 20)
 
-                        HStack(spacing: 12) {
-                            ResultCard(
-                                icon: "bolt.circle.fill",
-                                label: loc.t("ping"),
-                                value: String(format: "%.0f", vm.ping),
-                                unit: "ms",
-                                color: .npGreen
-                            )
-                            ResultCard(
-                                icon: "waveform.circle.fill",
-                                label: loc.t("jitter"),
-                                value: String(format: "%.1f", vm.jitter),
-                                unit: "ms",
-                                color: .npOrange
-                            )
-                        }
-                        .padding(.horizontal, 20)
+                    if vm.showResultCards, vm.phase == .completed {
+                        resultCards
+                            .transition(.move(edge: .top).combined(with: .opacity))
                     }
 
-                    // Network info
-                    if vm.phase == .completed {
-                        VStack(spacing: 0) {
-                            InfoRow(label: loc.t("isp"), value: vm.networkInfo.isp)
-                            Divider().background(Color.npBorder)
-                            InfoRow(label: loc.t("ip_address"), value: vm.networkInfo.ipAddress)
-                            Divider().background(Color.npBorder)
-                            InfoRow(label: loc.t("network"), value: vm.networkInfo.ssid)
-                        }
-                        .glassCard(cornerRadius: 16)
-                        .padding(.horizontal, 20)
-
-                        // Share button
-                        Button {
-                            showShareFormatDialog = true
-                        } label: {
-                            HStack(spacing: 8) {
-                                Image(systemName: "square.and.arrow.up")
-                                Text(loc.t("share_result"))
-                            }
-                            .font(.system(size: 14, weight: .semibold))
-                            .foregroundColor(.npCyan)
-                            .padding(.vertical, 12)
-                            .frame(maxWidth: .infinity)
-                            .glassCard(cornerRadius: 12, tint: .npCyan)
-                        }
-                        .padding(.horizontal, 20)
-                    }
-
-                    Spacer(minLength: 40)
+                    Spacer(minLength: 30)
                 }
             }
         }
@@ -200,38 +55,162 @@ struct SpeedTestView: View {
         }
     }
 
+    // MARK: - Parçalar
+
+    private var header: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            (Text("Speed").font(.system(size: 28, weight: .bold)) +
+             Text("Lab").font(.system(size: 28, weight: .bold)).foregroundColor(.npCyan))
+                .foregroundColor(.npTextPrimary)
+            Text(statusLine)
+                .font(.system(size: 13, weight: .medium))
+                .foregroundColor(.npTextSecondary)
+                .lineLimit(1)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 20)
+        .padding(.top, 8)
+    }
+
+    private var flowGraph: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack(spacing: 4) {
+                Text((vm.phase == .completed || vm.phase == .idle ? loc.t("last_30s") : loc.t("live_flow")).uppercased())
+                    .foregroundColor(.npTextSecondary)
+                Text("·").foregroundColor(.npTextSecondary)
+                Text(loc.t("download").uppercased()).foregroundColor(.npCyan)
+                if !vm.uploadSamples.values.isEmpty {
+                    Text("·").foregroundColor(.npTextSecondary)
+                    Text(loc.t("upload").uppercased()).foregroundColor(.npPurple)
+                }
+            }
+            .font(.system(size: 10, weight: .semibold))
+            .kerning(0.5)
+            LiveFlowGraph(download: graphDownload, upload: graphUpload, height: 96)
+        }
+        .padding(12)
+        .glassCard(cornerRadius: 18)
+    }
+
+    private var resultCards: some View {
+        VStack(spacing: 12) {
+            HStack(spacing: 12) {
+                ContextResultCard(icon: "arrow.down.circle.fill", label: loc.t("download"),
+                                  value: String(format: "%.1f", vm.downloadSpeed), unit: "Mbps", color: .npCyan,
+                                  context: contextText(.download, vm.downloadSpeed), contextColor: contextColor(.download, vm.downloadSpeed))
+                ContextResultCard(icon: "arrow.up.circle.fill", label: loc.t("upload"),
+                                  value: String(format: "%.1f", vm.uploadSpeed), unit: "Mbps", color: .npPurple,
+                                  context: contextText(.upload, vm.uploadSpeed), contextColor: contextColor(.upload, vm.uploadSpeed))
+            }
+            HStack(spacing: 12) {
+                ContextResultCard(icon: "bolt.circle.fill", label: loc.t("ping"),
+                                  value: String(format: "%.0f", vm.ping), unit: "ms", color: .npGreen,
+                                  context: loc.t(SpeedContext.bandKey(.ping, value: vm.ping)), contextColor: .npTextSecondary)
+                ContextResultCard(icon: "waveform.circle.fill", label: loc.t("jitter"),
+                                  value: String(format: "%.1f", vm.jitter), unit: "ms", color: .npOrange,
+                                  context: nil)
+            }
+
+            VStack(spacing: 0) {
+                InfoRow(label: loc.t("isp"), value: vm.networkInfo.isp)
+                Divider().background(Color.npBorder)
+                InfoRow(label: loc.t("ip_address"), value: vm.networkInfo.ipAddress)
+                Divider().background(Color.npBorder)
+                InfoRow(label: loc.t("network"), value: vm.networkInfo.ssid)
+            }
+            .glassCard(cornerRadius: 16)
+
+            Button {
+                showShareFormatDialog = true
+            } label: {
+                HStack(spacing: 8) {
+                    Image(systemName: "square.and.arrow.up")
+                    Text(loc.t("share_result"))
+                }
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(.npCyan)
+                .padding(.vertical, 12)
+                .frame(maxWidth: .infinity)
+                .glassCard(cornerRadius: 12, tint: .npCyan)
+            }
+        }
+        .padding(.horizontal, 20)
+    }
+
+    // MARK: - Türetilmiş değerler
+
+    private var isUploading: Bool { vm.phase == .testingUpload || vm.phase == .preparingUpload }
+
     private var currentDisplaySpeed: Double {
         switch vm.phase {
-        case .testingDownload: return vm.downloadSpeed
-        case .testingUpload: return vm.uploadSpeed
-        default: return max(vm.downloadSpeed, vm.uploadSpeed)
+        case .testingDownload, .preparingDownload: return vm.downloadSpeed
+        case .testingUpload, .preparingUpload: return vm.uploadSpeed
+        case .completed: return vm.downloadSpeed
+        default: return 0
         }
     }
 
-    private var phaseText: String {
+    /// Boşta son testin eğrisi; test sırasında canlı tampon.
+    private var graphDownload: [Double] {
+        if vm.phase == .idle { return historyVM.lastSamples(download: true) }
+        return vm.downloadSamples.values
+    }
+
+    private var graphUpload: [Double] {
+        if vm.phase == .idle { return historyVM.lastSamples(download: false) }
+        return vm.uploadSamples.values
+    }
+
+    private var statusLine: String {
+        var parts: [String] = []
         switch vm.phase {
-        case .idle: return loc.t("start_test")
-        case .testingPing, .preparingPing: return loc.t("testing_ping")
-        case .testingDownload, .preparingDownload: return loc.t("testing_download")
-        case .testingUpload, .preparingUpload: return loc.t("testing_upload")
-        case .completed: return loc.t("completed")
+        case .idle: parts.append(loc.t("start_test"))
+        case .testingPing, .preparingPing: parts.append(loc.t("testing_ping"))
+        case .testingDownload, .preparingDownload: parts.append(loc.t("measuring_download"))
+        case .testingUpload, .preparingUpload: parts.append(loc.t("measuring_upload"))
+        case .completed: parts.append(loc.t("completed"))
         }
+        if vm.networkInfo.isp != "-" && !vm.networkInfo.isp.isEmpty { parts.append(Self.shortISP(vm.networkInfo.isp)) }
+        if let kind = vm.connectionKind { parts.append(loc.t("kind_\(kind.rawValue)")) }
+        return parts.joined(separator: " · ")
+    }
+
+    /// "Superonline Iletisim Hizmetleri A.S." → "Superonline Iletisim"
+    static func shortISP(_ isp: String) -> String {
+        let drop: Set<String> = ["a.s.", "a.ş.", "as", "aş", "inc.", "inc", "ltd.", "ltd", "llc", "gmbh", "sa", "s.a."]
+        let words = isp.split(separator: " ").map(String.init).filter { !drop.contains($0.lowercased()) }
+        return words.prefix(2).joined(separator: " ")
+    }
+
+    private func contextText(_ metric: SpeedContext.Metric, _ value: Double) -> String? {
+        let history = historyVM.recentValues(metric, kind: vm.connectionKind, excluding: vm.lastResult?.id)
+        if let delta = SpeedContext.deltaPercent(current: value, history: history) {
+            if delta == 0 { return loc.t("context_avg") }
+            let key = delta > 0 ? "context_up" : "context_down"
+            return loc.t(key).replacingOccurrences(of: "{p}", with: String(abs(delta)))
+        }
+        return loc.t(SpeedContext.bandKey(metric, value: value))
+    }
+
+    private func contextColor(_ metric: SpeedContext.Metric, _ value: Double) -> Color {
+        let history = historyVM.recentValues(metric, kind: vm.connectionKind, excluding: vm.lastResult?.id)
+        if let delta = SpeedContext.deltaPercent(current: value, history: history) {
+            return delta < 0 ? .npOrange : (delta == 0 ? .npTextSecondary : .npGreen)
+        }
+        return .npGreen
     }
 
     @MainActor
     private func presentShare(format: ShareCardFormat) {
         guard let result = vm.lastResult else { return }
-
         let caption = """
         \(loc.t("share_caption")): \(String(format: "%.1f", result.downloadSpeed)) Mbps ↓
         \(AppStoreLink.url)
         """
-
         var items: [Any] = [caption]
         if let image = ShareCardRenderer.render(result: result, format: format) {
             items.insert(image, at: 0)
         }
-
         let av = UIActivityViewController(activityItems: items, applicationActivities: nil)
         if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let root = scene.windows.first?.rootViewController {
@@ -246,37 +225,6 @@ struct SpeedTestView: View {
 }
 
 // MARK: - Subviews
-struct ResultCard: View {
-    let icon: String
-    let label: String
-    let value: String
-    let unit: String
-    let color: Color
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack(spacing: 6) {
-                Image(systemName: icon)
-                    .font(.system(size: 14))
-                    .foregroundColor(color)
-                Text(label)
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundColor(.npTextSecondary)
-            }
-            HStack(alignment: .firstTextBaseline, spacing: 4) {
-                Text(value)
-                    .font(.system(size: 28, weight: .bold, design: .rounded))
-                    .foregroundColor(.white)
-                Text(unit)
-                    .font(.system(size: 12, weight: .medium))
-                    .foregroundColor(.npTextSecondary)
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(16)
-        .glassCard(cornerRadius: 16, tint: color)
-    }
-}
 
 struct InfoRow: View {
     let label: String
@@ -290,7 +238,7 @@ struct InfoRow: View {
             Spacer()
             Text(value)
                 .font(.system(size: 13, weight: .semibold))
-                .foregroundColor(.white)
+                .foregroundColor(.npTextPrimary)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
