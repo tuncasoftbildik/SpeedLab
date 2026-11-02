@@ -27,9 +27,10 @@ struct ShareCardView: View {
         VStack(spacing: 0) {
             // Brand
             HStack(spacing: 14) {
-                Image(systemName: "gauge.high")
-                    .font(.system(size: 44, weight: .bold))
-                    .foregroundStyle(LinearGradient.npMain)
+                Image("IkonKucuk")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 56, height: 56)
                 Text("SpeedLab")
                     .font(.system(size: 48, weight: .bold))
                     .foregroundColor(.white)
