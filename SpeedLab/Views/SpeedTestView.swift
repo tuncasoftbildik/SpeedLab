@@ -76,10 +76,11 @@ struct SpeedTestView: View {
                                 )
                         }
 
-                        SpeedGaugeView(
-                            value: vm.gaugeValue,
+                        DialGaugeView(
                             speed: currentDisplaySpeed,
-                            phase: vm.phase
+                            phase: vm.phase,
+                            isUploading: vm.phase == .testingUpload || vm.phase == .preparingUpload,
+                            idleTitle: loc.t("start_test")
                         )
                     }
                     .onTapGesture {
