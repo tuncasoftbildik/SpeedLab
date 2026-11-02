@@ -61,19 +61,26 @@ struct OnboardingView: View {
                                     )
                                     .shadow(color: pages[index].colors[0].opacity(0.35), radius: 24)
 
-                                Image(systemName: pages[index].icon)
-                                    .font(.system(size: 56, weight: .medium))
-                                    .foregroundStyle(
-                                        LinearGradient(colors: [.white, pages[index].colors[1].opacity(0.9)],
-                                                       startPoint: .top, endPoint: .bottom)
-                                    )
+                                if index == 0 {
+                                    Image("IkonKucuk")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 96, height: 96)
+                                } else {
+                                    Image(systemName: pages[index].icon)
+                                        .font(.system(size: 56, weight: .medium))
+                                        .foregroundStyle(
+                                            LinearGradient(colors: [.npTextPrimary, pages[index].colors[1].opacity(0.9)],
+                                                           startPoint: .top, endPoint: .bottom)
+                                        )
+                                }
                             }
                             .padding(.bottom, 8)
 
                             // Title
                             Text(loc.currentLanguage == "tr" ? pages[index].title : pages[index].titleEn)
                                 .font(.system(size: 28, weight: .bold))
-                                .foregroundColor(.white)
+                                .foregroundColor(.npTextPrimary)
                                 .multilineTextAlignment(.center)
 
                             // Description
@@ -125,7 +132,7 @@ struct OnboardingView: View {
                             Image(systemName: currentPage < pages.count - 1 ? "arrow.right" : "bolt.fill")
                                 .font(.system(size: 14, weight: .bold))
                         }
-                        .foregroundColor(.white)
+                        .foregroundColor(.npTextPrimary)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
                         .background(
