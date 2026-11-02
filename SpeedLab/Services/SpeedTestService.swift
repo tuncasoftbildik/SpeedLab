@@ -65,11 +65,18 @@ class SpeedTestService {
                 let (bytes, _) = try await session.bytes(for: request)
 
                 var totalBytes = 0
+                var windowStart = start
+                var windowBytes = 0
                 for try await _ in bytes {
                     totalBytes += 1
                     if totalBytes % 50_000 == 0 {
-                        let elapsed = CFAbsoluteTimeGetCurrent() - start
-                        let currentSpeed = elapsed > 0 ? Double(totalBytes) * 8.0 / 1_000_000.0 / elapsed : 0
+                        // Anlık hız: son pencere (≥ 0.2 sn) içindeki bayt/süre; grafik dalgalanmayı görsün.
+                        let now = CFAbsoluteTimeGetCurrent()
+                        let windowElapsed = now - windowStart
+                        guard windowElapsed >= 0.2 else { continue }
+                        let currentSpeed = Double(totalBytes - windowBytes) * 8.0 / 1_000_000.0 / windowElapsed
+                        windowStart = now
+                        windowBytes = totalBytes
 
                         let baseProgress = Double(index) / Double(downloadTests.count)
                         let subProgress = min(Double(totalBytes) / Double(test.expectedBytes), 1.0)

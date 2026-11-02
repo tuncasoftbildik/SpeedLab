@@ -10,6 +10,8 @@
 		0F6427637253E1B4549C37ED /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C27738C78B658E05497DC27 /* Color+Theme.swift */; };
 		1025A3666B43B99C5C9CACD9 /* SharedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56741D3B4B75B5AF42C0FA9B /* SharedStore.swift */; };
 		13F748C8B533CE43B88B5E1F /* DialGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7CD86E982C410EAE193304 /* DialGeometry.swift */; };
+		1CF9DA5CEF30E6AE2F83EF5C /* ContextResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3C73635005CF5E098A3FD0 /* ContextResultCard.swift */; };
+		1E44D62CF920C3357AA0DDE9 /* TelemetryStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A779FA290D54D9521344CE0 /* TelemetryStrip.swift */; };
 		2288E2081956378D2B709B12 /* GaugeScaleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E5F327AA58D0A2974C2FAC /* GaugeScaleTests.swift */; };
 		2F96C72D764EE6FCF9A20C37 /* SampleBufferTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E3E2D7074DAFBA420DE58 /* SampleBufferTests.swift */; };
 		30B501B21EEF9A2561FEBBAD /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2704678E2B63520B7C9591BD /* WidgetSnapshot.swift */; };
@@ -42,6 +44,7 @@
 		B538CF7944DC9D3F4F9696AE /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBCD597FD3E5F2BCE0A98C9 /* HistoryService.swift */; };
 		B6FD93B0DC6B6D66AB2C3347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 406089864A2DE55136B8A6F3 /* Assets.xcassets */; };
 		B92811C0972CB13DF170E2C0 /* AdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D391FF6A79861108361809 /* AdManager.swift */; };
+		BA2C40310949190D64A4824E /* LiveFlowGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB012544BA606015169F92 /* LiveFlowGraph.swift */; };
 		BA5FF3B44486370C49611994 /* TrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C14A866FDA0FA376C7CBCE1 /* TrackingManager.swift */; };
 		BF63B4A7CF90613AAC9186E5 /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3660514E9FB7BFA77A1ACA /* SmokeTests.swift */; };
 		C1AD50E59C4E4FA46F7A0088 /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF9B383B966AC8A5F0FDB0E /* StoreViewModel.swift */; };
@@ -116,6 +119,7 @@
 		50DA6BBE4BD3376A9369B6B6 /* GaugeScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeScale.swift; sourceTree = "<group>"; };
 		56741D3B4B75B5AF42C0FA9B /* SharedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStore.swift; sourceTree = "<group>"; };
 		59E8B607BA999C2FC1638DF1 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		5A779FA290D54D9521344CE0 /* TelemetryStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelemetryStrip.swift; sourceTree = "<group>"; };
 		5C27738C78B658E05497DC27 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
 		5CF9B383B966AC8A5F0FDB0E /* StoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
 		5E0E3E2D7074DAFBA420DE58 /* SampleBufferTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBufferTests.swift; sourceTree = "<group>"; };
@@ -134,11 +138,13 @@
 		A3D006F63BF8DFAA6AE0BA01 /* SpeedContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedContext.swift; sourceTree = "<group>"; };
 		A9F80F95C55531188D8E8F1A /* AppearanceSettingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSettingTests.swift; sourceTree = "<group>"; };
 		B1A1EB66C583B45BFE4259FD /* Glass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Glass.swift; sourceTree = "<group>"; };
+		BE3C73635005CF5E098A3FD0 /* ContextResultCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextResultCard.swift; sourceTree = "<group>"; };
 		BEC304601AD82B02C524E30B /* SpeedTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestView.swift; sourceTree = "<group>"; };
 		C189602C94FDD49A171B6CF3 /* ShareCardRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardRenderer.swift; sourceTree = "<group>"; };
 		C94C97B859D1EA9831A3C78C /* DialGeometryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialGeometryTests.swift; sourceTree = "<group>"; };
 		CEDA7B17D594747CE7AAADE1 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D732383375E9650E73531A93 /* AppearanceSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceSetting.swift; sourceTree = "<group>"; };
+		D9BB012544BA606015169F92 /* LiveFlowGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveFlowGraph.swift; sourceTree = "<group>"; };
 		D9C5CB407D918CB4D4CD9A3B /* SharedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStoreTests.swift; sourceTree = "<group>"; };
 		E11E631DBFD74A79C366B11C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E9D6E1170AAD16ECD3CCEECB /* ShareGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareGaugeView.swift; sourceTree = "<group>"; };
@@ -241,8 +247,11 @@
 		A4264A92A1C0415526476E3F /* Gauge */ = {
 			isa = PBXGroup;
 			children = (
+				BE3C73635005CF5E098A3FD0 /* ContextResultCard.swift */,
 				46B990F7DEC31FCD449DBD27 /* DialGaugeView.swift */,
 				8A7CD86E982C410EAE193304 /* DialGeometry.swift */,
+				D9BB012544BA606015169F92 /* LiveFlowGraph.swift */,
+				5A779FA290D54D9521344CE0 /* TelemetryStrip.swift */,
 			);
 			path = Gauge;
 			sourceTree = "<group>";
@@ -483,6 +492,7 @@
 				E6C1253CE1242C6086E83BBC /* AppearanceSetting.swift in Sources */,
 				40FC0606F8668B710620537B /* BannerAdView.swift in Sources */,
 				36B86CE4560ECF77C1BFC50D /* Color+Theme.swift in Sources */,
+				1CF9DA5CEF30E6AE2F83EF5C /* ContextResultCard.swift in Sources */,
 				822A5F9FBFEEEBA9F41DFACB /* DialGaugeView.swift in Sources */,
 				13F748C8B533CE43B88B5E1F /* DialGeometry.swift in Sources */,
 				31A6B479052897A5F4C9D265 /* GaugeScale.swift in Sources */,
@@ -490,6 +500,7 @@
 				B538CF7944DC9D3F4F9696AE /* HistoryService.swift in Sources */,
 				608EA38F686FCAC0502B0C6D /* HistoryView.swift in Sources */,
 				C648512D1BAEFBFB31AABA3E /* HistoryViewModel.swift in Sources */,
+				BA2C40310949190D64A4824E /* LiveFlowGraph.swift in Sources */,
 				F165518AC76746280D7F8D29 /* LocalizationService.swift in Sources */,
 				8FA372E3AF26D702E1675745 /* MainTabView.swift in Sources */,
 				F57167444CC873EBF58FBAFC /* NetworkService.swift in Sources */,
@@ -509,6 +520,7 @@
 				5B252B5C8A27BE1C78781F29 /* SpeedTestView.swift in Sources */,
 				3AC0676622F705E36EE67DEB /* SpeedTestViewModel.swift in Sources */,
 				C1AD50E59C4E4FA46F7A0088 /* StoreViewModel.swift in Sources */,
+				1E44D62CF920C3357AA0DDE9 /* TelemetryStrip.swift in Sources */,
 				BA5FF3B44486370C49611994 /* TrackingManager.swift in Sources */,
 				F87344962179ABF60F9BF4FA /* WiFiAnalyzerView.swift in Sources */,
 				95509055063FFB7264CCC783 /* WiFiViewModel.swift in Sources */,

@@ -70,6 +70,17 @@ class LocalizationService: ObservableObject {
         "context_up": ["tr": "↑ %{p} ortalamaya göre", "en": "↑ {p}% vs. average"],
         "context_down": ["tr": "↓ %{p} ortalamaya göre", "en": "↓ {p}% vs. average"],
 
+        // Ana ekran 1.2
+        "packet_loss": ["tr": "Kayıp", "en": "Loss"],
+        "live_flow": ["tr": "Canlı akış", "en": "Live flow"],
+        "last_30s": ["tr": "Son test", "en": "Last test"],
+        "queued": ["tr": "sırada", "en": "queued"],
+        "measuring_download": ["tr": "İndirme ölçülüyor", "en": "Measuring download"],
+        "measuring_upload": ["tr": "Yükleme ölçülüyor", "en": "Measuring upload"],
+        "kind_wifi": ["tr": "WiFi", "en": "WiFi"],
+        "kind_cellular": ["tr": "Hücresel", "en": "Cellular"],
+        "kind_wired": ["tr": "Kablolu", "en": "Wired"],
+
         // Tab Bar
         "tab_speed": ["tr": "Hız Testi", "en": "Speed Test"],
         "tab_wifi": ["tr": "WiFi Analiz", "en": "WiFi Analyzer"],
