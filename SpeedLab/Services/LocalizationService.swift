@@ -48,6 +48,12 @@ class LocalizationService: ObservableObject {
     }
 
     private let strings: [String: [String: String]] = [
+        // Görünüm
+        "appearance": ["tr": "Görünüm", "en": "Appearance"],
+        "appearance_system": ["tr": "Sistem", "en": "System"],
+        "appearance_dark": ["tr": "Koyu", "en": "Dark"],
+        "appearance_light": ["tr": "Açık", "en": "Light"],
+
         // Tab Bar
         "tab_speed": ["tr": "Hız Testi", "en": "Speed Test"],
         "tab_wifi": ["tr": "WiFi Analiz", "en": "WiFi Analyzer"],

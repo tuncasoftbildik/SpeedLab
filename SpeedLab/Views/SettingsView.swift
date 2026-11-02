@@ -7,6 +7,7 @@ struct SettingsView: View {
     @Environment(\.openURL) private var openURL
     @State private var showProSheet = false
     @State private var showRedeemCode = false
+    @AppStorage(AppearanceSetting.storageKey) private var appearance = AppearanceSetting.system.rawValue
 
     fileprivate static var appVersion: String {
         let dict = Bundle.main.infoDictionary
@@ -96,6 +97,21 @@ struct SettingsView: View {
                                 Divider().background(Color.npBorder).padding(.leading, 54)
                             }
                         }
+                    }
+                    .glassCard(cornerRadius: 16)
+                    .padding(.horizontal, 20)
+
+                    // Appearance
+                    VStack(spacing: 0) {
+                        SettingsSectionHeader(title: loc.t("appearance"))
+                        Picker("", selection: $appearance) {
+                            ForEach(AppearanceSetting.allCases, id: \.rawValue) { mode in
+                                Text(loc.t(mode.localizationKey)).tag(mode.rawValue)
+                            }
+                        }
+                        .pickerStyle(.segmented)
+                        .padding(.horizontal, 16)
+                        .padding(.bottom, 14)
                     }
                     .glassCard(cornerRadius: 16)
                     .padding(.horizontal, 20)
