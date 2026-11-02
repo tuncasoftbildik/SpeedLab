@@ -14,7 +14,7 @@ struct ShareGaugeView: View {
             Circle()
                 .trim(from: 0.15, to: 0.85)
                 .rotation(.degrees(126))
-                .stroke(Color.npSurfaceLight, style: StrokeStyle(lineWidth: 20 * k, lineCap: .round))
+                .stroke(Color.npBrandSurfaceLight, style: StrokeStyle(lineWidth: 20 * k, lineCap: .round))
                 .frame(width: diameter, height: diameter)
 
             // Value arc (static — drawn directly at `clamped`, orange→cyan)
@@ -37,7 +37,7 @@ struct ShareGaugeView: View {
             ForEach(0..<13, id: \.self) { i in
                 let angle = 126.0 + Double(i) * (252.0 / 12.0)
                 Rectangle()
-                    .fill(i % 3 == 0 ? Color.npTextSecondary : Color.npSurfaceLight)
+                    .fill(i % 3 == 0 ? Color.npBrandTextSecondary : Color.npBrandSurfaceLight)
                     .frame(width: (i % 3 == 0 ? 2 : 1) * k, height: (i % 3 == 0 ? 12 : 8) * k)
                     .offset(y: -108 * k)
                     .rotationEffect(.degrees(angle))
@@ -50,7 +50,7 @@ struct ShareGaugeView: View {
                     .foregroundStyle(LinearGradient.npMain)
                 Text("Mbps ↓")
                     .font(.system(size: 14 * k, weight: .semibold))
-                    .foregroundColor(.npTextSecondary)
+                    .foregroundColor(.npBrandTextSecondary)
             }
         }
         .frame(width: diameter + 24 * k, height: diameter + 24 * k)
@@ -59,7 +59,7 @@ struct ShareGaugeView: View {
 
 #Preview {
     ZStack {
-        Color.npBackground
+        Color.npBrandBackground
         ShareGaugeView(value: 0.19, speed: 38.2, diameter: 460)
     }
 }

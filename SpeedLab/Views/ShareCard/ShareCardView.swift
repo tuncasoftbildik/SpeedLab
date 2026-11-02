@@ -69,7 +69,7 @@ struct ShareCardView: View {
             // Footer: ISP · date
             Text(result.isp.isEmpty ? dateText : "\(result.isp) · \(dateText)")
                 .font(.system(size: 30, weight: .medium))
-                .foregroundColor(.npTextSecondary)
+                .foregroundColor(.npBrandTextSecondary)
 
             Spacer(minLength: 36)
 
@@ -92,7 +92,7 @@ struct ShareCardView: View {
         .padding(.vertical, format == .story ? 140 : 80)
         .padding(.horizontal, 80)
         .frame(width: format.pointSize.width, height: format.pointSize.height)
-        .background(Color.npBackground)
+        .background(Color.npBrandBackground)
     }
 
     private func metric(symbol: String, value: String, label: String, color: Color) -> some View {
@@ -105,7 +105,7 @@ struct ShareCardView: View {
                 .foregroundColor(.white)
             Text(label)
                 .font(.system(size: 26, weight: .medium))
-                .foregroundColor(.npTextSecondary)
+                .foregroundColor(.npBrandTextSecondary)
         }
     }
 }

@@ -8,6 +8,7 @@ struct SpeedLabApp: App {
     @StateObject private var historyVM = HistoryViewModel()
     @StateObject private var storeVM = StoreViewModel()
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
+    @AppStorage(AppearanceSetting.storageKey) private var appearance = AppearanceSetting.system.rawValue
     @Environment(\.scenePhase) private var scenePhase
     @State private var attCompleted = false
     @State private var showWidgetPaywall = false
@@ -25,7 +26,7 @@ struct SpeedLabApp: App {
                     OnboardingView()
                 }
             }
-            .preferredColorScheme(.dark)
+            .preferredColorScheme(AppearanceSetting(rawValue: appearance)?.colorScheme)
             .task {
                 await requestATTAndConfigureAds()
             }
