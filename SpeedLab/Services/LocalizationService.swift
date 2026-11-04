@@ -173,6 +173,14 @@ class LocalizationService: ObservableObject {
         "delete_confirm": ["tr": "Tüm geçmiş silinsin mi?", "en": "Delete all history?"],
         "cancel": ["tr": "İptal", "en": "Cancel"],
         "delete": ["tr": "Sil", "en": "Delete"],
+        "unlock_title": ["tr": "Pro özelliklerini aç", "en": "Unlock Pro features"],
+        "unlock_message": ["tr": "Kısa bir video izle, tam geçmiş, Hafta/Ay grafiği ve CSV/PDF dışa aktarma 24 saat açık kalsın.", "en": "Watch a short video to unlock full history, Week/Month charts and CSV/PDF export for 24 hours."],
+        "unlock_watch_ad": ["tr": "Video izle · 24 saat ücretsiz", "en": "Watch video · free for 24h"],
+        "unlock_go_pro": ["tr": "Pro'ya geç (reklamsız)", "en": "Go Pro (no ads)"],
+        "unlock_short": ["tr": "24 saat aç", "en": "Unlock 24h"],
+        "reward_active": ["tr": "Pro özellikleri açık · {h} sa kaldı", "en": "Pro features unlocked · {h}h left"],
+        "ad_unavailable": ["tr": "Şu an video yok, biraz sonra tekrar dene.", "en": "No video available right now, try again shortly."],
+        "ok": ["tr": "Tamam", "en": "OK"],
         "pro_limit": ["tr": "Ücretsiz sürümde son 10 test görünür", "en": "Free version shows last 10 tests"],
 
         // Settings

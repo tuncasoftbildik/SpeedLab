@@ -12,6 +12,18 @@ class StoreViewModel: ObservableObject {
         }
     }
     @Published var products: [Product] = []
+    /// Ödüllü reklamla açılan geçici Pro özelliklerinin bitişi (reklamsızlık dahil değil).
+    @Published var rewardUntil: Date? = RewardPass.load()
+
+    /// Geçmiş/grafik/dışa aktarma kapıları için: gerçek Pro ya da süren ödül geçişi.
+    var hasProFeatures: Bool { isPro || RewardPass.isActive(until: rewardUntil) }
+    var rewardActive: Bool { !isPro && RewardPass.isActive(until: rewardUntil) }
+
+    func grantReward(now: Date = Date()) {
+        let until = RewardPass.extended(from: rewardUntil, now: now)
+        RewardPass.save(until)
+        rewardUntil = until
+    }
     @Published var isLoading = false
 
     static let productIds = ["com.vialab.speedlab.pro.monthly", "com.vialab.speedlab.pro.yearly"]
