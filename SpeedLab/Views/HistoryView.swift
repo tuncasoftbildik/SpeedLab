@@ -8,6 +8,8 @@ struct HistoryView: View {
     @State private var showDeleteAlert = false
     @State private var showProSheet = false
     @State private var showExportDialog = false
+    @State private var showUnlockDialog = false
+    @State private var showAdUnavailable = false
 
     var body: some View {
         ZStack {
@@ -38,7 +40,7 @@ struct HistoryView: View {
                         .listRowSeparator(.hidden)
                         .listRowInsets(EdgeInsets(top: 4, leading: 20, bottom: 4, trailing: 20))
 
-                        if !storeVM.isPro && historyVM.results.count >= 10 {
+                        if !storeVM.hasProFeatures && historyVM.results.count >= 10 {
                             proLimitBanner
                                 .listRowBackground(Color.clear)
                                 .listRowSeparator(.hidden)
@@ -62,18 +64,49 @@ struct HistoryView: View {
                 }
             }
         }
-        .onAppear { historyVM.load(isPro: storeVM.isPro) }
-        .onChange(of: storeVM.isPro) { historyVM.load(isPro: $0) }
+        .onAppear { historyVM.load(isPro: storeVM.hasProFeatures) }
+        .onChange(of: storeVM.hasProFeatures) { historyVM.load(isPro: $0) }
         .alert(loc.t("delete_confirm"), isPresented: $showDeleteAlert) {
             Button(loc.t("cancel"), role: .cancel) {}
             Button(loc.t("delete_all"), role: .destructive) { historyVM.deleteAll() }
         }
         .sheet(isPresented: $showProSheet) { ProUpgradeSheet().environmentObject(storeVM) }
+        .confirmationDialog(loc.t("unlock_title"), isPresented: $showUnlockDialog, titleVisibility: .visible) {
+            Button(loc.t("unlock_watch_ad")) { watchAdForPass() }
+            Button(loc.t("unlock_go_pro")) { showProSheet = true }
+            Button(loc.t("cancel"), role: .cancel) {}
+        } message: {
+            Text(loc.t("unlock_message"))
+        }
+        .alert(loc.t("ad_unavailable"), isPresented: $showAdUnavailable) {
+            Button(loc.t("ok"), role: .cancel) {}
+        }
         .confirmationDialog(loc.t("export"), isPresented: $showExportDialog, titleVisibility: .visible) {
             Button(loc.t("export_csv")) { exportCSV() }
             Button(loc.t("export_pdf")) { exportPDF() }
             Button(loc.t("cancel"), role: .cancel) {}
         }
+    }
+
+    // MARK: - Ödüllü reklam: 24 saat Pro özellikleri
+
+    private func watchAdForPass() {
+        guard AdManager.shared.rewardedReady else {
+            AdManager.shared.loadRewarded()
+            showAdUnavailable = true
+            return
+        }
+        AdManager.shared.showRewarded { earned in
+            if earned { storeVM.grantReward() }
+        }
+    }
+
+    private var rewardActiveNote: some View {
+        let hours = max(1, Int((RewardPass.remaining(until: storeVM.rewardUntil) / 3600).rounded(.up)))
+        return Text(loc.t("reward_active").replacingOccurrences(of: "{h}", with: "\(hours)"))
+            .font(.system(size: 10, weight: .semibold))
+            .foregroundColor(.npCyan)
+            .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     // MARK: - Dışa aktarma (Pro)
@@ -103,7 +136,7 @@ struct HistoryView: View {
             Spacer()
             if !historyVM.results.isEmpty {
                 Button {
-                    if storeVM.isPro { showExportDialog = true } else { showProSheet = true }
+                    if storeVM.hasProFeatures { showExportDialog = true } else { showUnlockDialog = true }
                 } label: {
                     HStack(spacing: 4) {
                         Image(systemName: "square.and.arrow.up")
@@ -137,7 +170,7 @@ struct HistoryView: View {
                 Picker("", selection: Binding(
                     get: { historyVM.range },
                     set: { r in
-                        if !historyVM.requestRange(r, isPro: storeVM.isPro) { showProSheet = true }
+                        if !historyVM.requestRange(r, isPro: storeVM.hasProFeatures) { showUnlockDialog = true }
                     })) {
                     ForEach(HistoryRange.allCases, id: \.self) { r in
                         Text(loc.t(r.localizationKey)).tag(r)
@@ -145,8 +178,10 @@ struct HistoryView: View {
                 }
                 .pickerStyle(.segmented)
             }
-            HistoryChartView(results: historyVM.chartResults(isPro: storeVM.isPro))
-            if !storeVM.isPro {
+            HistoryChartView(results: historyVM.chartResults(isPro: storeVM.hasProFeatures))
+            if storeVM.rewardActive {
+                rewardActiveNote
+            } else if !storeVM.hasProFeatures {
                 Text(loc.t("free_chart_note"))
                     .font(.system(size: 10, weight: .medium))
                     .foregroundColor(.npTextSecondary)
@@ -187,12 +222,19 @@ struct HistoryView: View {
     }
 
     private var proLimitBanner: some View {
-        HStack(spacing: 8) {
-            Image(systemName: "crown.fill").foregroundColor(.npOrange)
-            Text(loc.t("pro_limit"))
-                .font(.system(size: 12, weight: .medium))
-                .foregroundColor(.npTextSecondary)
+        Button { showUnlockDialog = true } label: {
+            HStack(spacing: 8) {
+                Image(systemName: "crown.fill").foregroundColor(.npOrange)
+                Text(loc.t("pro_limit"))
+                    .font(.system(size: 12, weight: .medium))
+                    .foregroundColor(.npTextSecondary)
+                Spacer(minLength: 4)
+                Label(loc.t("unlock_short"), systemImage: "play.rectangle.fill")
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundColor(.npOrange)
+            }
         }
+        .buttonStyle(.plain)
         .padding(12)
         .frame(maxWidth: .infinity)
         .background(Color.npOrange.opacity(0.1))

@@ -63,5 +63,6 @@ struct SpeedLabApp: App {
         _ = await TrackingManager.requestAuthorizationIfNeeded()
         AdManager.shared.configure()
         AdManager.shared.loadInterstitial()
+        AdManager.shared.loadRewarded()
     }
 }
